@@ -1,0 +1,836 @@
+@{* 
+    Name: default-salesorder
+    Update: 25022017
+
+    Variables setting, will overwritten by template setting. 
+*}
+
+@{* start variables setting *}
+@{$TITLE="Sales Order"}
+@{$SUBJECT=""}
+@{$FONT="arial, sans-serif"}
+@{$CELL_BORDER="1px solid #dddddd"}
+@{$CELL_HIGHLIGHT_COLOR="#d0d0d0"}
+@{$HEADER_BACKGROUND_COLOR="#000000"}
+@{$HEADER_TEXT_COLOR="#ffffff"}
+@{$SIGNATURE_LINE_BORDER="1px dotted #bbbbbb"}
+@{$SHOW_STATUS=true}
+@{$SHOW_DISCOUNT_PERCENT=false}
+@{$SHOW_CUSTOMER_CONTACT=true}
+@{$SHOW_CUSTOMER_NAME=true}
+@{$SHOW_COMPANY_CONTACT=true}
+@{$SHOW_COMPANY_ADDRESS=true}
+@{$SHOW_COMPANY_LOGO=true}
+@{$SHOW_HEADER=true}
+@{* /end variables setting *}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="google" content="notranslate">
+<meta name="format-detection" content="telephone=no">
+<title>@{$TITLE} @{$data->salesorder->code}</title>
+
+<style type="text/css">
+/* start reset */
+html {
+  font-family: @{$FONT};
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-size: 12px;
+    margin: 0;
+    background: #fff;
+    line-height: 1.3;
+}
+
+@media print {
+    body {-webkit-print-color-adjust: exact;}
+}
+
+table {
+    border-collapse: collapse !important;
+    border-spacing: 0;
+    border: none;
+}
+
+span {
+    padding: 0;
+    margin: 0;
+}
+
+td,
+th {
+    padding: 0;
+}
+
+td {
+    font-size: 12px;
+    text-align: left;
+}
+
+img {
+    border: 0;
+    padding: 0;
+}
+
+/* end reset */
+
+img.company-logo {
+    height: 80px;
+    max-width:300px;
+    vertical-align: middle;
+}
+
+.width-px-10 {
+    width: 10px;
+}
+
+.width-px-60 {
+    width: 60px;
+}
+
+.width-px-90 {
+    width: 60px;
+}
+
+.width-px-100 {
+    width: 100px;
+}
+
+.width-percent-20 {
+    width: 20%;
+}
+
+.width-percent-10 {
+    width: 10%;
+}
+
+.width-percent-35 {
+    width: 35%;
+}
+
+.width-percent-55 {
+    width: 55%;
+}
+
+.company-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.text-block {
+    display: block;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+b,
+.text-bold {
+    font-weight: bold !important;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+td.cell {
+    vertical-align:top;
+    padding:4px;
+    border:@{$CELL_BORDER};
+}
+
+td.cell-empty {
+    border: none;
+}
+
+table.main {
+    width: 700px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    border-spacing: 0;
+}
+
+table.header {
+    clear: both;
+    width: 100%;
+    border: none;
+    border-bottom:1px solid #bbbbbb;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 5px;
+    border-spacing: 0;
+}
+
+table.header td {
+    vertical-align:top;
+}
+
+table.header .col-left {
+    padding:0px 0px 10px 6px;
+    width: 150px;
+}
+
+table.header .col-right {
+    padding:0px 6px 10px 6px;
+    text-align: right;
+    font-size: 11px;
+}
+
+table.info {
+    clear: both;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-spacing: 0;
+}
+
+table.info td {
+    vertical-align: top;
+    margin-top:0;
+}
+
+table.info .box-doc {
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+
+table.info .box-doc .title {
+    width:100%;
+    padding:4px;
+    font-size:16px;
+    text-align:center;
+    color:@{$HEADER_TEXT_COLOR};
+    background:@{$HEADER_BACKGROUND_COLOR};
+}
+
+table.info .attn {
+    padding-top:10px;
+}
+
+table.item {
+    clear: both;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-spacing: 0;
+}
+
+table.item th {
+    background:@{$HEADER_BACKGROUND_COLOR};
+    color:@{$HEADER_TEXT_COLOR};
+    padding:4px; 
+}
+
+.bg-highlight {
+    background:@{$CELL_HIGHLIGHT_COLOR};
+}
+
+</style>
+
+</head>
+<body scroll="auto">
+
+<table class="main">
+<tr>
+<td>
+
+<!--## HEADER START ##-->
+<table class="header">
+<tr>
+
+<!--## COMPANY LOGO ##-->
+<td class="col-left">
+    @{if="(bool)$SHOW_COMPANY_LOGO"}
+        <img src="@{$data->image->logo}" class="company-logo">
+    @{/if}
+</td>
+
+<!--## COMPANY INFORMATION ##-->
+<td class="col-right">
+<span class="text-block company-title">
+    @{$data->company->name}
+    @{!_null($data->company->regnumber)?" (".$data->company->regnumber.")":""}
+</span>
+
+@{if="!_null($data->company->address) && (bool)$SHOW_COMPANY_ADDRESS"}
+    <span class="text-block">@{$data->company->address}</span>
+
+    <span class="text-block text-capitalize">
+        <!--## COMPANY CITY ##-->
+        @{!_null($data->company->city) ? $data->company->city.",&nbsp;" : ""}
+
+        <!--## COMPANY POSTCODE ##-->
+        @{!_null($data->company->postcode) ? $data->company->postcode.",&nbsp;" : ""}
+
+        <!--## COMPANY STATE ##-->
+        @{!_null($data->company->state) ? $data->company->state.",&nbsp;" : ""}
+
+        <!--## COMPANY COUNTRY ##-->
+        @{!_null($data->company->country) ? $data->company->country : ""}
+    </span>
+@{/if}
+
+@{if="(bool)$SHOW_COMPANY_CONTACT"}
+    <span class="text-block">
+
+    <!--## COMPANY PHONE ##-->
+    @{if="!_null($data->company->phone)"}
+        <b>Phone:</b> @{$data->company->phone}&nbsp;
+    @{/if}
+
+    <!--## COMPANY FAX ##-->
+    @{if="!_null($data->company->fax)"}
+        <b>Fax:</b> @{$data->company->fax}
+    @{/if}
+
+    </span>
+
+    <!--## COMPANY EMAIL ##-->
+    @{if="!_null($data->company->email)"}
+        <span class="text-block"><b>Email:</b> @{$data->company->email}</span>
+    @{/if}
+
+    <!--## COMPANY WEBSITE ##-->
+    @{if="!_null($data->company->website)"}
+        <span class="text-block"><b>Website:</b> @{$data->company->website}</span>
+    @{/if}
+@{/if}
+
+</td>
+<!--## END COMPANY INFORMATION ##-->
+
+</tr>
+</table>
+<!--## HEADER END ##-->
+
+<table class="info">
+<tr>
+<td class="width-percent-20">Customer:</td>
+<td class="text-bold">
+
+<span class="text-block">
+@{$has_customer_company=false}
+@{if="!_null($data->customer->companyname)"}
+    @{$data->customer->companyname}
+    @{!_null($data->customer->regnumber) ? " (".$data->customer->regnumber.")" : ""}
+    @{$has_customer_company=true}
+@{else}
+    @{if="(bool)$SHOW_CUSTOMER_NAME"}
+        @{$data->customer->name}
+    @{/if}
+@{/if}
+</span>
+
+</td>
+
+<td colspan="1" rowspan="5" class="width-percent-35">
+
+<table class="box-doc">
+<tr>
+<td colspan="2" class="title text-uppercase">@{$TITLE}</td>
+</tr>
+<tr>
+<td class="cell text-right text-bold">Date</td>
+<td class="cell text-left">
+    @{$data->salesorder->date|_format_date}
+</td>
+</tr>
+
+<tr>
+<td class="cell text-right text-bold">Order No</td>
+<td class="cell text-left">
+    @{$data->salesorder->code}
+</td>
+</tr>
+
+@{if="_array($data->list->tax_regnumber)"}
+    @{loop="$data->list->tax_regnumber"}
+    @{if="_null($key)"}@{continue}@{/if}
+        <tr>
+        <td class="cell text-right text-bold">
+            @{$key} No
+        </td>
+        <td class="cell text-left">
+            @{$value}
+        </td>
+        </tr>
+    @{/loop}
+@{/if}
+
+<!--## CUSTOM FIELDS ##-->
+@{if="_array($data->list->fields)"}
+    @{loop="$data->list->fields"}
+    @{if="_null($value.key)"}@{continue}@{/if}
+        <tr>
+        <td class="cell text-right text-bold text-capitalize">
+            @{$value.key}
+        </td>
+        <td class="cell text-left">
+            @{$value.value}
+        </td>
+        </tr>
+    @{/loop}
+@{/if}
+
+@{if="$SHOW_STATUS"}
+<tr>
+<td class="cell text-right text-bold">Status</td>
+<td class="cell text-left">
+    @{$data->list->status[$data->salesorder->status]}
+</td>
+</tr>
+@{/if}
+
+</table>
+
+</td>
+</tr>
+
+<tr rowspan="2">
+<td>&nbsp;</td>
+<td>
+
+@{if="!_null($data->customer->address)"}
+    <span class="text-block">
+        @{$data->customer->address}
+    </span>
+
+    <span class="text-block text-capitalize">
+        @{!_null($data->customer->city) ? $data->customer->city.", " : ""}
+        @{!_null($data->customer->postcode) ? $data->customer->postcode.", " : ""}
+        @{!_null($data->customer->state) ? $data->customer->state.", " : ""}
+        @{!_null($data->customer->country) ? $data->customer->country : ""}
+    </span>
+
+@{/if}
+
+@{if="(bool)$SHOW_CUSTOMER_CONTACT"}
+    @{if="!_null($data->customer->phone) || !_null($data->customer->fax) "}
+        <span class="text-block" style="margin-top:5px;">
+        @{if="!_null($data->customer->phone)"}
+            <b>Phone:</b> @{$data->customer->phone}
+        @{/if}
+
+        @{if="!_null($data->customer->fax)"}
+            <b>Fax:</b> @{$data->customer->fax}
+        @{/if}
+        </span>
+    @{/if}
+
+    @{if="!_null($data->customer->email)"}
+        <span class="text-block"><b>Email:</b> @{$data->customer->email}</span>
+    @{/if}
+
+    @{if="!_null($data->customer->website)"}
+        <span class="text-block"><b>Website:</b> @{$data->customer->website}</span>
+    @{/if}
+
+@{/if} <!-- / SHOW_CUSTOMER_CONTACT -->
+
+</td>
+
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+<td colspan="2" rowspan="1">&nbsp;</td>
+</tr>
+
+@{if="$data->deliveryto->enable"}
+    <tr>
+    <td>Delivery to:</td>
+    <td colspan="2" rowspan="1">
+
+    @{if="!_null($data->deliveryto->address)"}
+        <span class="text-block">
+            @{$data->deliveryto->address}
+        </span>
+
+        <span class="text-block text-capitalize">
+            @{!_null($data->deliveryto->city) ? $data->deliveryto->city.", " : ""}
+            @{!_null($data->deliveryto->postcode) ? $data->deliveryto->postcode.", " : ""}
+            @{!_null($data->deliveryto->state) ? $data->deliveryto->state.", " : ""}
+            @{!_null($data->deliveryto->country) ? $data->deliveryto->country : ""}
+        </span>
+    @{/if}
+
+    </td>
+    </tr>
+@{/if}
+
+<tr>
+<td colspan="1" rowspan="1" class="attn">@{if="(bool)$SHOW_CUSTOMER_NAME && (bool)$has_customer_company"}Contact Person:@{/if}</td>
+<td colspan="2" rowspan="1" class="attn">
+@{if="(bool)$SHOW_CUSTOMER_NAME && (bool)$has_customer_company"}
+    <b>@{$data->customer->name}</b>
+@{/if}
+</td>
+</tr>
+
+</table>
+
+@{if="!_null($SUBJECT)"}
+<h4>@{$SUBJECT}</h4>
+@{/if}
+
+<table class="item">
+<tr>
+<!--## ITEMS HEADER ##-->
+<th class="text-center width-px-10">No.</th>
+<th class="text-left">Item & Description</th>
+<th class="text-center width-px-60">Quantity</th>
+<th class="text-right width-px-60">Unit Price</th>
+<th class="text-right width-px-60">Subtotal</th>
+@{if="$data->salesorder->discount_option == 1"}
+    <th class="text-center width-px-60">Discount</th>
+@{/if}
+@{if="$data->salesorder->tax_option == 1"}
+    <th class="text-right width-px-60">Tax Rate</th>
+@{/if}
+</tr>
+
+<!--## ITEMS LIST ##-->
+@{$total=0}
+@{$total_tax_rate=0}
+@{$tax_exclusive=array()}
+@{$tax_inclusive=array()}
+@{$total_discount_rate=0}
+
+@{loop="$data->list->items"}
+    @{$value.subtotal=$value.price * $value.quantity}
+    @{$total=$total + $value.subtotal}
+
+    <tr>
+    <td class="cell text-center">
+        @{$counter+1}
+    </td>
+    <td class="cell">
+        @{$value.description|nl2br}
+    </td>
+    <td class="cell text-center">
+        @{$value.quantity}
+    </td>
+    <td class="cell text-right">
+        @{$value.price|_int_output_thousands_sep}
+    </td>
+    <td class="cell text-right">
+        @{$value.subtotal|_int_output_thousands_sep}
+    </td>
+
+    @{if="$data->salesorder->discount_option == 1"}
+
+        @{$discount_rate=$value.discount_rate}
+
+        @{if="$value.discount_percent"}
+            @{$discount_rate=_int_output($discount_rate)}
+            @{$discount_rate_rate=_calc_percent($value.subtotal, $discount_rate)}
+        @{else}
+            @{$discount_rate_rate=$discount_rate}
+        @{/if} <!-- / discount_percent -->
+
+        <td class="cell text-right">
+            @{$total_discount_rate=$total_discount_rate + $discount_rate_rate}
+
+            @{$discount_rate_rate|_int_output_thousands_sep}
+
+            @{if="isset($SHOW_DISCOUNT_PERCENT) && (bool)$SHOW_DISCOUNT_PERCENT"}
+                <span class="text-block">@{$discount_rate}%</span>
+            @{/if}
+
+        </td>
+
+    @{/if} <!--/ discount_option == 1 -->
+
+<!-- tax per item -->
+    @{if="$data->salesorder->tax_option == 1"}
+        @{$tax_rate_rate=0}
+        @{$taxcode_name=""}
+        @{if="!_null($value.tax_name)"}
+
+            @{if="$value.taxcode_id > 0"}
+                @{$taxcode_name=$value.taxcode_name}
+                @{$value.tax_name=$value.tax_name." ".$taxcode_name}
+                @{$value.tax_percent=$value.taxcode_percent} 
+                @{$value.tax_rate=$value.taxcode_rate} 
+            @{/if}
+
+            @{$tax_name=$value.tax_name}
+            @{$tax_rate=$value.tax_rate}
+
+            @{if="$value.tax_percent == 1"}
+                @{$tax_rate=_int_output($tax_rate)}
+
+                @{$divide=100}
+                @{if="$value.tax_operation == 1"}
+                    @{$divide=100+$tax_rate}
+                @{/if}
+
+                @{$tax_rate_rate=_calc_percent($value.subtotal, $tax_rate, $divide)}
+
+                @{$tax_text="$tax_rate%"}
+            @{else}
+                @{$tax_rate=_int_output($tax_rate,2)}
+                @{$tax_rate_rate=$tax_rate}
+                @{$tax_text="$tax_rate"}
+            @{/if} <!-- / tax_percent -->
+
+            @{if="$value.tax_operation == 0"}
+                @{$tax_exclusive[$tax_name]['rate']=$tax_text}
+                @{if="!isset($tax_exclusive[$tax_name]['total'])"}
+                    @{$tax_exclusive[$tax_name]['total'] = 0}
+                @{/if}
+                @{$tax_exclusive[$tax_name]['total']=$tax_exclusive[$tax_name]['total'] + $tax_rate_rate}
+                @{$total_tax_rate=$total_tax_rate + $tax_rate_rate}
+            @{else}
+                @{$tax_inclusive[$tax_name]['rate']=$tax_text}
+                @{if="!isset($tax_inclusive[$tax_name]['total'])"}
+                    @{$tax_inclusive[$tax_name]['total'] = 0}
+                @{/if}
+                @{$tax_inclusive[$tax_name]['total']=$tax_inclusive[$tax_name]['total'] + $tax_rate_rate}
+            @{/if}
+        @{/if}
+        <td class="cell text-right">
+            @{$tax_rate_rate|_int_output_thousands_sep} @{$taxcode_name}
+        </td>
+    @{/if} <!--/ tax_option == 1 -->
+<!-- /tax per item -->
+</tr>
+@{/loop}
+</table>
+
+<table class="item">
+
+<!--## ITEMS FOOTER ##-->
+<tr>
+<td class="cell cell-empty text-uppercase text-bold" colspan="4">
+    @{$data->currencycode->name}:
+</td>
+</tr>
+
+<tr>
+<td class="cell cell-empty">@{$total|_int_output_thousands_sep|_currency_value_in_words}</td>
+<td class="cell width-px-100 text-nowrap text-right text-bold">Total</td>
+<td class="cell width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
+<td class="cell width-px-60 text-nowrap text-right">@{$total|_int_output_thousands_sep}</td>
+</tr>
+
+<!-- shipping rate -->
+@{if="$data->salesorder->shipping_rate != 0"}
+
+    <tr>
+    <td class="cell cell-empty">@{$data->salesorder->shipping_rate|_int_output_thousands_sep|_currency_value_in_words}</td>
+    <td class="cell width-px-100 text-nowrap text-right text-bold">Shipping Rate</td>
+    <td class="cell width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
+    <td class="cell width-px-60 text-nowrap text-right">@{$data->salesorder->shipping_rate|_int_output_thousands_sep}</td>
+    </tr>
+
+    @{$total=$total+$data->salesorder->shipping_rate}
+@{/if}
+
+<!-- discount rate -->
+@{if="$data->salesorder->discount_option == 2"}
+
+    @{$discount_rate=$data->salesorder->discount_rate}
+    @{if="$data->salesorder->discount_percent"}
+        @{$discount_rate=_int_output($discount_rate)}
+        @{$discount_rate_rate=_calc_percent($total, $discount_rate)}
+    @{else}
+        @{$discount_rate_rate=$discount_rate}
+    @{/if} <!-- / discount_percent -->
+    @{$total_discount_rate=$discount_rate_rate}
+
+@{/if}
+
+@{if="$total_discount_rate != 0"}
+
+    <tr>
+    <td class="cell cell-empty">@{$total_discount_rate|_int_output_thousands_sep|_currency_value_in_words}</td>
+    <td class="cell wisth-px-100 text-nowrap text-right text-bold">Discount</td>
+    <td class="cell width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
+    <td class="cell width-px-60 text-nowrap text-right">
+
+        @{$total_discount_rate|_int_output_thousands_sep}
+
+        @{if="isset($SHOW_DISCOUNT_PERCENT) && (bool)$SHOW_DISCOUNT_PERCENT"}
+            @{$discount_rate_sum=_int_output($total_discount_rate) * 100 / _int_output($total)}
+            <span class="text-block">@{$discount_rate_sum|round:2}%</span>
+        @{/if}
+
+    </td>
+    </tr>
+
+    @{$total=$total-$total_discount_rate}
+@{/if}
+
+<!-- tax per item -->
+@{if="$data->salesorder->tax_option == 1"}
+
+    @{if="_array($tax_exclusive)"}
+        @{loop="$tax_exclusive"}
+        @{if="_null($key)"}@{continue}@{/if}
+        @{if="$value['rate'] == 0"}@{continue}@{/if}
+            <tr>
+            <td class="cell cell-empty">
+                @{$value['total']|_int_output_thousands_sep|_currency_value_in_words}
+            </td>
+            <td class="cell width-px-100 text-nowrap text-right text-bold">
+                @{$key} @{$value['rate']}
+            </td>
+            <td class="cell width-px-10 text-nowrap text-right">
+                @{$data->currencycode->symbol}
+            </td>
+            <td class="cell width-px-60 text-nowrap text-right">
+                @{$value['total']|_int_output_thousands_sep}
+            </td>
+            </tr>
+
+        @{/loop}
+    @{/if}
+
+    @{if="_array($tax_inclusive)"}
+        @{loop="$tax_inclusive"}
+        @{if="_null($key)"}@{continue}@{/if}
+        @{if="$value['rate'] == 0"}@{continue}@{/if}
+            <tr>
+            <td class="cell cell-empty">
+                @{$value['total']|_int_output_thousands_sep|_currency_value_in_words}
+            </td>
+            <td class="cell width-px-100 text-nowrap text-right text-bold">
+                Inclusive @{$key} @{$value['rate']}
+            </td>
+            <td class="cell width-px-10 text-nowrap text-right">
+                @{$data->currencycode->symbol}
+            </td>
+            <td class="cell width-px-60 text-nowrap text-right">
+                @{$value['total']|_int_output_thousands_sep}
+            </td>
+            </tr>
+        @{/loop}
+    @{/if}
+
+    @{$total=$total+$total_tax_rate}
+<!-- /tax per item -->
+<!-- tax total amount -->
+@{elseif="$data->salesorder->tax_option == 2"}
+
+    @{if="_array($data->list->taxs)"}
+        @{loop="$data->list->taxs"}
+
+            @{if="$value.taxcode_id > 0"}
+                @{$value.tax_percent=$value.taxcode_percent} 
+                @{$value.tax_rate=$value.taxcode_rate} 
+            @{/if}
+
+            @{$tax_rate=_int_output($value.tax_rate)}
+
+            @{if="$value.tax_percent"}
+
+                @{$divide=100}
+                @{if="$value.tax_operation == 1"}
+                    @{$divide=100+$tax_rate}
+                @{/if}
+
+                @{$tax_rate_rate=_calc_percent($total, $tax_rate, $divide)}
+            @{else}
+                @{$tax_rate_rate=$tax_rate}
+            @{/if}
+
+            <tr>
+            <td class="cell cell-empty">
+                @{$tax_rate_rate|_int_output_thousands_sep|_currency_value_in_words}
+            </td>
+            <td class="cell width-px-100 text-nowrap text-right text-bold">
+                @{if="$value.tax_operation == 1"}
+                    Inclusive&nbsp;
+                @{/if}
+                @{$value.tax_name} @{$value.taxcode_name} @{$tax_rate}@{$value.tax_percent ? "%" : ""}
+            </td>
+            <td class="cell width-px-10 text-nowrap text-right">
+                @{$data->currencycode->symbol}
+            </td>
+            <td class="cell width-px-60 text-nowrap text-right">
+                @{$tax_rate_rate|_int_output_thousands_sep}
+            </td>
+            </tr>
+
+            @{if="$value.tax_operation == 0"}
+                @{$total_tax_rate=$total_tax_rate+$tax_rate_rate}
+            @{/if}
+
+        @{/loop}
+
+        @{$total=$total+$total_tax_rate}
+
+    @{/if}
+@{/if}
+<!-- /tax total amount -->
+<tr>
+<td class="cell cell-empty">@{$total|_int_output_thousands_sep|_currency_value_in_words}</td>
+<td class="cell width-px-100 text-nowrap text-right text-bold bg-highlight">Grand Total</td>
+<td class="cell width-px-10 text-nowrap text-right bg-highlight">@{$data->currencycode->symbol}</td>
+<td class="cell width-px-60 text-nowrap text-right bg-highlight">@{$total|_int_output_thousands_sep}</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+
+<!-- salesorder note -->
+@{if="!_null($data->text->note)"}
+    <tr>
+    <td>
+        @{$data->text->note}
+    </td>
+    </tr>
+@{/if}
+
+
+</table>
+
+</body>
+</html>
+

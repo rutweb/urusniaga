@@ -1,0 +1,508 @@
+@{* 
+    Name: default-leave
+    Update: 31102017
+
+    Variables setting, will overwritten by template setting. 
+*}
+
+@{* start variables setting *}
+@{$TITLE="Leave Application"}
+@{$SUBJECT=""}
+@{$FONT="arial, sans-serif"}
+@{$CELL_BORDER="1px solid #dddddd"}
+@{$CELL_HIGHLIGHT_COLOR="#d0d0d0"}
+@{$HEADER_BACKGROUND_COLOR="#000000"}
+@{$HEADER_TEXT_COLOR="#ffffff"}
+@{$SIGNATURE_LINE_BORDER="1px dotted #bbbbbb"}
+@{$SHOW_STATUS=true}
+@{$SHOW_COMPANY_CONTACT=true}
+@{$SHOW_COMPANY_ADDRESS=true}
+@{$SHOW_COMPANY_LOGO=true}
+@{* /end variables setting *}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="google" content="notranslate">
+<meta name="format-detection" content="telephone=no">
+<title>@{$TITLE} @{$data->leave->code}</title>
+
+<style type="text/css">
+/* start reset */
+html {
+  font-family: @{$FONT};
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-size: 12px;
+    margin: 0;
+    background: #fff;
+    line-height: 1.3;
+}
+
+@media print {
+    body {-webkit-print-color-adjust: exact;}
+}
+
+table {
+    border-collapse: collapse !important;
+    border-spacing: 0;
+    border: none;
+}
+
+span {
+    padding: 0;
+    margin: 0;
+}
+
+td,
+th {
+    padding: 0;
+}
+
+td {
+    font-size: 12px;
+    text-align: left;
+}
+
+img {
+    border: 0;
+    padding: 0;
+}
+
+/* end reset */
+
+img.company-logo {
+    height: 80px;
+    max-width:300px;
+    vertical-align: middle;
+}
+
+.width-px-10 {
+    width: 10px;
+}
+
+.width-px-60 {
+    width: 60px;
+}
+
+.width-px-90 {
+    width: 60px;
+}
+
+.width-px-100 {
+    width: 100px;
+}
+
+.width-percent-10 {
+    width: 10%;
+}
+
+.width-percent-15 {
+    width: 15%;
+}
+
+
+.width-percent-40 {
+    width: 40%;
+}
+
+.width-percent-55 {
+    width: 55%;
+}
+
+.company-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.text-block {
+    display: block;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+b,
+.text-bold {
+    font-weight: bold !important;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+td.cell {
+    vertical-align:top;
+    padding:4px;
+    border:@{$CELL_BORDER};
+}
+
+td.cell-empty {
+    border: none;
+}
+
+table.main {
+    width: 95%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    border-spacing: 0;
+}
+
+table.header {
+    clear: both;
+    width: 100%;
+    border: none;
+    border-bottom:1px solid #bbbbbb;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 5px;
+    border-spacing: 0;
+}
+
+table.header td {
+    vertical-align:top;
+}
+
+table.header .col-left {
+    padding:0px 0px 10px 6px;
+    width: 150px;
+}
+
+table.header .col-right {
+    padding:0px 6px 10px 6px;
+    text-align: right;
+    font-size: 11px;
+}
+
+table.box-doc {
+    clear: both;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-spacing: 0;
+}
+
+table.box-doc .title {
+    width:100%;
+    padding:4px;
+    font-size:24px;
+    text-align:center;
+    color:#000;
+    background:#fff;
+}
+
+
+table.item {
+    clear: both;
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-spacing: 0;
+}
+
+table.item th {
+    background:@{$HEADER_BACKGROUND_COLOR};
+    color:@{$HEADER_TEXT_COLOR};
+    padding:4px; 
+}
+
+.signature-line {
+    border-top:@{$SIGNATURE_LINE_BORDER};
+    width:250px;
+}
+
+.table-signature {
+    width: 100%;
+}
+
+.table-signature .signature-company {
+    vertical-align:top;
+    padding:0px;
+    width:50%;
+}
+
+.table-signature .signature-recipient {
+    vertical-align:top;
+    padding:0px;
+    width:50%;
+}
+
+.bg-highlight {
+    background:@{$CELL_HIGHLIGHT_COLOR};
+}
+</style>
+
+</head>
+<body scroll="auto">
+
+<table class="main">
+<tr>
+<td>
+
+<!--## HEADER START ##-->
+<table class="header">
+<tr>
+
+<!--## COMPANY LOGO ##-->
+<td class="col-left">
+    @{if="(bool)$SHOW_COMPANY_LOGO"}
+        <img src="@{$data->image->logo}" class="company-logo">
+    @{/if}
+</td>
+
+<!--## COMPANY INFORMATION ##-->
+<td class="col-right">
+<span class="text-block company-title">
+    @{$data->company->name}
+    @{!_null($data->company->regnumber)?" (".$data->company->regnumber.")":""}
+</span>
+
+@{if="!_null($data->company->address) && (bool)$SHOW_COMPANY_ADDRESS"}
+    <span class="text-block">@{$data->company->address}</span>
+
+    <span class="text-block text-capitalize">
+        <!--## COMPANY CITY ##-->
+        @{!_null($data->company->city) ? $data->company->city.",&nbsp;" : ""}
+
+        <!--## COMPANY POSTCODE ##-->
+        @{!_null($data->company->postcode) ? $data->company->postcode.",&nbsp;" : ""}
+
+        <!--## COMPANY STATE ##-->
+        @{!_null($data->company->state) ? $data->company->state.",&nbsp;" : ""}
+
+        <!--## COMPANY COUNTRY ##-->
+        @{!_null($data->company->country) ? $data->company->country : ""}
+    </span>
+@{/if}
+
+@{if="(bool)$SHOW_COMPANY_CONTACT"}
+    <span class="text-block">
+
+    <!--## COMPANY PHONE ##-->
+    @{if="!_null($data->company->phone)"}
+        <b>Phone:</b> @{$data->company->phone}&nbsp;
+    @{/if}
+
+    <!--## COMPANY FAX ##-->
+    @{if="!_null($data->company->fax)"}
+        <b>Fax:</b> @{$data->company->fax}
+    @{/if}
+
+    </span>
+
+    <!--## COMPANY EMAIL ##-->
+    @{if="!_null($data->company->email)"}
+        <span class="text-block"><b>Email:</b> @{$data->company->email}</span>
+    @{/if}
+
+    <!--## COMPANY WEBSITE ##-->
+    @{if="!_null($data->company->website)"}
+        <span class="text-block"><b>Website:</b> @{$data->company->website}</span>
+    @{/if}
+@{/if}
+
+</td>
+<!--## END COMPANY INFORMATION ##-->
+
+</tr>
+</table>
+<!--## HEADER END ##-->
+
+<table class="box-doc">
+<tr>
+<td colspan="4" class="title text-uppercase">@{$TITLE}</td>
+</tr>
+
+@{$list_field=array()}
+@{$list_field["Start Date"]=_format_date($data->leave->date)}
+@{$list_field["End Date"]=_format_date($data->leave->date)}
+@{$list_field["Leave No"]=$data->leave->code}
+@{$list_field["Leave Type"]=$data->leave->leave_type_name}
+@{$list_field["Employee Name"]=$data->leave->user_fullname}
+@{$list_field["Employee No"]=$data->employee->code}
+@{$list_field["Designation"]=$data->employee->designation}
+
+<!--## CUSTOM FIELDS ##-->
+@{if="_array($data->list->fields)"}
+    @{loop="$data->list->fields"}
+        @{$list_field[$value.key]=$value.value}
+    @{/loop}
+@{/if}
+<!--## /CUSTOM FIELDS ##-->
+
+@{if="$SHOW_STATUS"}
+    @{$list_field["Status"]=$data->list->status[$data->leave->status]}
+@{/if}
+
+@{if="_array($list_field)"}
+    @{$num=0}
+    @{loop="$list_field"}
+        @{if="$num == 0"}
+            <tr>
+        @{/if}
+        @{$num=$num+1}
+        <td class="cell width-percent-10 text-right text-bold">
+            @{$key1}
+        </td>
+        <td class="cell width-percent-15 text-left">
+            @{$value1}
+        </td>
+        @{if="$num == 2"}
+            @{$num=0}
+            </tr>
+        @{/if}
+     @{/loop}
+@{/if}
+
+</table>
+
+@{if="!_null($SUBJECT)"}
+<h4>@{$SUBJECT}</h4>
+@{/if}
+
+<table class="item">
+<tr>
+<!--## ITEMS HEADER ##-->
+<th class="text-left">Leave Reason</th>
+<th class="text-right width-px-60">Days</th>
+</tr>
+
+<!--## ITEMS LIST ##-->
+<tr>
+<td class="cell">@{$data->text->description}</td>
+<td class="cell text-right width-px-60">@{$data->leave->quantity|_int_output:0}</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td>
+    <b>Administration Note:</b>
+    @{if="!_null($data->text->note)"}
+        <p>@{$data->text->note}</p>
+    @{/if}
+
+    @{if="_array($data->list->balance)"}
+        <p><b>Summary of Approved Leave:</b></p>
+        <table class="item">
+        <tr>
+        <th>Leave Type</th>
+        <th class="text-right">Leave Taken</th>
+        <th class="text-right">Leave Balance</th>
+        <th class="text-right">Leave Entitlement</th>
+        </tr>
+        @{loop="$data->list->balance"}
+            <tr>
+            <td class="cell">@{$value.name}</td>
+            <td class="cell text-right">@{$value.taken|_int_output:0}</td>
+            <td class="cell text-right">@{$value.balance|_int_output:0}</td>
+            <td class="cell text-right">@{$value.quantity|_int_output:0}</td>
+            </tr>
+        @{/loop}
+        </table>
+    @{/if}
+</td>
+</tr>
+
+<tr>
+<td>
+
+<br><br>
+<table class="table-signature">
+<tr>
+<td class="signature-company">
+
+@{if="$data->leave->signature_option == 1"}
+    Computer Generated. No signature required
+@{elseif="$data->leave->signature_option > 1"}
+<span class="text-block">
+@{if="$data->leave->status!=2"}
+Approved By:
+@{else}
+Rejected By:
+@{/if}
+</span>
+
+    @{if="!_null($data->image->signature)"}
+        <img src="@{$data->image->signature}" height=74 width=199>
+    @{/if}
+
+    @{if="!_null($data->image->stamp)"}
+        <img src="@{$data->image->stamp}" width=84 height=84 style='position:relative;margin-left:-80px;'>
+    @{/if}
+
+    <span class="text-block signature-line">
+        <span class="text-block">@{$data->text->signature}</span>
+    </span>
+
+@{/if}
+
+</td>
+<td class="signature-recipient">
+@{if="$data->signature_employee_option == 1 && $data->leave->signature_option > 1"}
+<span class="text-block">Request By:</span>
+    <img src="@{$data->image->signature_employee}" height=74 width=199>
+
+    <span class="text-block signature-line">
+    @{if="!_null($data->text->signature_employee)"}
+        <span class="text-block">@{$data->text->signature_employee}</span>
+    @{/if}
+    </span>
+
+@{/if}
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+</table>
+
+</body>
+</html>
+
