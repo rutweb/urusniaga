@@ -166,13 +166,13 @@ Translated into PHP Code:
 <?php } ?>
 
 
-Between {loop} and {/loop} few variables take special values such as:
+Between @{loop} and @{/loop} few variables take special values such as:
 
 @{$key}, the key of the current element of the array
 @{$value}, the value of the current element of the array
 @{$counter}, count the loops starting from 0 increasing each time by 1
 
-Also between {loop} and {/loop} allows you use:
+Also between @{loop} and @{/loop} allows you use:
 
 @{break}, for terminate the loop
 @{continue}, for continue into the loop
