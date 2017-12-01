@@ -1,0 +1,307 @@
+System UrusNiaga template scripting is a simple syntax that resembles PHP code used in HTML.
+The purpose of this scripting is to allow user to change the design of sales documents, or any related module.
+
+Syntax Example:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>@{$title}</title>
+</head>
+<body>
+    @{$content}
+</body>
+</html>
+
+The code starts with tags @{ and ends with } will translate into PHP code.
+The opening and closing tags must be in one line except for comment tag.
+
+Translated into PHP Code:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title><?php echo $title; ?></title>
+</head>
+<body>
+    <?php echo $content; ?>
+</body>
+</html>
+
+=======================================================================================
+TAGS
+
+@{$variable}
+@{if="expression"}
+@{loop="$array"}
+@{function="function name"}
+@{* comment *}
+@{ignore}
+
+
+=======================================================================================
+VARIABLE
+You can use it same as PHP variable, any defined variable will display as output.
+
+Syntax Example:
+
+@{$title="Introduction"}
+@{$content="Hi borhan"}
+<!DOCTYPE html>
+<html>
+<head>
+<title>@{$title}</title>
+</head>
+<body>
+    @{$content}
+</body>
+</html>
+
+Translated into PHP Code:
+
+<?php $title="Introduction"; ?>
+<?php $content="Hi borhan"; ?>
+<!DOCTYPE html>
+<html>
+<head>
+<title><?php echo $title; ?></title>
+</head>
+<body>
+    <?php echo $content; ?>
+</body>
+</html>
+
+=======================================================================================
+ARRAY
+You can access array elements using the . (dot) operator and object properties using -> operator
+
+Syntax Example:
+
+@{$array=array('key'=>1)}
+@{$array.key} 
+
+@{$object=array('element'=>1)}
+@{$object=(object)$object}
+@{$object->element}
+
+Translated into PHP Code:
+
+<?php $array=array('key'=>1); ?>
+<?php echo $array["key"]; ?> 
+
+<?php $object=array('element'=>1); ?>
+<?php $object=(object)$object; ?>
+<?php echo $object->element; ?>
+
+=======================================================================================
+MODIFIERS
+Modifiers are function executed on the variables.
+
+Syntax Example:
+
+@{$title="Introduction"}
+@{$title|strtoupper}
+@{$title|trim:'I'}
+@{$title|substr:-3,1}
+
+Translated into PHP Code:
+
+<?php $title="Introduction"; ?>
+<?php echo strtoupper($title); ?>
+<?php echo trim($title,'I'); ?>
+<?php echo substr($title,-3,1); ?>
+
+
+=======================================================================================
+CONDITIONAL
+supported conditional statement: if, else, elseif and ternary operator
+
+{if="expression"}
+
+Syntax Example:
+
+@{$title="Quotation"}
+@{if="$title == 'Quotation'"}
+    Quotation File
+@{elseif="$title == 'Invoice'"}
+    Invoice File
+@{else}
+    Misc File
+@{/if}
+
+@{!isset($title)?"Quotation":$title}
+
+Translated into PHP Code:
+
+<?php $title="Quotation"; ?>
+<?php if ( $title == 'Quotation' ) { ?>
+    Quotation File
+<?php } elseif ( $title == 'Invoice' ) { ?>
+    Invoice File
+<?php } else { ?>
+    Misc File
+<?php } ?>
+
+<?php echo (!isset($title) ? "Quotation" : $title); ?>
+
+
+=======================================================================================
+LOOP
+This tag allow to loop through the value of arrays or objects.
+
+@{loop="$var"}
+
+Syntax Example:
+
+@{$array=array('a','b','c')}
+@{loop="$array"}
+@{key} @{$value}
+@{/loop}
+
+Translated into PHP Code:
+
+<?php $array=array('a','b','c'); ?>
+<?php $counter1=-1; foreach( $array as $key1 => $value1 ) { $counter1++; ?>
+<?php echo $key1; ?> <?php echo $value1; ?>
+<?php } ?>
+
+
+Between {loop} and {/loop} few variables take special values such as:
+
+@{$key}, the key of the current element of the array
+@{$value}, the value of the current element of the array
+@{$counter}, count the loops starting from 0 increasing each time by 1
+
+Also between {loop} and {/loop} allows you use:
+
+@{break}, for terminate the loop
+@{continue}, for continue into the loop
+
+
+=======================================================================================
+FUNCTION
+Use this tag to execute a PHP function and print the result
+
+@{function="function name"}
+
+Syntax Example:
+
+@{function="date('Y-m-d')"}
+
+Translated into PHP Code:
+
+<?php echo date('Y-m-d'); ?>
+
+
+=======================================================================================
+COMMENT
+Everything between @{* and *} will removed before compiling
+
+@{* comment *} or @{ignore}
+
+Syntax Example:
+
+@{* this is one line comment *}
+
+@{* 
+    this is multiple line comment
+    this is multiple line comment
+    this is multiple line comment
+    this is multiple line comment
+*}
+
+@{ignore}this is one line comment@{/ignore}
+
+@{ignore}
+    this is multiple line comment
+    this is multiple line comment
+    this is multiple line comment
+    this is multiple line comment
+@{/ignore}
+
+
+=======================================================================================
+Functions allowed:
+
+1) abs : http://php.net/manual/en/function.abs.php
+2) ceil : http://php.net/manual/en/function.ceil.php
+3) date : http://php.net/manual/en/function.date.php
+4) empty : http://php.net/manual/en/function.empty.php
+5) floor : http://php.net/manual/en/function.floor.php
+6) is_array : http://php.net/manual/en/function.is_array.php
+7) is_bool : http://php.net/manual/en/function.is_bool.php
+8) is_double : http://php.net/manual/en/function.is_double.php
+9) is_finite : http://php.net/manual/en/function.is_finite.php
+10) is_float : http://php.net/manual/en/function.is_float.php
+11) is_infinite : http://php.net/manual/en/function.is_infinite.php
+12) is_int : http://php.net/manual/en/function.is_int.php
+13) is_integer : http://php.net/manual/en/function.is_integer.php
+14) is_long : http://php.net/manual/en/function.is_long.php
+15) is_nan : http://php.net/manual/en/function.is_nan.php
+16) is_null : http://php.net/manual/en/function.is_null.php
+17) is_numeric : http://php.net/manual/en/function.is_numeric.php
+18) is_object : http://php.net/manual/en/function.is_object.php
+19) is_real : http://php.net/manual/en/function.is_real.php
+20) is_scalar : http://php.net/manual/en/function.is_scalar.php
+21) isset : http://php.net/manual/en/function.isset.php
+22) is_string : http://php.net/manual/en/function.is_string.php
+23) lcfirst : http://php.net/manual/en/function.lcfirst.php
+24) ltrim : http://php.net/manual/en/function.ltrim.php
+25) max : http://php.net/manual/en/function.max.php
+26) min : http://php.net/manual/en/function.min.php
+27) mktime : http://php.net/manual/en/function.mktime.php
+28) nl2br : http://php.net/manual/en/function.nl2br.php
+29) number_format : http://php.net/manual/en/function.number_format.php
+30) round : http://php.net/manual/en/function.round.php
+31) rtrim : http://php.net/manual/en/function.rtrim.php
+32) sizeof : http://php.net/manual/en/function.sizeof.php
+33) str_ireplace : http://php.net/manual/en/function.str_ireplace.php
+34) stristr : http://php.net/manual/en/function.stristr.php
+35) strlen : http://php.net/manual/en/function.strlen.php
+36) str_pad : http://php.net/manual/en/function.str_pad.php
+37) strpos : http://php.net/manual/en/function.strpos.php
+38) str_repeat : http://php.net/manual/en/function.str_repeat.php
+39) str_replace : http://php.net/manual/en/function.str_replace.php
+40) strstr : http://php.net/manual/en/function.strstr.php
+41) strtolower : http://php.net/manual/en/function.strtolower.php
+42) strtotime : http://php.net/manual/en/function.strtotime.php
+43) strtoupper : http://php.net/manual/en/function.strtoupper.php
+44) strtr : http://php.net/manual/en/function.strtr.php
+45) substr : http://php.net/manual/en/function.substr.php
+46) substr_compare : http://php.net/manual/en/function.substr_compare.php
+47) substr_count : http://php.net/manual/en/function.substr_count.php
+48) substr_replace : http://php.net/manual/en/function.substr_replace.php
+49) time : http://php.net/manual/en/function.time.php
+50) trim : http://php.net/manual/en/function.trim.php
+51) ucfirst : http://php.net/manual/en/function.ucfirst.php
+52) ucwords : http://php.net/manual/en/function.ucwords.php
+53) uniqid : http://php.net/manual/en/function.uniqid.php
+54) wordwrap : http://php.net/manual/en/function.wordwrap.php
+55) echo : http://php.net/manual/en/function.echo.php
+56) print : http://php.net/manual/en/function.print.php
+57) true : http://php.net/manual/en/function.true.php
+58) false : http://php.net/manual/en/function.false.php
+59) array_reverse : http://php.net/manual/en/function.array_reverse.php
+60) sort : http://php.net/manual/en/function.sort.php
+61) count : http://php.net/manual/en/function.count.php
+62) sizeof : http://php.net/manual/en/function.sizeof.php
+63) _null : 
+64) _array : 
+65) _int_output : 
+66) _int_input : 
+67) _calc_percent : 
+68) _object : 
+69) _num : 
+70) _decimal : 
+71) _currency_value_in_words : 
+72) _format_date : 
+73) _format_date_now : 
+74) _format_time : 
+75) _format_datetime : 
+76) _nullsqldate : 
+77) _int_output_thousands_sep : 
+
+
+Last Update: 010122017
+-EOF-
+
