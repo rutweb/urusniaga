@@ -720,7 +720,7 @@ if ( IS_CLI ) {
         }
     }
 
-    echo "Usage: {$cmd} [file code] [file output]\n";
+    echo "Usage: {$cmd} [input] [output]\n";
     exit(1);
 }
 
