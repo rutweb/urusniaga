@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Rutweb Technology WebApp - urusniaga\n"
 "Report-Msgid-Bugs-To: admin@rutweb.com\n"
-"POT-Creation-Date: 2017-11-13 18:24+0800\n"
-"PO-Revision-Date: 2017-11-13 18:26+0800\n"
+"POT-Creation-Date: 2018-02-11 10:20+0800\n"
+"PO-Revision-Date: 2018-02-11 10:21+0800\n"
 "Last-Translator: nawawi jamili <nawawi@rutweb.com>\n"
 "Language-Team: admin <admin@rutweb.com>\n"
 "Language: ms_MY\n"
@@ -280,8 +280,8 @@ msgstr "Negeri"
 msgid "Stock Management"
 msgstr "Pengurusan Stok"
 
-msgid "Stocks Operation"
-msgstr "Operasi stok"
+msgid "Stock Tracking"
+msgstr "Pengesanan Stok"
 
 msgid "Supplier"
 msgstr "Pembekal"
@@ -347,6 +347,12 @@ msgid "Not available at this moment"
 msgstr "Tidak tersedia buat masa ini"
 
 #, php-format
+msgid ""
+"Only can use the first %d from the list. There is no limit for additions."
+msgstr ""
+"Hanya boleh menggunakan %d pertama dari senarai. Tiada had untuk penambahan."
+
+#, php-format
 msgid "Error(%s): Error on Database configuration!"
 msgstr "Ralat (%s): Ralat pada konfigurasi Pangkalan Data!"
 
@@ -360,11 +366,17 @@ msgstr "Sesi telah tamat tempoh!"
 msgid "Invalid method!"
 msgstr "Penggunaan kaedah yang tidak sah!"
 
+msgid "Setting for system read-write path not found!"
+msgstr "Tetapan bagi baca-tulis untuk sistem tidak dijumpai"
+
 msgid "Setting for Upload path not found!"
 msgstr "Tetapan bagi muat-naik tidak dijumpai!"
 
 msgid "Setting for read-write path not found!"
 msgstr "Tetapan bagi baca-tulis tidak dijumpai"
+
+msgid "Setting for cache path not found!"
+msgstr "Tetapan bagi lokasi cache tidak dijumpai!"
 
 msgid "You don't have permission to access this section"
 msgstr "Anda tidak mempunyai kebenaran untuk mengakses bahagian ini"
@@ -653,6 +665,12 @@ msgstr "Senarai Tidak Berulang"
 msgid "Default"
 msgstr "Lalai"
 
+msgid "Yes"
+msgstr "Ya"
+
+msgid "No"
+msgstr "Tidak"
+
 msgid "Pending"
 msgstr "Menunggu"
 
@@ -810,6 +828,10 @@ msgstr "Sila masukkan Tarikh luput bagi Pesanan Jualan"
 msgid "Invalid Expiry Date '%s'"
 msgstr "Tarikh luput tidak sah '%s'"
 
+#, php-format
+msgid "Expiry date is '%s', not overdue yet"
+msgstr "Tarikh tamat tempoh adalah '%s', belum tamat tempoh lagi"
+
 msgid "Please select currency code"
 msgstr "Sila pilih kod mata wang"
 
@@ -827,8 +849,11 @@ msgstr "Nilai tidak sah untuk kadar penghantaran: %s"
 msgid "Please enter the sales order item"
 msgstr "Sila masukkan item Pesanan Jualan"
 
-msgid "Saving tax data was not successful"
-msgstr "Menyimpan data cukai tidak berjaya"
+msgid "Saving tax item was not successful"
+msgstr "Menyimpan item cukai tidak berjaya"
+
+msgid "Saving product item was not successful"
+msgstr "Menyimpan item produk tidak berjaya"
 
 msgid "update"
 msgstr "kemaskini"
@@ -839,6 +864,9 @@ msgstr "padam"
 #, php-format
 msgid "Cannot %s '%s'. Data was set as readonly"
 msgstr "Tidak boleh %s '%s'. Data telah ditetapkan sebagai baca sahaja"
+
+msgid "No company selected. Please select at least one"
+msgstr "Tiada syarikat yang dipilih. Sila pilih sekurang-kurangnya satu"
 
 msgid "Please enter mailer name"
 msgstr "Sila masukkan nama pengirim e-mel"
@@ -867,9 +895,6 @@ msgstr "Sila masukkan nama daripada untuk mel"
 msgid "Please enter mail from email"
 msgstr "Sila masukkan email daripada untuk mel"
 
-msgid "No company selected. Please select at least one"
-msgstr "Tiada syarikat yang dipilih. Sila pilih sekurang-kurangnya satu"
-
 msgid "Best regards,"
 msgstr "Salam hormat,"
 
@@ -892,11 +917,11 @@ msgstr ""
 "pujian anda kepada pasukan kami yang mesra di %s. Sila Like Facebook Page "
 "kami %s dan ikuti kami di Instagram %s"
 
-msgid "Connection OK"
-msgstr "Sambungan OK"
+msgid "Connecting to SMTP Server succeeded"
+msgstr "Menyambung ke Pelayan SMTP  telah berjaya"
 
-msgid "Connection was failed. Please check your configuration."
-msgstr "Penyambungan telah gagal. Semak konfigurasi anda."
+msgid "The connection has failed. Please check your configuration."
+msgstr "Penyambungan telah gagal. Sila periksa konfigurasi anda."
 
 msgid "Please enter email recipient"
 msgstr "Sila masukkan penerima e-mel"
@@ -912,8 +937,8 @@ msgid "Invalid Email Address: %s"
 msgstr "Alamat E-mel tidak sah: '%s'"
 
 #, php-format
-msgid "Sending Email to %s was failed: %s"
-msgstr "Menghantar E-mel ke %s telah gagal: %s"
+msgid "Sending Email to %s has failed.<br>%s"
+msgstr "Menghantar E-mel ke %s telah gagal: <br> %s"
 
 #, php-format
 msgid "Sending Email to %s success"
@@ -923,8 +948,8 @@ msgid "Password Reset"
 msgstr "Penetapan Semula Kata Laluan"
 
 #, php-format
-msgid "Hello, %s"
-msgstr "Hai, %s"
+msgid "Hello %s,"
+msgstr "Hai %s"
 
 #, php-format
 msgid ""
@@ -943,7 +968,7 @@ msgid "Please access the link below within 24 hours for further action:"
 msgstr "Sila akses pautan di bawah dalam tempoh 24 jam untuk tindakan lanjut:"
 
 #, php-format
-msgid "Sending email to %s for password reset was failed: %s"
+msgid "Sending email to %s for password reset has failed: %s"
 msgstr ""
 "Menghantar e-mel ke %s untuk menetapkan semula kata laluan telah gagal: %s"
 
@@ -968,7 +993,7 @@ msgstr ""
 "Sila akses pautan di bawah untuk mengesahkan akaun anda dalam tempoh 24 jam:"
 
 #, php-format
-msgid "Sending email to %s for activation link was failed: %s"
+msgid "Sending email to %s for activation link has failed: %s"
 msgstr "Menghantar e-mel kepada %s untuk pautan pengaktifan telah gagal: %s"
 
 #, php-format
@@ -1025,7 +1050,7 @@ msgid "Amount Paid"
 msgstr "Jumlah Dibayar"
 
 #, php-format
-msgid "Sending email to %s for further action was failed: %s"
+msgid "Sending email to %s for further action has failed: %s"
 msgstr "Menghantar e-mel kepada %s untuk tindakan selanjutnya telah gagal: %s"
 
 #, php-format
@@ -1044,7 +1069,7 @@ msgid "Please access the link below to login into your account:"
 msgstr "Sila akses pautan di bawah untuk log masuk ke akaun anda:"
 
 #, php-format
-msgid "Sending email to %s for subscription status was failed: %s"
+msgid "Sending email to %s for subscription status has failed: %s"
 msgstr "Menghantar e-mel kepada %s bagi status langganan telah gagal: %s"
 
 #, php-format
@@ -1069,7 +1094,7 @@ msgstr ""
 "Terima kasih kerana bersama %s."
 
 #, php-format
-msgid "Sending email to %s about account removed was failed: %s"
+msgid "Sending email to %s about account removed has failed: %s"
 msgstr "Menghantar e-mel kepada %s perihal memadam akaun telah gagal: %s"
 
 #, php-format
@@ -1080,20 +1105,20 @@ msgid "Account Unsubscribe"
 msgstr "Akaun telah henti langganan"
 
 #, php-format
-msgid "Unsubscribing request for account '%s'"
-msgstr "Permintaan henti melanggan bagi akaun '%s'"
+msgid "Request to unsubscribe for an account '%s'"
+msgstr "Permintaan berhenti melanggan bagi akaun '%s'"
 
 msgid ""
-"This email was sent to inform unsubscribing request being processed.\n"
+"This email was sent to inform request to unsubscribe is being processed.\n"
 "The account will removed within 48 hours."
 msgstr ""
-"E-mel ini telah dihantar untuk memaklumkan permintaan henti melanggan sedang "
-"diproses.\n"
+"E-mel ini telah dihantar untuk memaklumkan permintaan berhenti melanggan "
+"sedang diproses.\n"
 "Akaun akan dipadam dalam tempoh 48 jam."
 
 #, php-format
-msgid "Sending email to %s about unsubscribe was failed: %s"
-msgstr "Menghantar e-mel kepada %s tentang henti langganan telah gagal: %s"
+msgid "Sending email to %s about unsubscribe has failed: %s"
+msgstr "Menghantar e-mel kepada %s tentang berhenti langganan telah gagal: %s"
 
 #, php-format
 msgid "Sending email to %s about unsubscribe success"
@@ -1102,8 +1127,12 @@ msgstr "Menghantar e-mel kepada %s tentang henti langganan telah berjaya"
 msgid "Account Unsubscribe from Admin Console"
 msgstr "Batal langganan dari Konsol Admin"
 
+#, php-format
+msgid "Hello %s"
+msgstr "Hai %s"
+
 msgid ""
-"This email was sent to inform unsubscribing request was done from Admin "
+"This email was sent to inform request to unsubscribe was done from the Admin "
 "Console.\n"
 "The account will removed within 48 hours."
 msgstr ""
@@ -1127,7 +1156,7 @@ msgstr ""
 "tamat tempoh. Sila log masuk untuk mengambil tindakan."
 
 #, php-format
-msgid "Sending email to %s about account expired was failed: %s"
+msgid "Sending email to %s about account expired has failed: %s"
 msgstr "Menghantar e-mel kepada %s perihal akaun tamat tempoh telah gagal: %s"
 
 #, php-format
@@ -1269,13 +1298,13 @@ msgstr "Mengurus Produk / Servis, Harga dan Stok"
 msgid "Products List"
 msgstr "Senarai Produk"
 
-msgid "Stocks operation"
-msgstr "Operasi stok"
+msgid "Suppliers"
+msgstr "Pembekal"
 
 msgid "Manage Supplier"
 msgstr "Mengurus Pembekal"
 
-msgid "Supplier List"
+msgid "Suppliers List"
 msgstr "Senarai Pembekal"
 
 msgid "Sales"
@@ -1297,11 +1326,17 @@ msgstr "Pengurusan Pembayaran"
 msgid "Payment History"
 msgstr "Sejarah Pembayaran"
 
+msgid "Credit Note"
+msgstr "Nota kredit"
+
 msgid "Purchases"
 msgstr "Pembelian"
 
 msgid "Manage Purchase Order, Payment Voucher and Expenses"
 msgstr "Mengurus Pesanan Belian, Baucer Bayaran dan Perbelanjaan"
+
+msgid "Debit Note"
+msgstr "Nota debit"
 
 msgid "POS Management"
 msgstr "Pengurusan POS"
@@ -1366,8 +1401,8 @@ msgstr "City-Link Express"
 msgid "GD Express"
 msgstr "GD Express"
 
-msgid "Reports"
-msgstr "Laporan"
+msgid "General Reports"
+msgstr "Laporan Umum"
 
 msgid "Generate or view sales report"
 msgstr "Menjana atau melihat laporan jualan"
@@ -1399,6 +1434,9 @@ msgstr "Laporan Perbelanjaan"
 msgid "Tax Report"
 msgstr "Laporan Cukai"
 
+msgid "Accounts Reports"
+msgstr "Laporan Akaun"
+
 msgid "Profit and Loss"
 msgstr "Untung dan Rugi"
 
@@ -1423,8 +1461,8 @@ msgstr "Log Pengirim E-mel"
 msgid "Backup/Restore"
 msgstr "Backup/Restore"
 
-msgid "System Master"
-msgstr "Tuan  Sistem"
+msgid "Meriam Buluh"
+msgstr "Meriam Buluh"
 
 #, php-format
 msgid "Manage %s"
@@ -1453,6 +1491,9 @@ msgstr "Keluar"
 
 msgid "Reserved"
 msgstr "Disimpan"
+
+msgid "Added balance of stock"
+msgstr "Menambah baki stok"
 
 msgid "Approved"
 msgstr "Diluluskan"
@@ -1517,6 +1558,9 @@ msgstr ""
 "Hanya Pesanan Jualan yang telah diterima boleh disalin ke Pesanan Belian. "
 "Sila menetapkan status Pesanan Jualan ini kepada Diterima"
 
+msgid "Purchase Number already used. Please choose another"
+msgstr "Nombor Pembelian telah digunakan. Sila pilih yang lain"
+
 msgid "Please select Supplier"
 msgstr "Sila pilih Pembekal"
 
@@ -1527,9 +1571,6 @@ msgstr "Id Pembekal tidak sah '%s'"
 msgid "Please enter Purchase Number"
 msgstr "Sila masukkan Nombor Pembelian"
 
-msgid "Purchase Number already used. Please choose another"
-msgstr "Nombor Pembelian telah digunakan. Sila pilih yang lain"
-
 msgid "Please enter Purchase Date"
 msgstr "Sila masukkan Tarikh Pembelian"
 
@@ -1539,6 +1580,9 @@ msgstr "Tarikh penghantaran tidak sah '%s'"
 
 msgid "Please enter the purchase item"
 msgstr "Sila masukkan item pembelian"
+
+msgid "Saving tax data was not successful"
+msgstr "Menyimpan data cukai tidak berjaya"
 
 msgid "Exclusive"
 msgstr "Eksklusif"
@@ -1574,7 +1618,7 @@ msgstr "Nombor Faks tidak sah '%s'"
 msgid "Invalid Email Address '%s'"
 msgstr "Alamat E-mel tidak sah '%s'"
 
-msgid "Delete was failed. This section cannot empty"
+msgid "Delete failed. This section cannot empty"
 msgstr "Memadam telah gagal. Bahagian ini tidak boleh kosong"
 
 #, php-format
@@ -1605,6 +1649,9 @@ msgstr "Bayaran Separa"
 msgid "Paid"
 msgstr "Dibayar"
 
+msgid "Please enter Recurring Start From Date"
+msgstr "Sila masukkan Mula Berulang Dari Tarikh"
+
 msgid "Quotation Number already used. Please choose another"
 msgstr "Nombor Sebut Harga telah digunakan. Sila pilih yang lain"
 
@@ -1613,6 +1660,10 @@ msgstr "Sila masukkan Nombor Invois"
 
 msgid "Please enter Issue Date"
 msgstr "Sila masukkan Tarikh Dikeluarkan"
+
+#, php-format
+msgid "Due date is '%s', not overdue yet"
+msgstr "Tarikh akhir adalah '%s', belum terlewat lagi"
 
 msgid "Please enter the invoice item"
 msgstr "Sila masukkan item invois"
@@ -1626,9 +1677,6 @@ msgstr "Nilai tidak sah untuk jumlah bayaran: %s"
 
 msgid "Amount of payment must greater than 0"
 msgstr "Jumlah bayaran mesti lebih besar daripada 0"
-
-msgid "Please enter Recurring Start From Date"
-msgstr "Sila masukkan Mula Berulang Dari Tarikh"
 
 msgid "No payment has been made. Please enter the amount of payment"
 msgstr "Tiada pembayaran telah dibuat. Sila masukkan jumlah bayaran"
@@ -1826,6 +1874,15 @@ msgstr "Sila masukkan item helaian kerja"
 msgid "Please enter the payslip item"
 msgstr "Sila masukkan item penyata gaji"
 
+msgid "Please enter Reference Number"
+msgstr "Sila masukkan Nombor Rujukan"
+
+msgid "Reference Number already used. Please choose another"
+msgstr "Nombor Rujukan sudah digunakan. Sila pilih yang lain"
+
+msgid "Please enter the credit note item"
+msgstr "Sila masukkan item nota kredit"
+
 msgid "Purchase"
 msgstr "Pembelian"
 
@@ -1911,6 +1968,9 @@ msgstr "Sila masukkan nama grup pembekal"
 
 msgid "Supplier group name already used. Please choose another one"
 msgstr "Nama grup pembekal telah digunakan. Sila pilih yang lain"
+
+msgid "Invalid document type"
+msgstr "Jenis dokumen tidak sah"
 
 #, php-format
 msgid "Updating reference for supplier name from '%s' to '%s'"
@@ -2107,22 +2167,49 @@ msgid "This action not working on demo mode"
 msgstr "Tindakan ini tidak berfungsi pada mod demo"
 
 msgid ""
-"Unsubscribing request being processed. This account will removed within 48 "
-"hours."
+"Request to unsubscribe is being processed. This account will removed within "
+"48 hours."
 msgstr ""
-"Permintaan henti melanggan sedang diproses. Akaun ini akan dipadam dalam "
-"tempoh 48 jam."
+"Permintaan untuk berhenti melanggan sedang diproses. Akaun ini akan dipadam "
+"dalam tempoh 48 jam."
 
 #, php-format
-msgid "Unsubscribing request was failed. Please contact %s about this issue"
+msgid "Request to unsubscribe has failed. Please contact %s about this issue"
 msgstr ""
-"Permintaan henti melanggan telah gagal. Sila hubungi %s berkenaan isu ini"
+"Permintaan untuk berhenti melanggan telah gagal. Sila hubungi %s berkenaan "
+"perkara ini"
 
-msgid "Account verification failure"
+#, php-format
+msgid "Account verification has failed. Account '%s' not exists"
+msgstr "Pengesahan akaun telah gagal. Akaun '%s' tidak wujud"
+
+msgid "Account verification has failed"
 msgstr "Pengesahan akaun telah gagal"
+
+#, php-format
+msgid ""
+"Authentication has failed. Invalid Username '%s' or Password '%s' on account "
+"%s"
+msgstr ""
+"Pengesahan telah gagal. Nama pengguna '%s' atau kata laluan '%s' tidak sah "
+"pada akaun %s"
+
+msgid "Authentication has failed. Invalid Username or Password"
+msgstr "Pengesahan telah gagal. Nama pengguna atau kata laluan tidak sah"
+
+#, php-format
+msgid "Account verification accepted. Redirecting to %s"
+msgstr "Pengesahan akaun diterima. Mengubah hala ke %s"
 
 msgid "Account verification accepted"
 msgstr "Pengesahan akaun diterima"
+
+msgid "Account verification has failed. Invalid request"
+msgstr "Pengesahan akaun telah gagal. Permintaan tidak sah"
+
+#, php-format
+msgid "Invalid Email Address '%s' for account '%s'"
+msgstr "Alamat E-mel '%s' bagi akaun '%s'  tidak sah"
 
 msgid "Please select URL option"
 msgstr "Sila pilih URL"
@@ -2378,7 +2465,7 @@ msgstr "Ralat berlaku ketika sambungan ke pelayan storan"
 msgid "Database backup was successful"
 msgstr "Backup pengakalan data telah gagal"
 
-msgid "Database backup was failed"
+msgid "Database backup has failed"
 msgstr "Backup pengakalan data telah gagal"
 
 msgid "Payslip Number already used. Please choose another"
@@ -2447,16 +2534,25 @@ msgstr "Sila masukkan pilihan peranan"
 
 #, php-format
 msgid "Cannot delete role \"%s\". Already assign to users"
-msgstr "Tidak boleh memadam peranan \"%s\". Sudah diberikan kepada pengguna"
+msgstr "Tidak boleh memadam peranan \"%s\". Sudah ditetapkan kepada pengguna"
 
 msgid "Server Error"
 msgstr "Ralat Pelayan"
+
+msgid "Invalid request!"
+msgstr "Permintaan tidak sah!"
+
+msgid "Not available for you"
+msgstr "Tidak tersedia untuk anda"
 
 msgid "Resource not exist. Please report this error"
 msgstr "Sumber tidak wujud. Sila laporkan ralat ini"
 
 msgid "Database for activity log not found"
 msgstr "Pangkalan Data bagi log aktiviti tidak dijumpai"
+
+msgid "Please enter the debit note item"
+msgstr "Sila masukkan item nota debit"
 
 msgid "Please enter expenses type name"
 msgstr "Sila masukkan nama jenis perbelanjaan"
@@ -2560,8 +2656,8 @@ msgstr "Akaun telah dilumpuhkan"
 msgid "Authentication accepted"
 msgstr "Pengesahan diterima"
 
-msgid "Authentication failure"
-msgstr "Pengesahan gagal"
+msgid "Authentication failed. Invalid Username or Password"
+msgstr "Pengesahan telah gagal. Nama pengguna atau kata laluan tidak sah"
 
 #, php-format
 msgid "Already login as %s"
@@ -2572,7 +2668,7 @@ msgid "Switching to user %s successful"
 msgstr "Menukar kepada pengguna %s berjaya"
 
 #, php-format
-msgid "Switching to user %s was failed"
+msgid "Switching to user %s has failed"
 msgstr "Menukar kepada pengguna %s telah gagal"
 
 #, php-format
@@ -2596,6 +2692,9 @@ msgstr "Input tidak sah bagi Nama pengguna, ruang tidak dibenarkan"
 
 msgid "Username already used. Please choose another"
 msgstr "Nama pengguna telah digunakan. Sila pilih yang lain"
+
+msgid "Username 'system' is set as reserved. Please choose another"
+msgstr "Nama pengguna '%s' sudah dirizabkan. Sila pilih yang lain"
 
 msgid "Please enter Password"
 msgstr "Sila masukkan Kata laluan"
@@ -2783,14 +2882,14 @@ msgstr "Gagal mendapatkan rujukan Id Konsol POS"
 msgid "Failed to get Cashier reference Id"
 msgstr "Gagal mendapatkan rujukan Id Juruwang"
 
+msgid "No POS Name selected. Please select at least one"
+msgstr "Tiada Nama POS yang dipilih. Sila pilih sekurang-kurangnya satu"
+
 msgid "Please enter reference name"
 msgstr "Sila masukkan nama rujukan"
 
 msgid "Reference name already used. Please choose another one"
 msgstr "Nama rujukan telah digunakan. Sila pilih yang lain"
-
-msgid "No Point Of Sale selected. Please select at least one"
-msgstr "Tiada Point Of Sale yang dipilih. Sila pilih sekurang-kurangnya satu"
 
 msgid "Please enter location name"
 msgstr "Sila masukkan nama lokasi"
@@ -2838,8 +2937,8 @@ msgid "Please enter the quotation item"
 msgstr "Sila masukkan item bagi sebut harga"
 
 #, php-format
-msgid "No stock available for product %s. Please top up the stock"
-msgstr "Tiada stok bagi produk %s. Sila tambah stok"
+msgid "No stock available for product %s. Please update quantity of stock"
+msgstr "Tiada stok bagi produk %s. Sila tambah kuantiti stok"
 
 #, php-format
 msgid ""
@@ -2852,6 +2951,14 @@ msgstr ""
 "minimum stok %s. Sila kurangkan jumlah kuantiti atau tambah jumlah stok "
 "minimum"
 
+#, php-format
+msgid "No stock available for product %s. Please top up the stock"
+msgstr "Tiada stok bagi produk %s. Sila tambah stok"
+
+#, php-format
+msgid "Added insufficient stock for POS Sale %s"
+msgstr "Menambah stok yang tidak mencukupi untuk Penjualan POS %s"
+
 msgid "Please select a company if available"
 msgstr "Sila pilih syarikat jika ada"
 
@@ -2861,23 +2968,33 @@ msgstr "Sila pilih produk jika ada"
 msgid "Stock already set. Please choose another company and product"
 msgstr "Stok telah ditetapkan. Sila pilih syarikat lain dan produk"
 
-msgid "Please enter stock amount"
-msgstr "Sila masukkan jumlah stok"
+msgid "Please enter stock quantity"
+msgstr "Sila masukkan kuantiti stok"
 
-msgid "Invalid value for stock amount"
-msgstr "Nilai tidak sah untuk jumlah stok"
+msgid "Invalid value for stock quantity"
+msgstr "Nilai tidak sah untuk kuantiti stok"
 
-msgid "Please enter minimum stock amount"
-msgstr "Sila masukkan jumlah stok minimum"
+msgid "Please enter minimum stock quantity"
+msgstr "Sila masukkan kuantiti stok minimum"
 
-msgid "Invalid value for minimum stock amount"
-msgstr "Nilai tidak sah untuk jumlah stok minimum"
+msgid "Invalid value for minimum stock quantity"
+msgstr "Nilai tidak sah untuk kuntiti stok minimum"
 
-msgid "Minimum stock must lower than amount of stock"
-msgstr "Stok minimum perlu lebih kecil dari jumlah stok"
+msgid "Minimum stock quantity must bigger than 0"
+msgstr "Kuantiti stok minimum mestilah lebih besar daripada 0"
+
+msgid "Initial stock quantity"
+msgstr "Kuantiti stok permulaan"
 
 msgid "Cannot get stock info"
 msgstr "Tidak boleh mendapatkan maklumat stok"
+
+msgid "No stock available to move out"
+msgstr "Tiada stok tersedia untuk di keluarkan"
+
+#, php-format
+msgid "Invalid Transaction Date/Time '%s'"
+msgstr "Tarikh/Masa Transaksi tidak sah '%s'"
 
 #, php-format
 msgid "Product '%s' not available"
@@ -3015,19 +3132,19 @@ msgid "Registration succeeded. It takes a few minutes to create the account"
 msgstr ""
 "Pendaftaran berjaya. Ia mengambil masa beberapa minit untuk akaun dicipta"
 
-msgid "Registration was failed. The activation process has failed"
+msgid "Registration failed. The activation process has failed"
 msgstr "Pendaftaran telah gagal. Proses pengaktifan telah gagal"
 
 #, php-format
 msgid "Registration succeeded. Click link below to activate %s"
 msgstr "Pendaftaran berjaya. Klik pautan di bawah untuk mengaktifkan %s"
 
-msgid "Registration was failed"
+msgid "Registration failed"
 msgstr "Pendaftaran telah gagal"
 
 #, php-format
-msgid "Registration was failed. Please contact %s for assistance"
-msgstr "Pendaftaran telah gagal. Sila hubungi %s untuk mendapatkan bantuan"
+msgid "Registration failed. Please contact %s for assistance"
+msgstr "Pendaftaran telah gagal. Sila hubungi %s untuk mendapatkan bantual"
 
 msgid "The activation link was expired. Please register again"
 msgstr "Pautan pengaktifan telah tamat. Sila daftar semula"
@@ -3063,11 +3180,11 @@ msgid "Creating configuration file for %s success"
 msgstr "Mencipta fail konfigurasi untuk %s telah berjaya"
 
 #, php-format
-msgid "Creating configuration file for %s was failed"
+msgid "Creating configuration file for %s has failed"
 msgstr "Mencipta fail konfigurasi untuk %s telah gagal"
 
 #, php-format
-msgid "Creating database for %s was failed: %s"
+msgid "Creating database for %s has failed: %s"
 msgstr "Mencipta pangkalan data untuk %s telah gagal: %s"
 
 #, php-format
@@ -3075,51 +3192,51 @@ msgid "Sending email to %s for login information success"
 msgstr "Menghantar e-mel kepada %s untuk maklumat log masuk telah berjaya"
 
 #, php-format
-msgid "Sending email to %s for login information was failed"
+msgid "Sending email to %s for login information has failed"
 msgstr "Menghantar e-mel kepada %s untuk maklumat log masuk telah gagal"
 
 #, php-format
-msgid "Creating site %s was failed"
+msgid "Creating site %s has failed"
 msgstr "Mencipta laman web %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Creating 'config.d' for '%s' was failed"
+msgid "Un-subscribe: Creating 'config.d' for '%s' has failed"
 msgstr "Un-subscribe: Mencipta 'config.d' untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Creating 'rw' for '%s' was failed"
+msgid "Un-subscribe: Creating 'rw' for '%s' has failed"
 msgstr "Un-subscribe: Mencipta 'rw' untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Creating 'info-subscriber.dat' for '%s' was failed"
+msgid "Un-subscribe: Creating 'info-subscriber.dat' for '%s' has failed"
 msgstr "Un-subscribe: Mencipta 'info-subscriber.dat'  untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Creating 'info-subscription.dat' for '%s' was failed"
+msgid "Un-subscribe: Creating 'info-subscription.dat' for '%s' has failed"
 msgstr "Un-subscribe: Mencipta 'info-subscription.dat'  untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Creating 'info-last-promocode.dat' for '%s' was failed"
+msgid "Un-subscribe: Creating 'info-last-promocode.dat' for '%s' has failed"
 msgstr "Un-subscribe: Mencipta 'info-last-promocode.dat' untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Creating 'info-last-package.dat' for '%s' was failed"
+msgid "Un-subscribe: Creating 'info-last-package.dat' for '%s' has failed"
 msgstr "Un-subscribe: Mencipta 'info-last-package.dat' untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Creating '%s.sql' for %s was failed: %s"
+msgid "Un-subscribe: Creating '%s.sql' for %s has failed: %s"
 msgstr "Un-subscribe: Mencipta '%s.sql' untuk %s telah gagal: %s"
 
 #, php-format
-msgid "Un-subscribe: Archiving 'rw' for %s was failed"
+msgid "Un-subscribe: Archiving 'rw' for %s has failed"
 msgstr "Un-subscribe: Mengarkib 'rw' untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Archiving 'config.d' for %s was failed"
+msgid "Un-subscribe: Archiving 'config.d' for %s has failed"
 msgstr "Un-subscribe: Mengarkib 'config.d' untuk %s telah gagal"
 
 #, php-format
-msgid "Un-subscribe: Deleting database for %s was failed"
+msgid "Un-subscribe: Deleting database for %s has failed"
 msgstr "Un-subscribe: Memadam pangkalan data untuk %s telah gagal"
 
 #, php-format
@@ -3160,6 +3277,27 @@ msgstr "Ini adalah ralat kekal. Sila padam dan buat semula pengesanan ini"
 msgid "Employee"
 msgstr "Pekerja"
 
+msgid "Issue Date"
+msgstr "Tarikh Dikeluarkan"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Reference No"
+msgstr "No rujukan"
+
+msgid "Amount"
+msgstr "Jumlah"
+
+msgid "For Customer"
+msgstr "Untuk Pelanggan"
+
+msgid "From Company"
+msgstr "Daripada Syarikat"
+
+msgid "Action by"
+msgstr "Tindakan oleh"
+
 msgid "Important"
 msgstr "Penting"
 
@@ -3177,9 +3315,6 @@ msgstr "Anda boleh muat turun dari sini %s"
 
 msgid "Your Internet Browser information"
 msgstr "Maklumat Pelayar Internet anda"
-
-msgid "Invalid request!"
-msgstr "Permintaan tidak sah!"
 
 msgid "Edit Tracking"
 msgstr "Sunting Pengesanan"
@@ -3207,9 +3342,6 @@ msgstr ""
 "Pengesanan pos bagi Invois ini. Hanya boleh digunakan jika Invois dengan "
 "status Menunggu atau Bayaran Separa dan tarikh semasa tidak melebihi satu "
 "bulan dari kemas kini terakhir Invois"
-
-msgid "For Customer"
-msgstr "Untuk Pelanggan"
 
 msgid "Enter customer name"
 msgstr "Masukkan nama pelanggan"
@@ -3256,9 +3388,6 @@ msgstr "Nota tambahan (pilihan)"
 msgid "Product Code"
 msgstr "Kod Produk"
 
-msgid "Stock Tracking"
-msgstr "Pengesanan Stok"
-
 msgid "Product Name"
 msgstr "Nama Produk"
 
@@ -3277,20 +3406,8 @@ msgstr "Harga Jualan"
 msgid "Gross Profit"
 msgstr "Untung kasar"
 
-msgid "Created by"
-msgstr "Dicipta oleh"
-
-msgid "Yes"
-msgstr "Ya"
-
-msgid "No"
-msgstr "Tidak"
-
 msgid "Products Label"
 msgstr "Label Produk"
-
-msgid "Not available for you"
-msgstr "Tidak tersedia untuk anda"
 
 msgid "Delete"
 msgstr "Padam"
@@ -3301,8 +3418,8 @@ msgstr "Tindakan"
 msgid "Details"
 msgstr "Terperinci"
 
-msgid "Copy"
-msgstr "Salin"
+msgid "Duplicate"
+msgstr "Salinan"
 
 msgid "Edit"
 msgstr "Sunting"
@@ -3337,9 +3454,6 @@ msgstr "pelbagai dengan koma"
 msgid "Submit"
 msgstr "Hantar"
 
-msgid "Status"
-msgstr "Status"
-
 msgid "Company"
 msgstr "Syarikat"
 
@@ -3366,6 +3480,9 @@ msgstr "Referral"
 
 msgid "Date/Time"
 msgstr "Tarikh/Masa"
+
+msgid "Refresh"
+msgstr "Muat semula"
 
 msgid "Select End Date"
 msgstr "Pilih Tarikh Akhir"
@@ -3418,6 +3535,24 @@ msgstr "Masukkan nama grup"
 msgid "Company group name"
 msgstr "Nama grup syarikat"
 
+msgid "Group Members"
+msgstr "Ahli Grup"
+
+msgid "Assign to these companies"
+msgstr "Menetapkan dalam syarikat-syarikat ini"
+
+msgid "Assign"
+msgstr "Menetapkan"
+
+msgid "Enter company name"
+msgstr "Masukkan nama syarikat"
+
+msgid "Show More"
+msgstr "Seterusnya"
+
+msgid "No company available"
+msgstr "Tiada syarikat yang tersedia"
+
 msgid "Edit Announcement"
 msgstr "Sunting Pengumuman"
 
@@ -3466,9 +3601,6 @@ msgstr "Cipta Pesanan Pembelian daripada Pesanan Jualan"
 msgid "Create Purchase Order from Accepted Sales Order (optional)"
 msgstr ""
 "Cipta Pesanan Belian daripada Pesanan Jualan yang telah diterima (pilihan)"
-
-msgid "From Company"
-msgstr "Daripada Syarikat"
 
 msgid "Purchase order from this company"
 msgstr "Pesanan belian daripada syarikat ini"
@@ -3541,9 +3673,6 @@ msgstr "Masukkan nombor pembelian"
 
 msgid "Purchase order number as reference"
 msgstr "Nombor pesanan belian sebagai rujukan"
-
-msgid "Issue Date"
-msgstr "Tarikh Dikeluarkan"
 
 msgid "Enter purchase date"
 msgstr "Masukkan tarikh pembelian"
@@ -3670,6 +3799,9 @@ msgstr "Status pesanan belian"
 msgid "Place this purchase order in Stock Management"
 msgstr "Letakkan pesanan belian ini dalam Pengurusan Stok"
 
+msgid "Copy"
+msgstr "Salin"
+
 msgid "Delivery Order for Invoice"
 msgstr "Pesanan Penghantaran untuk Invois"
 
@@ -3691,14 +3823,14 @@ msgstr "Nota"
 msgid "Customer Signature block"
 msgstr "Blok Tandatangan Pelanggan"
 
+msgid "Action on"
+msgstr "Tindakan pada"
+
 msgid "Edit Promo Code"
 msgstr "Sunting Kod Promo"
 
 msgid "Enter promo code"
 msgstr "Masukkan kod promo"
-
-msgid "Amount"
-msgstr "Jumlah"
 
 msgid "Enter promo amount"
 msgstr "Masukkan nilai promo"
@@ -3769,6 +3901,12 @@ msgstr "Nama Pekerja"
 msgid "Show Archived"
 msgstr "Papar Arkib"
 
+msgid ""
+"No leave can be requested. You are not registered in the company as an "
+"employee."
+msgstr ""
+"Tiada cuti boleh diminta. Anda tidak didaftarkan di syarikat sebagai pekerja."
+
 msgid "Tax Report Data"
 msgstr "Data Laporan Cukai"
 
@@ -3836,11 +3974,13 @@ msgstr "Pengiraan Peratus"
 msgid "Rate"
 msgstr "Kadar"
 
-msgid "No company assigned"
-msgstr "Tiada syarikat yang diberikan"
+#, php-format
+msgid "Assigned to %s companies"
+msgstr "Ditetapkan dalam %s syarikat"
 
-msgid "No company available"
-msgstr "Tiada syarikat yang tersedia"
+#, php-format
+msgid "Assigned to %s company"
+msgstr "Ditetapkan dalam %s syarikat"
 
 msgid "Resend Email"
 msgstr "Hantar Semula E-mel"
@@ -3997,11 +4137,13 @@ msgstr "Kod bar produk"
 msgid "Product Group"
 msgstr "Grup produk"
 
-msgid "No group assigned"
-msgstr "Tiada grup yang diberikan"
+#, php-format
+msgid "Assigned to %s groups"
+msgstr "Ditetapkan dalam %s grup"
 
-msgid "No group available"
-msgstr "Tiada grup yang tersedia"
+#, php-format
+msgid "Assigned to %s group"
+msgstr "Ditetapkan dalam %s grup"
 
 msgid "Account Name"
 msgstr "Nama Akaun"
@@ -4105,8 +4247,8 @@ msgstr "Sembunyikan Logo Syarikat"
 msgid "Document Hide Company Logo"
 msgstr "Dokumen Sembunyikan Logo Syarikat"
 
-msgid "Show Template Code"
-msgstr "Paparkan Kod Templat"
+msgid "Modify Template Code"
+msgstr "Ubahsuai Kod Templat"
 
 msgid "Enter template code"
 msgstr "Masukkan kod templat"
@@ -4195,11 +4337,11 @@ msgstr "Blok Tandatangan Pekerja"
 msgid "Add New Supplier"
 msgstr "Tambah Pembekal Baru"
 
-msgid "Show Details"
-msgstr "Tunjukkan Butiran"
+msgid "Show Additional Data"
+msgstr "Tunjukkan Data Tambahan"
 
-msgid "Hide Details"
-msgstr "Sembunyikan Butiran"
+msgid "Hide Additional Data"
+msgstr "Sembunyikan Data Tambahan"
 
 msgid "Supplier Code"
 msgstr "Kod Pembekal"
@@ -4216,9 +4358,6 @@ msgstr "Nama Pembekal"
 
 msgid "Name of Contact Person"
 msgstr "Nama orang untuk dihubungi"
-
-msgid "Enter company name"
-msgstr "Masukkan nama syarikat"
 
 msgid "Name of Company, Business or anything associated with a supplier"
 msgstr ""
@@ -4303,22 +4442,41 @@ msgid "Supplier Group"
 msgstr "Grup Pembekal"
 
 msgid "Assign supplier to these group"
-msgstr "Letakkan pembekal dalam kumpulan ini"
+msgstr "Menetapkan pembekal dalam kumpulan ini"
 
 msgid "Group"
 msgstr "Grup"
 
-msgid "Assign"
-msgstr "Berikan"
+msgid "No group available"
+msgstr "Tiada grup yang tersedia"
 
 msgid "Supplier Company"
 msgstr "Syarikat pembekal"
 
 msgid "Assign supplier to your company's"
-msgstr "Letakkan pembekal dalam syarikat anda"
+msgstr "Menetapkan pembekal dalam syarikat anda"
 
 msgid "Additional note about this supplier as reference (optional)"
 msgstr "Nota tambahan bagi pembekal ini sebagai rujukan (pilihan)"
+
+#, php-format
+msgid "%s: This document link has been expired"
+msgstr "%s: Pautan dokumen ini telah tamat tempoh"
+
+#, php-format
+msgid "Debit Note from %s"
+msgstr "Nota Debit dari %s"
+
+#, php-format
+msgid ""
+"Dear Sir/Madam,<br><br>Please find the attached Debit Note. Thank you."
+"<br><br>Best regards,<br>--<br>%s"
+msgstr ""
+"Tuan / Puan,<br><br>Sila lihat Nota Debit yang dilampirkan. Terima kasih."
+"<br><br>Selamat Sejahtera,<br>--<br>%s"
+
+msgid "File"
+msgstr "Fail"
 
 msgid "Edit Group"
 msgstr "Sunting Grup"
@@ -4326,35 +4484,41 @@ msgstr "Sunting Grup"
 msgid "Delivery Order No"
 msgstr "No Pesanan Penghantaran"
 
-msgid "Add New Stock"
-msgstr "Tambah Stok Baru"
+msgid "Add New Stock Management"
+msgstr "Tambah Pengurusan Stok Baru"
 
 msgid "Assign to Company"
-msgstr "Letak dalam Syarikat"
+msgstr "Menetapkan dalam Syarikat"
 
 msgid "Stock for product"
 msgstr "Stok untuk produk"
 
-msgid "Stock Amount"
-msgstr "Jumlah Stok"
+msgid "Stock Quantity"
+msgstr "Kuantiti Stok"
 
-msgid "Enter stock amount"
-msgstr "Masukkan jumlah stok"
+msgid "Enter stock quantity"
+msgstr "Masukkan kuantiti stok"
 
-msgid "Amount of stock"
-msgstr "Jumlah stok"
+msgid "Initial quantity of stock"
+msgstr "Kuantiti stok permulaan"
 
-msgid "Set Warning when stock reaches a minimum"
+msgid "Set Warning when a stock reaches a minimum"
 msgstr "Tetapkan Amaran apabila stok mencapai tahap minimum"
 
 msgid "Minimum Stock"
 msgstr "Stok minimum"
 
-msgid "Enter minimum stock amount"
-msgstr "Masukkan jumlah stok minimum"
+msgid "Enter minimum stock quantity"
+msgstr "Masukkan kuantiti stok minimum"
 
-msgid "Give warning when stock below or equal than this amount"
-msgstr "Beri amaran apabila stok di bawah atau sama daripada jumlah ini"
+msgid "Give warning when stock below or equal than this quantity"
+msgstr "Beri amaran apabila stok di bawah atau sama daripada kuantiti ini"
+
+msgid "Enable Notification"
+msgstr "Aktifkan Notifikasi"
+
+msgid "Sent notification when stock reaches a minimum"
+msgstr "Hantar notifkasi apabila stok mencapai minimum"
 
 msgid "Username or Email"
 msgstr "Nama pengguna atau E-mel"
@@ -4365,6 +4529,9 @@ msgstr "Masuk"
 msgid "Forgot your password?"
 msgstr "Lupa kata laluan anda?"
 
+msgid "Register a new account?"
+msgstr "Daftar akaun baharu?"
+
 msgid "For Employee"
 msgstr "Untuk Pekerja"
 
@@ -4373,6 +4540,12 @@ msgstr "No Penyata gaji"
 
 msgid "Payslip Note"
 msgstr "Nota Penyata gaji"
+
+msgid "Set as Recurring"
+msgstr "Tetapkan sebagai Berulang"
+
+msgid "Recurring Start From Date"
+msgstr "Mula Berulang Dari Tarikh"
 
 msgid "Upload Backup File"
 msgstr "Muat naik Fail Backup"
@@ -4398,8 +4571,20 @@ msgstr "Senarai Status"
 msgid "Archive"
 msgstr "Arkib"
 
+msgid "Share Link"
+msgstr "Kongsi Pautan"
+
 msgid "Product group name"
 msgstr "Nama grup produk"
+
+msgid "Assign to these products"
+msgstr "Menetapkan dalam produk ini"
+
+msgid "Enter product name"
+msgstr "Masukkan nama produk"
+
+msgid "No product available"
+msgstr "Tiada produk tersedia"
 
 msgid "Enter text for search supplier"
 msgstr "Masukkan teks carian bagi pembekal"
@@ -4435,6 +4620,52 @@ msgstr "Pemeriksaan Seterusnya: %s"
 
 msgid "Location"
 msgstr "Lokasi"
+
+msgid "Add New Credit Note"
+msgstr "Tambah Nota Kredit Baru"
+
+msgid "Credit Note from this company"
+msgstr "Nota Kredit daripada syarikat ini"
+
+msgid "Credit Note for this customer"
+msgstr "Nota Kredit untuk pelanggan ini"
+
+msgid "Enter reference number"
+msgstr "Masukkan nombor rujukan"
+
+msgid "Credit Note number as reference"
+msgstr "Nombor Nota Kredit sebagai rujukan"
+
+msgid "Enter issue date"
+msgstr "Masukkan tarikh dikeluarkan"
+
+msgid "Credit Note issue date"
+msgstr "Tarikh pengeluaran Nota Kredit"
+
+msgid "Credit Note Items"
+msgstr "Item Nota Kredit"
+
+msgid "Reference Note"
+msgstr "Nota Rujukan"
+
+msgid "Enter reference note"
+msgstr "Masukkan nota rujukan"
+
+msgid "Reference Note. Enter any comments, terms and conditions you have here"
+msgstr ""
+"Nota rujukan. Masukkan apa-apa komen, terma dan syarat anda ada di sini"
+
+msgid "Digital signature and text appended at the bottom of document"
+msgstr "Tandatangan digital dan teks dilampirkan di bahagian bawah dokumen"
+
+msgid "Attach Customer Signature"
+msgstr "Kepilkan Tandatangan Pelanggan"
+
+msgid "Digital signature signed by customer (optional)"
+msgstr "Tandatangan digital ditandatangani oleh pelanggan (pilihan)"
+
+msgid "Credit Note status"
+msgstr "Status Nota Kredit"
 
 msgid "Add New Invoice"
 msgstr "Tambah Invois Baru"
@@ -4507,17 +4738,15 @@ msgid "Digital signature and text appended at the bottom of invoice document"
 msgstr ""
 "Tandatangan digital dan teks dilampirkan di bahagian bawah dokumen invois"
 
-msgid "Attach Customer Signature"
-msgstr "Kepilkan Tandatangan Pelanggan"
-
-msgid "Digital signature signed by customer (optional)"
-msgstr "Tandatangan digital ditandatangani oleh pelanggan (pilihan)"
+msgid "Invoice status"
+msgstr "Status Invois"
 
 msgid "Set this pending Invoice was billed"
 msgstr "Set Invois yang belum selesai ini telah dibilkan"
 
-msgid "Invoice status"
-msgstr "Status Invois"
+msgid "This option allows you to create a Delivery Order for this invoice"
+msgstr ""
+"CPilihan ini membolehkan anda membuat Pesanan Penghantaran untuk invois ini"
 
 msgid "Add Payment"
 msgstr "Tambah Pembayaran"
@@ -4531,8 +4760,8 @@ msgstr "Jumlah bayaran"
 msgid "Payment method"
 msgstr "Kaedah pembayaran"
 
-msgid "Method of payment"
-msgstr "Cara pembayaran"
+msgid "Method of payment (optional)"
+msgstr "Kaedah pembayaran (pilihan)"
 
 msgid "Payment Reference"
 msgstr "Rujukan Pembayaran"
@@ -4545,14 +4774,32 @@ msgid ""
 msgstr ""
 "Rujukan kaedah pembayaran (pilihan). Sebagai contoh, nombor rujukan resit"
 
-msgid "Set as Recurring"
-msgstr "Tetapkan sebagai Berulang"
+msgid "Payment Date"
+msgstr "Tarikh Pembayaran"
 
-msgid "Recurring Invoice"
-msgstr "Invois Berulang"
+msgid "Enter payment date"
+msgstr "Masukkan tarikh bayaran"
 
-msgid "Recurring Start From Date"
-msgstr "Mula Berulang Dari Tarikh"
+msgid "Date of payment (optional)"
+msgstr "Tarikh pembayaran (pilihan)"
+
+msgid "Payment Time"
+msgstr "Masa Pembayaran"
+
+msgid "Enter payment time"
+msgstr "Masukkan masa pembayaran"
+
+msgid "Time of payment (optional)"
+msgstr "Masa pembayaran (pilihan)"
+
+msgid ""
+"Recurring Invoice. Invoice created from this recurring process will not "
+"check stock of product if managed by Stock Management. The stock only "
+"checked after the invoice has been updated."
+msgstr ""
+"Invois Berulang. Invois yang dibuat dari proses berulang ini tidak akan "
+"memeriksa stok produk jika diuruskan oleh Pengurusan Stok. Stok hanya "
+"diperiksa selepas invois telah dikemas kini."
 
 msgid "Enter date"
 msgstr "Masukkan tarikh"
@@ -4691,9 +4938,6 @@ msgstr "Alamat"
 msgid "Copy to Customer"
 msgstr "Salin kepada Pelanggan"
 
-msgid "Refresh"
-msgstr "Muat semula"
-
 msgid "Members"
 msgstr "Ahli"
 
@@ -4741,29 +4985,20 @@ msgstr "Dapatkan imej dari gravatar.com"
 msgid "Customer Picture (optional)"
 msgstr "Gambar Pelanggan (pilihan)"
 
-msgid "Assign customer to these group"
-msgstr "Letakkan pelanggan dalam kumpulan ini"
-
-msgid "Assign customer to your company's"
-msgstr "Letakkan pelanggan dalam syarikat anda"
-
 msgid "Additional note about this customer as reference (optional)"
 msgstr "Nota tambahan bagi pelanggan ini sebagai rujukan (pilihan)"
+
+msgid "Assign customer to these group (optional)"
+msgstr "Menetapkan pelanggan dalam grup ini (pilihan)"
+
+msgid "Assign customer to your company's"
+msgstr "Menetapkan pelanggan dalam syarikat anda"
 
 msgid "Job Sheet Item"
 msgstr "Item Helaian Kerja"
 
-msgid "Item Company"
-msgstr "Item Syarikat"
-
 msgid "Receipt Image"
 msgstr "Imej Resit"
-
-msgid "Payment Date"
-msgstr "Tarikh Pembayaran"
-
-msgid "Payment Time"
-msgstr "Masa Pembayaran"
 
 msgid "Taxes"
 msgstr "Cukai"
@@ -4866,15 +5101,11 @@ msgstr "Status Pembayaran"
 msgid "Subscription Pricing"
 msgstr "Harga Langganan"
 
+msgid "Supplier List"
+msgstr "Senarai Pembekal"
+
 msgid "Console"
 msgstr "Konsol"
-
-#, php-format
-msgid ""
-"You can have more than %d POS. Only first %d will be activated and can use."
-msgstr ""
-"Anda boleh mempunyai lebih daripada %d POS. Hanya %d pertama akan diaktifkan "
-"dan boleh digunakan."
 
 msgid "Company Registration Number"
 msgstr "Nombor Pendaftaran Syarikat"
@@ -4887,14 +5118,6 @@ msgstr "Dalam Grup"
 
 msgid "In Company"
 msgstr "Dalam Syarikat"
-
-#, php-format
-msgid ""
-"You can have more than %d customer. Only first %d will be activated and can "
-"be used."
-msgstr ""
-"Anda boleh mempunyai lebih daripada %d pelanggan. Hanya %d pertama akan "
-"diaktifkan dan boleh digunakan."
 
 msgid "Monthly"
 msgstr "Bulanan"
@@ -4923,8 +5146,8 @@ msgstr "Stok Simpanan"
 msgid "In Stock"
 msgstr "Dalam Stok"
 
-msgid "Warning when stock reaches a minimum"
-msgstr "Amaran apabila stok mencapai tahap minimum"
+msgid "Sent Notification"
+msgstr "Menghantar Notifikasi"
 
 msgid "Is Agent"
 msgstr "Adalah Ejen"
@@ -4941,16 +5164,12 @@ msgstr "Di bawah Ejen"
 msgid "Tax Number"
 msgstr "Nombor Cukai"
 
-#, php-format
-msgid ""
-"You can have more than %d company. Only first %d will be activated and can "
-"use."
-msgstr ""
-"Anda boleh mempunyai lebih daripada %d syarikat. Hanya %d pertama akan "
-"diaktifkan dan boleh digunakan."
-
 msgid "Customer Group Members"
 msgstr "Ahli Grup Pelanggan"
+
+#, php-format
+msgid "Members of %s"
+msgstr "Ahli kepada %s"
 
 msgid "Update Referral Data"
 msgstr "Kemaskini Data Referral"
@@ -4999,14 +5218,42 @@ msgstr "Restore terakhir"
 msgid "Restored by"
 msgstr "Restore oleh"
 
+msgid "Edit Debit Note"
+msgstr "Sunting Nota Debit"
+
+msgid "Tap"
+msgstr "Ketik"
+
+msgid "Click"
+msgstr "Klik"
+
+#, php-format
+msgid "This document has been locked. %s to unlock this document"
+msgstr "Dokumen ini telah dikunci. %s untuk membuka dokumen ini"
+
+msgid "Debit Note from this company"
+msgstr "Nota Debit daripada syarikat ini"
+
+msgid "Debit Note for this supplier"
+msgstr "Nota Debit untuk pembekal ini"
+
+msgid "Debit Note number as reference"
+msgstr "Nombor Nota Debit sebagai rujukan"
+
+msgid "Debit Note issue date"
+msgstr "Tarikh Nota Debit dikeluarkan"
+
+msgid "Debit Note Items"
+msgstr "Item Nota Debit"
+
+msgid "Debit Note status"
+msgstr "Status Nota Debit"
+
 msgid "Action By"
 msgstr "Tindakan Oleh"
 
 msgid "Generate Receipt"
 msgstr "Jana Resit"
-
-msgid "Action by"
-msgstr "Tindakan oleh"
 
 msgid "Add New Expenses"
 msgstr "Tambah Perbelanjaan Baru"
@@ -5042,17 +5289,11 @@ msgstr ""
 msgid "Type of Expenses"
 msgstr "Jenis Perbelanjaan"
 
-msgid "Enter payment date"
-msgstr "Masukkan tarikh bayaran"
-
 msgid "Date of payment"
 msgstr "Tarikh pembayaran"
 
-msgid "Enter payment time"
-msgstr "Masukkan masa pembayaran"
-
-msgid "Time of payment (optional)"
-msgstr "Masa pembayaran (pilihan)"
+msgid "Method of payment"
+msgstr "Cara pembayaran"
 
 msgid "Reference of payment method. For example, like receipt number"
 msgstr "Rujukan kaedah pembayaran. Sebagai contoh, nombor rujukan resit"
@@ -5084,6 +5325,12 @@ msgstr "Imej Resit (pilihan)"
 
 msgid "Supplier group name"
 msgstr "Nama Grup Pembekal"
+
+msgid "Assign to these suppliers"
+msgstr "Menetapkan dalam pembekal ini"
+
+msgid "No supplier available"
+msgstr "Tiada pembekal tersedia"
 
 #, php-format
 msgid "Delivery Order from %s"
@@ -5126,6 +5373,21 @@ msgstr "Kategori"
 
 msgid "Fixed"
 msgstr "Tetap"
+
+#, php-format
+msgid "Credit Note from %s"
+msgstr "Nota Debit daripada %s"
+
+#, php-format
+msgid ""
+"Dear Sir/Madam,<br><br>Please find the attached Credit Note. Thank you."
+"<br><br>Best regards,<br>--<br>%s"
+msgstr ""
+"Tuan / Puan,<br><br>Sila lihat Nota Debit yang dilampirkan. Terima kasih."
+"<br><br>Selamat Sejahtera,<br>--<br>%s"
+
+msgid "Create Debit Note"
+msgstr "Cipta Nota Debit"
 
 msgid "Reference Name"
 msgstr "Nama Rujukan"
@@ -5171,16 +5433,6 @@ msgstr "No Sebut Harga"
 msgid "Edit Job Sheet"
 msgstr "Sunting Helaian Kerja"
 
-msgid "Tap"
-msgstr "Ketik"
-
-msgid "Click"
-msgstr "Klik"
-
-#, php-format
-msgid "This document has been locked. %s to unlock this document"
-msgstr "Dokumen ini telah dikunci. %s untuk membuka dokumen ini"
-
 msgid "Create Job Sheet from Invoice"
 msgstr "Cipta Helaian Kerja daripada Invois"
 
@@ -5203,7 +5455,7 @@ msgid "Issue date"
 msgstr "Tarikh Dikeluarkan"
 
 msgid "Assigned Job Sheet"
-msgstr "Diberikan Helaian Kerja"
+msgstr "Helaian Kerja yang diberikan"
 
 msgid "Enter note"
 msgstr "Masukkan nota"
@@ -5392,7 +5644,7 @@ msgstr ""
 "dan lain-lain yang berkaitan"
 
 msgid "Assign user to these companies"
-msgstr "Letakkan pengguna dalam syarikat-syarikat ini"
+msgstr "Menetapkan pengguna dalam syarikat-syarikat ini"
 
 msgid "Primary"
 msgstr "Utama"
@@ -5514,6 +5766,12 @@ msgstr "Format Nombor Helaian Kerja"
 msgid "Expenses No Format"
 msgstr "Format Nombor Perbelanjaan"
 
+msgid "Credit Note Format"
+msgstr "Format Nombor Nota Kredit"
+
+msgid "Debit Note Format"
+msgstr "Format Nombor Nota Debit"
+
 msgid "Add New Item"
 msgstr "Tambah Item Baru"
 
@@ -5539,7 +5797,7 @@ msgid "Item Description"
 msgstr "Penerangan item"
 
 msgid "Assign item to your company's"
-msgstr "Letakkan item pada syarikat anda"
+msgstr "Menetapkan item pada syarikat anda"
 
 msgid "Edit Reference"
 msgstr "Sunting Rujukan"
@@ -5554,7 +5812,10 @@ msgid "Reference for POS"
 msgstr "Rujukan untuk POS"
 
 msgid "Assign reference to Point Of Sale"
-msgstr "Berikan rujukan kepada Point Of Sale"
+msgstr "Menetapkan rujukan dalam Point Of Sale"
+
+msgid "Enter POS name"
+msgstr "Masukkan nama POS"
 
 msgid "No Point Of Sale available"
 msgstr "Tiada Point Of Sale tersedia"
@@ -5901,14 +6162,6 @@ msgstr "Operasi"
 msgid "Success"
 msgstr "Berjaya"
 
-#, php-format
-msgid ""
-"You can have more than %d template. Only first %d will be activated and can "
-"be used."
-msgstr ""
-"Anda boleh mempunyai lebih daripada %d templat. Hanya %d pertama akan "
-"diaktifkan dan boleh digunakan."
-
 msgid "Close Register"
 msgstr "Tutup Daftar Tunai"
 
@@ -5956,6 +6209,9 @@ msgstr "Aktifkan penciptaan akaun"
 
 msgid "Set this account as Agent"
 msgstr "Tetapkan akaun ini sebagai Agen"
+
+msgid "Assign customer to these group"
+msgstr "Menetapkan pelanggan dalam kumpulan ini"
 
 msgid "Tracking From"
 msgstr "Pengesanan Dari"
@@ -6052,14 +6308,6 @@ msgstr "Disimpan: %s"
 
 msgid "Out of stock"
 msgstr "Kehabisan stok"
-
-#, php-format
-msgid ""
-"You can have more than %d product. Only first %d will be activated and can "
-"be used."
-msgstr ""
-"Anda boleh mempunyai lebih daripada %d produk. Hanya %d pertama akan "
-"diaktifkan dan boleh digunakan."
 
 msgid "Edit Voucher"
 msgstr "Sunting Baucar"
@@ -6381,9 +6629,6 @@ msgstr ""
 "Kod Produk. Boleh digunakan sebagai Unit Penyimpanan Stok (SKU) jika "
 "diperlukan. Biarkan kosong untuk dijana secara automatik"
 
-msgid "Enter product name"
-msgstr "Masukkan nama produk"
-
 msgid "Product or Service Name as reference"
 msgstr "Nama Produk atau Servis sebagai rujukan"
 
@@ -6425,6 +6670,9 @@ msgstr "Letakkan produk ini dalam Pengurusan Stok"
 msgid "Initial Stock"
 msgstr "Stok awal"
 
+msgid "Enter stock amount"
+msgstr "Masukkan jumlah stok"
+
 msgid "Amount of initial stock for each company"
 msgstr "Jumlah stok awal untuk setiap syarikat"
 
@@ -6447,10 +6695,10 @@ msgid "Barcode Type (optional)"
 msgstr "Jenis Kod bar (pilihan)"
 
 msgid "Assign product to these group"
-msgstr "Letakkan produk dalam kumpulan ini"
+msgstr "Menetapkan produk dalam kumpulan ini"
 
 msgid "Assign product to your company's"
-msgstr "Letakkan produk dalam syarikat anda"
+msgstr "Menetapkan produk dalam syarikat anda"
 
 msgid "Opened Bills"
 msgstr "Bil dibuka"
@@ -6482,9 +6730,6 @@ msgstr "Rujukan Lokasi"
 msgid "Location reference for this sales (optional)"
 msgstr "Rujukan lokasi untuk jualan ini (pilihan)"
 
-msgid "Reference Note"
-msgstr "Nota Rujukan"
-
 msgid "(optional)"
 msgstr "(pilihan)"
 
@@ -6492,8 +6737,16 @@ msgstr "(pilihan)"
 msgid "Reference note for this sales %s"
 msgstr "Nota rujukan bagi jualan ini %s"
 
-msgid "Print Order"
-msgstr "Cetak Pesanan"
+msgid "Tick to View Item Summary"
+msgstr "Tandakan untuk Lihat Ringkasan Item"
+
+#, php-format
+msgid "Assigned to %s products"
+msgstr "Ditetapkan dalam %s produk"
+
+#, php-format
+msgid "Assigned to %s product"
+msgstr "Ditetapkan dalam %s produk"
 
 msgid "Edit Customer"
 msgstr "Sunting Pelanggan"
@@ -6537,6 +6790,15 @@ msgstr "Tambah Rujukan Baru"
 msgid "Expenses List"
 msgstr "Senarai Perbelanjaan"
 
+msgid "Stocks operation"
+msgstr "Operasi stok"
+
+msgid "Stock Out"
+msgstr "Stok Keluar"
+
+msgid "Stock In"
+msgstr "Stok Masuk"
+
 msgid "Update Event"
 msgstr "Kemaskini Jadual"
 
@@ -6570,9 +6832,6 @@ msgstr "Tanda sebagai belum dibaca"
 msgid "The system only keeps these notifications in one month period"
 msgstr ""
 "Sistem ini hanya menyimpan notis pemberitahuan ini dalam tempoh satu bulan"
-
-msgid "No notification available"
-msgstr "Tiada notifikasi tersedia"
 
 msgid "Add New Package"
 msgstr "Tambah Pakejn Baru"
@@ -6679,6 +6938,9 @@ msgstr "Aktifkan Page Langganan"
 msgid "Invoice File"
 msgstr "Fail Invois"
 
+msgid "Item Summary"
+msgstr "Ringkasan Item"
+
 msgid "Open Bill"
 msgstr "Buka Bil"
 
@@ -6746,17 +7008,26 @@ msgstr "Dibilkan"
 msgid "Total amount"
 msgstr "Jumlah keseluruhan"
 
+msgid "Last Payment Date"
+msgstr "Tarikh Pembayaran Terakhir"
+
 msgid "Edit Product"
 msgstr "Sunting Produk"
 
 msgid "Amount of initial stock"
 msgstr "Jumlah stok awal"
 
-msgid "Supplier Group Members"
-msgstr "Ahli Grup Pembekal"
+msgid "Product Group Members"
+msgstr "Ahli Grup Produk"
 
 msgid "Customer group name"
 msgstr "Nama grup pelanggan"
+
+msgid "Assign to these customers"
+msgstr "Menetapkan dalam pelanggan ini"
+
+msgid "No customer available"
+msgstr "Tiada pelanggan tersedia"
 
 msgid "Connection to support server.."
 msgstr "Sambungan ke pelayan sokongan.."
@@ -6777,11 +7048,105 @@ msgstr "Sila pilih fail untuk dimuat naik!"
 msgid "This action will override your current setting. Are you sure?"
 msgstr "Tindakan ini menukar tetapan anda. Adakah anda pasti?"
 
-msgid "Warning"
-msgstr "Amaran"
+msgid "Please select company"
+msgstr "Sila pilih syarikat"
+
+msgid ""
+"No Leave entitlement available for you. Please inform your Administrator"
+msgstr ""
+"Tiada hak cuti yang tersedia untuk anda. Sila maklumkan kepada Pentadbir anda"
+
+msgid "Saving.."
+msgstr "Menyimpan.."
+
+msgid "Loading preview.."
+msgstr "Memuatkan pratonton.."
+
+msgid "Invalid image file"
+msgstr "Fail imej tidak sah"
+
+msgid "Checking.."
+msgstr "Memeriksa.."
 
 msgid "Notice"
 msgstr "Notis"
+
+msgid "This action will remove this account and any data associate with it"
+msgstr ""
+"Tindakan ini akan memadam akaun dan mana-mana data yang berkaitan dengannya"
+
+msgid "COPIED"
+msgstr "DISALIN"
+
+msgid "All Supplier"
+msgstr "Kesemua Pembekal"
+
+msgid ""
+"No product in group available for this company. Please assign at least one"
+msgstr ""
+"Tidak ada produk dalam kumpulan yang disediakan untuk syarikat ini. Sila "
+"menetapkan sekurang-kurangnya satu"
+
+msgid "Disc"
+msgstr "Disk"
+
+msgid "Qty"
+msgstr "Qty"
+
+msgid "Subtotal"
+msgstr "Jumlah Kecil"
+
+msgid "This action will cancel current sale. Are you sure?"
+msgstr "Tindakan ini akan membatalkan jualan terkini. Adakah anda pasti?"
+
+msgid "Please wait.."
+msgstr "Sila tunggu.."
+
+msgid "Please enter cash in hand"
+msgstr "Sila masukkan jumlah wang tunai di tangan"
+
+msgid "Enter cash amount"
+msgstr "Masukkan jumlah tunai"
+
+msgid "Enter station Id"
+msgstr "Masukkan Id Stesen"
+
+msgid "Open Register"
+msgstr "Buka Daftar"
+
+msgid "Open"
+msgstr "Buka"
+
+msgid "Invalid POS Name"
+msgstr "Nama POS tidak sah"
+
+msgid "Invalid amount"
+msgstr "Amoun tidak sah"
+
+msgid "This bill already paid"
+msgstr "Bil ini telah dibayar"
+
+msgid "This bill was canceled"
+msgstr "Bil ini telah dibatalkan"
+
+msgid "Registering.."
+msgstr "Mendaftarkan .."
+
+#, php-format
+msgid "This action will permanently delete %d data. Are you sure?"
+msgstr "Tindakan ini akan memadam %d data secara kekal. Adakah anda pasti?"
+
+msgid "No more data available"
+msgstr "Tiada lagi data yang tersedia"
+
+msgid "Connecting.."
+msgstr "Menghubungkan.."
+
+msgid "SMTP Test"
+msgstr "Ujian SMTP"
+
+msgid "Warning"
+msgstr "Amaran"
 
 msgid "ERROR"
 msgstr "RALAT"
@@ -6798,8 +7163,8 @@ msgstr "Ralat dalaman. Sila laporkan ralat ini!"
 msgid "Error"
 msgstr "Ralat"
 
-msgid "Ok will do!"
-msgstr "Ok akan lakukan!"
+msgid "Ok"
+msgstr "Ok"
 
 msgid "Working.."
 msgstr "Bekerja.."
@@ -6825,8 +7190,11 @@ msgstr "Loading.."
 msgid "Please allow window popup!"
 msgstr "Sila benarkan tetingkap pop-up!"
 
-msgid "No more data available"
-msgstr "Tiada lagi data yang tersedia"
+msgid "Show Details"
+msgstr "Tunjukkan Butiran"
+
+msgid "Hide Details"
+msgstr "Sembunyikan Butiran"
 
 msgid "Online"
 msgstr "Dalam talian"
@@ -6915,98 +7283,11 @@ msgstr "SESI"
 msgid "Remove CC and BCC Recipients"
 msgstr "Buang Penerima CC atau BCC"
 
-msgid "Loading preview.."
-msgstr "Memuatkan pratonton.."
+msgid "This action is not reversible"
+msgstr "Tindakan ini tidak boleh diterbalikkan"
 
-msgid "Invalid image file"
-msgstr "Fail imej tidak sah"
-
-msgid "Done"
-msgstr "Selesai"
-
-msgid "Prev"
-msgstr "Sebelum"
-
-msgid "Now"
-msgstr "Sekarang"
-
-msgid "AM"
-msgstr "AM"
-
-msgid "A"
-msgstr "A"
-
-msgid "PM"
-msgstr "PM"
-
-msgid "P"
-msgstr "P"
-
-msgid "Choose Time"
-msgstr "Pilih Masa"
-
-msgid "Time"
-msgstr "Masa"
-
-msgid "Hour"
-msgstr "Jam"
-
-msgid "Minute"
-msgstr "Minit"
-
-msgid "Second"
-msgstr "Saat"
-
-msgid "Millisecond"
-msgstr "Milisaat"
-
-msgid "Microsecond"
-msgstr "Mikrosaat"
-
-msgid "One result is available, press enter to select it."
-msgstr "Satu keputusan ditemui, tekan enter untuk memilih."
-
-#, php-format
-msgid "Please enter %d or more character(s)"
-msgstr "Sila masukkan %d atau lebih aksara"
-
-#, php-format
-msgid "Please delete %d character(s)"
-msgstr "Sila padamkan %d aksara"
-
-#, php-format
-msgid "You can only select %d item(s)"
-msgstr "Anda hanya boleh memilih %d item"
-
-msgid "Loading more results…"
-msgstr "Memuatkan lebih banyak keputusan..."
-
-msgid "Searching…"
-msgstr "Mencari..."
-
-msgid ""
-"This action will remove referral link from subscription data. Are you sure?"
-msgstr ""
-"Tindakan ini akan memadam pautan rujukan dari data langganan. Adakah anda "
-"pasti?"
-
-msgid "Registering.."
-msgstr "Mendaftarkan .."
-
-msgid "Access Blocked"
-msgstr "Akses Disekat"
-
-msgid "Ok, I understand"
-msgstr "Baik, Saya faham"
-
-msgid "Checking.."
-msgstr "Memeriksa.."
-
-msgid "Change Password"
-msgstr "Tukar Kata Laluan"
-
-msgid "Updating.."
-msgstr "Mengemaskini.."
+msgid "Yes I sure"
+msgstr "Ya saya pasti"
 
 msgid "Confirm Delete"
 msgstr "Sahkan Padam"
@@ -7014,309 +7295,49 @@ msgstr "Sahkan Padam"
 msgid "Confirm"
 msgstr "Mengesahkan"
 
-#, php-format
-msgid "This action will permanently delete %d data. Are you sure?"
-msgstr "Tindakan ini akan memadam %d data secara kekal. Adakah anda pasti?"
+msgid "Please tick 'Yes I sure' box"
+msgstr "Sila tandakan kotak 'Ya saya pasti'"
 
-msgid "Connecting.."
-msgstr "Menghubungkan.."
+msgid "Really Confirm Delete"
+msgstr "Yakin Sahkan Padam"
+
+msgid "No company available. You need to setup your business first"
+msgstr ""
+"Tiada syarikat yang tersedia. Anda perlu mengemaskini perniagaan anda "
+"terlebih dahulu"
+
+msgid "No customer available. You need to have at least one customer"
+msgstr ""
+"Tiada pelanggan yang tersedia. Anda perlu mempunyai sekurang-kurangnya "
+"seorang pelanggan"
 
 msgid ""
-"No company information was found. You need to setup your company information "
-"first"
-msgstr ""
-"Tidak ada maklumat syarikat ditemui. Anda perlu masukkan maklumat syarikat "
-"anda terlebih dahulu"
-
-msgid "For your action"
-msgstr "Untuk tindakan anda"
-
-msgid "Ok. Bring me there"
-msgstr "Okay. Bawa saya ke sana"
-
-msgid "Signature Image"
-msgstr "Imej Tandatangan"
-
-msgid "No customer available. You need to assign at least one customer"
-msgstr ""
-"Tiada pelanggan yang tersedia. Anda perlu menetapkan sekurang-kurangnya satu "
-"pelanggan"
-
-msgid ""
-"This action will remove this product from stock management and any data "
-"associate with it"
-msgstr ""
-"Tindakan ini akan mengeluarkan produk ini dari pengurusan stok dan mana-mana "
-"data yang berkaitan dengannya"
-
-msgid ""
-"This selling price has Alternate Pricing set. This change will remove any "
-"Alternate pricing bigger than this"
-msgstr ""
-"Harga jualan ini mempunyai tetapan Harga Gantian. Perubahan ini akan memadam "
-"harga gantian apabila harga yang dimasukkan lebih besar."
-
-msgid "Pricing Changes"
-msgstr "Perubahan harga"
-
-msgid "The new price is lower than cost price. Are you sure?"
-msgstr "Harga baru adalah lebih rendah daripada harga kos. Adakah anda pasti?"
-
-msgid "No product available for this company. Please assign at least one"
-msgstr ""
-"Tiada produk tersedia untuk syarikat ini. Sila menetapkan sekurang-kurangnya "
-"satu produk"
-
-#, php-format
-msgid ""
-"This action will permanently delete %d data and will re-calculate your "
-"stocks. Are you sure?"
-msgstr ""
-"Tindakan ini akan memadam %d data secara kekal dan akan mengira semula stok "
-"anda. Adakah anda pasti?"
-
-msgid ""
-"No product or service available. You need to add at least one product or "
+"No product or service available. You need to have at least one product or "
 "service"
 msgstr ""
-"Tiada produk atau servis yang tersedia. Anda perlu menambah sekurang-"
-"kurangnya satu produk atau servis"
+"Tiada produk atau perkhidmatan yang tersedia. Anda perlu mempunyai sekurang-"
+"kurangnya satu produk atau perkhidmatan"
 
-msgid "Please select customer"
-msgstr "Sila pilih pelanggan"
-
-msgid "Please select company"
-msgstr "Sila pilih syarikat"
-
-msgid "Signature not available"
-msgstr "Tandatangan tidak tersedia"
-
-msgid "Signature"
-msgstr "Tandangan"
-
-msgid "Cannot get company signature"
-msgstr "Tidak boleh mendapatkan tandatangan syarikat"
-
-msgid ""
-"This action will unlock this document. Only certain fields can be edited. "
-"Some changes will affect previous action. Please edit carefully"
-msgstr ""
-"Tindakan ini akan membuka dokumen ini. Hanya medan tertentu boleh disunting. "
-"Beberapa perubahan akan memberi kesan kepada tindakan sebelum ini. Sila "
-"sunting dengan teliti"
-
-msgid "Unlock"
-msgstr "Membuka"
-
-msgid ""
-"One of the items on the invoice was managed by Stock Management. This action "
-"will re-insert the items and re-calculate the availability of the items"
-msgstr ""
-"Salah satu item dalam invois diuruskan oleh Pengurusan Stok. Tindakan ini "
-"akan memasukkan semula item dan mengira semula ketersediaan item"
-
-msgid "This action will release any reserved stocks"
-msgstr "Tindakan ini akan memadam sebarang stok rizab"
-
-msgid ""
-"One of the items on the salesorder was managed by Stock Management. This "
-"action will re-insert the items and re-calculate the availability of the "
-"items"
-msgstr ""
-"Salah satu item dalam Pesanan Jualan diuruskan oleh Pengurusan Stok. "
-"Tindakan ini akan memasukkan semula item dan mengira semula ketersediaan item"
-
-msgid ""
-"One of the items on the quotation was managed by Stock Management. This "
-"action will re-insert the items and re-calculate the availability of the "
-"items"
-msgstr ""
-"Salah satu item dalam sebut harga diuruskan oleh Pengurusan Stok. Tindakan "
-"ini akan memasukkan semula item dan mengira semula ketersediaan item"
-
-msgid ""
-"This action will reinsert stock of product and delete history of payment"
-msgstr ""
-"Tindakan ini akan masukkan semula stok produk dan memadam sejarah pembayaran"
-
-msgid "No company match with this Sales Order"
-msgstr "Tiada padanan syarikat dengan Pesanan Jualan ini"
-
-msgid "No company match with this Quotation"
-msgstr "Tiada padanan syarikat dengan Sebut Harga ini"
-
-#, php-format
-msgid ""
-"This action will permanently delete %d data and set your invoice to pending. "
-"Any data associated with it also will be deleted. Are you sure?"
-msgstr ""
-"Tindakan ini akan memadam %d data secara kekal dan menetapkan status invois "
-"kepada tergantung. Sebarang data yang berkaitan dengannya juga akan dipadam. "
-"Adakah anda pasti?"
-
-#, php-format
-msgid ""
-"This action will permanently delete %d data and will re-calculate your "
-"payments. Are you sure?"
-msgstr ""
-"Tindakan ini akan memadam %d data secara kekal dan akan mengira semula "
-"pembayaran yang telah dibuat. Adakah anda pasti?"
-
-msgid "All payments have been issued a receipt"
-msgstr "Semua bayaran telah dikeluarkan resit"
-
-msgid "Please select supplier"
-msgstr "Sila pilih pembekal"
-
-msgid ""
-"This action will remove this purchase order from stock management and any "
-"data associate with it"
-msgstr ""
-"Tindakan ini akan mengeluarkan pesanan belian ini dari pengurusan stok dan "
-"mana-mana data yang berkaitan dengannya"
-
-msgid "No company match with this Purchase Order"
-msgstr "Tiada padanan syarikat dengan Pesanan Belian ini"
-
-#, php-format
-msgid "Purchase No: %s"
-msgstr "No Pembelian: %s"
-
-#, php-format
-msgid "Payslip for %s %s"
-msgstr "Penyata gaji untuk %s %s"
-
-#, php-format
-msgid "Net Pay: %s"
-msgstr "Bayaran bersih: %s"
-
-#, php-format
-msgid "Contribution: %s"
-msgstr "Sumbangan: %s"
-
-msgid "All Supplier"
-msgstr "Kesemua Pembekal"
-
-msgid "This action will replace current template code. Are you sure?"
-msgstr "Tindakan ini akan menukar kod templat terkini. Adakah anda pasti?"
-
-msgid ""
-"No product in group available for this company. Please assign at least one"
-msgstr ""
-"Tidak ada produk dalam kumpulan yang disediakan untuk syarikat ini. Sila "
-"tetapkan sekurang-kurangnya satu"
-
-msgid "Qty"
-msgstr "Qty"
-
-msgid "Subtotal"
-msgstr "Jumlah Kecil"
-
-msgid "This action will cancel current sale. Are you sure?"
-msgstr "Tindakan ini akan membatalkan jualan terkini. Adakah anda pasti?"
-
-msgid "Please wait.."
-msgstr "Sila tunggu.."
-
-msgid "Please enter cash in hand"
-msgstr "Sila masukkan jumlah wang tunai di tangan"
-
-msgid "Enter cash amount"
-msgstr "Masukkan jumlah tunai"
-
-msgid "Enter station Id"
-msgstr "Masukkan Id Stesen"
-
-msgid "Open Register"
-msgstr "Buka Daftar"
-
-msgid "Open"
-msgstr "Buka"
-
-msgid "Invalid POS Name"
-msgstr "Nama POS tidak sah"
-
-msgid "Invalid amount"
-msgstr "Amoun tidak sah"
-
-msgid "This action will reinsert stock of product if any"
-msgstr "Tindakan ini akan memasukkan semula stok produk jika ada"
-
-msgid "This bill already paid"
-msgstr "Bil ini telah dibayar"
-
-msgid "This bill was canceled"
-msgstr "Bil ini telah dibatalkan"
-
-msgid "No user available"
-msgstr "Tiada pengguna tersedia"
-
-msgid "No user available for this company. Please assign at least one"
-msgstr ""
-"Tiada pengguna tersedia untuk syarikat ini. Sila menetapkan sekurang-"
-"kurangnya satu pengguna"
-
-msgid ""
-"No active employee available for this company. Please assign at least one"
-msgstr ""
-"Tiada pekerja aktif tersedia untuk syarikat ini. Sila menetapkan sekurang-"
-"kurangnya satu pekerja"
-
-msgid ""
-"No Leave entitlement available for this employee. Please assign at least one"
-msgstr ""
-"Tiada hari cuti tersedia untuk pekerja ini. Sila menetapkan sekurang-"
-"kurangnya satu"
-
-msgid "Please select employee"
-msgstr "Sila pilih pekerja"
-
-msgid "No item available for this company. Please assign at least one"
-msgstr ""
-"Tiada item tersedia untuk syarikat ini. Sila menetapkan sekurang-kurangnya "
-"satu"
-
-msgid "Item"
-msgstr "Item"
-
-msgid "Saving.."
-msgstr "Menyimpan.."
-
-msgid "Operation Failed"
-msgstr "Operasi telah gagal"
-
-msgid "This action will remove this account and any data associate with it"
-msgstr ""
-"Tindakan ini akan memadam akaun dan mana-mana data yang berkaitan dengannya"
-
-msgid "COPIED"
-msgstr "DISALIN"
-
-msgid ""
-"No Leave entitlement available for you. Please inform your Administrator"
-msgstr ""
-"Tiada hak cuti yang tersedia untuk anda. Sila maklumkan kepada Pentadbir anda"
-
-msgid "You will lose any unsaved data"
-msgstr "Anda akan kehilangan data yang belum disimpan"
-
-msgid "Alert"
-msgstr "Amaran"
-
-msgid "Lose it"
-msgstr "Hilangkan"
+msgid "System Setup"
+msgstr "Persediaan Sistem"
 
 msgid "Continue"
 msgstr "Teruskan"
 
-msgid "Logging out.."
-msgstr "Log keluar.."
+msgid "Operation Failed"
+msgstr "Operasi telah gagal"
 
-msgid "Do you want to register a 14-day free trial account now?"
-msgstr "Adakah anda ingin mendaftar akaun percubaan percuma 14 hari sekarang?"
+msgid "Authentication"
+msgstr "Pengesahan"
 
-msgid "Not now"
-msgstr "Bukan sekarang"
+msgid "Account not exists. Register a new account?"
+msgstr "Akaun tidak wujud. Daftar akaun baharu?"
+
+msgid ""
+"This action will remove referral link from subscription data. Are you sure?"
+msgstr ""
+"Tindakan ini akan memadam pautan rujukan dari data langganan. Adakah anda "
+"pasti?"
 
 #, php-format
 msgid ""
@@ -7326,26 +7347,17 @@ msgstr ""
 "Tindakan ini akan memadam %d data secara kekal dan mana-mana data yang "
 "berkaitan dengannya. Adakah anda pasti?"
 
+msgid "Updating.."
+msgstr "Mengemaskini.."
+
 msgid "This section cannot empty"
 msgstr "Bahagian ini tidak boleh kosong"
 
 msgid "Delete Failed"
 msgstr "Padam Gagal"
 
-msgid "This action is not reversible"
-msgstr "Tindakan ini tidak boleh diterbalikkan"
-
-msgid "Yes I sure"
-msgstr "Ya saya pasti"
-
 msgid "Delete all data"
 msgstr "Padam semua data"
-
-msgid "Please tick Yes I sure box"
-msgstr "Sila tandakan kotak Ya saya pasti"
-
-msgid "Really Confirm Delete"
-msgstr "Yakin Sahkan Padam"
 
 msgid "Switch Failed"
 msgstr "Tukar telah Gagal"
@@ -7400,6 +7412,12 @@ msgstr "Salin ke Helaian Kerja telah Gagal"
 msgid "Copy to Delivery Order Failed"
 msgstr "Salin ke Pesanan Penghantaran Gagal"
 
+msgid "Creating Credit Note Failed"
+msgstr "Mencipta Nota Kredit telah gagal"
+
+msgid "Creating Debit Note Failed"
+msgstr "Mencipta Nota Debit telah gagal"
+
 msgid "Generating document.."
 msgstr "Menjana dokumen .."
 
@@ -7412,6 +7430,9 @@ msgstr "Menghantar.."
 msgid "Send email"
 msgstr "Menghantar e-mel"
 
+msgid "Generating link.."
+msgstr "Menjana pautan.."
+
 msgid "Enter New Password"
 msgstr "Masukkan Kata Laluan Baru"
 
@@ -7420,6 +7441,9 @@ msgstr "Sahkan Kata Laluan Baru"
 
 msgid "Enter Password same as above"
 msgstr "Masukkan Kata Laluan sama seperti di atas"
+
+msgid "Change Password"
+msgstr "Tukar Kata Laluan"
 
 msgid "Show All Rows"
 msgstr "Tunjukkan Semua Baris"
@@ -7436,11 +7460,39 @@ msgstr "Cetak Dokumen"
 msgid "Select Start Date"
 msgstr "Pilih Tarikh Mula"
 
-msgid "Ok"
-msgstr "Ok"
+msgid ""
+"Please wait. This process will take a few minutes, click DONE when finished"
+msgstr ""
+"Sila tunggu. Proses ini akan mengambil masa dalam beberapa minit, klik "
+"SELESAI apabila selesai"
+
+msgid "Processing"
+msgstr "Memproses"
+
+msgid "DONE"
+msgstr "SELESAI"
+
+msgid "Processing.."
+msgstr "Memproses.."
+
+#, php-format
+msgid "This action will process %d documents. Are you sure?"
+msgstr "Tindakan ini akan memproses %d dokumen. Adakah anda pasti?"
+
+msgid "Confirm Download Action"
+msgstr "Sahkan Tindakan Memuat turun"
+
+msgid "Confirm Print Action"
+msgstr "Sahkan Tindakan Mencetak"
+
+msgid "Processing data was failed"
+msgstr "pemprosesan data telah gagal"
 
 msgid "Confirmation"
 msgstr "Pengesahan"
+
+msgid "Alert"
+msgstr "Amaran"
 
 msgid ""
 "This action, maybe do not work on the mobile device. You need to download "
@@ -7451,6 +7503,248 @@ msgstr ""
 
 msgid "Information"
 msgstr "Maklumat"
+
+msgid "Ok, I understand"
+msgstr "Baik, Saya faham"
+
+msgid "Signature Image"
+msgstr "Imej Tandatangan"
+
+msgid "No product available for this company. Please assign at least one"
+msgstr ""
+"Tiada produk tersedia untuk syarikat ini. Sila menetapkan sekurang-kurangnya "
+"satu produk"
+
+msgid "Please select supplier"
+msgstr "Sila pilih pembekal"
+
+msgid "Signature not available"
+msgstr "Tandatangan tidak tersedia"
+
+msgid "Signature"
+msgstr "Tandangan"
+
+msgid ""
+"This action will unlock this document. Only certain fields can be edited. "
+"Some changes will affect previous action. Please edit carefully"
+msgstr ""
+"Tindakan ini akan membuka dokumen ini. Hanya medan tertentu boleh disunting. "
+"Beberapa perubahan akan memberi kesan kepada tindakan sebelum ini. Sila "
+"sunting dengan teliti"
+
+msgid "Unlock"
+msgstr "Membuka"
+
+msgid ""
+"This action will remove this purchase order from stock management and any "
+"data associate with it"
+msgstr ""
+"Tindakan ini akan mengeluarkan pesanan belian ini dari pengurusan stok dan "
+"mana-mana data yang berkaitan dengannya"
+
+msgid "No company match with this Purchase Order"
+msgstr "Tiada padanan syarikat dengan Pesanan Belian ini"
+
+#, php-format
+msgid "Purchase No: %s"
+msgstr "No Pembelian: %s"
+
+#, php-format
+msgid "Payslip for %s %s"
+msgstr "Penyata gaji untuk %s %s"
+
+#, php-format
+msgid "Net Pay: %s"
+msgstr "Bayaran bersih: %s"
+
+#, php-format
+msgid "Contribution: %s"
+msgstr "Sumbangan: %s"
+
+msgid "You will lose any unsaved data"
+msgstr "Anda akan kehilangan data yang belum disimpan"
+
+msgid "Lose it"
+msgstr "Hilangkan"
+
+msgid "Logging out.."
+msgstr "Log keluar.."
+
+msgid "Do you want to register a 14-day free trial account now?"
+msgstr "Adakah anda ingin mendaftar akaun percubaan percuma 14 hari sekarang?"
+
+msgid "Not now"
+msgstr "Bukan sekarang"
+
+msgid ""
+"This action will remove this product from stock management and any data "
+"associate with it"
+msgstr ""
+"Tindakan ini akan mengeluarkan produk ini dari pengurusan stok dan mana-mana "
+"data yang berkaitan dengannya"
+
+msgid ""
+"This selling price has Alternate Pricing set. This change will remove any "
+"Alternate pricing bigger than this"
+msgstr ""
+"Harga jualan ini mempunyai tetapan Harga Gantian. Perubahan ini akan memadam "
+"harga gantian apabila harga yang dimasukkan lebih besar."
+
+msgid "Pricing Changes"
+msgstr "Perubahan harga"
+
+msgid "The new price is lower than cost price. Are you sure?"
+msgstr "Harga baru adalah lebih rendah daripada harga kos. Adakah anda pasti?"
+
+msgid ""
+"No product available for this company or already added in Stock Management"
+msgstr ""
+"Tiada produk yang tersedia untuk syarikat ini atau sudah ditambahkan dalam "
+"Pengurusan Stok"
+
+msgid "Move Stock Out into In Stock"
+msgstr "Pindahkan Stok keluar kedalam Stok Simpanan"
+
+msgid "Move Stock Reserved into In Stock"
+msgstr "Pindahkan Stok rizab kedalam Stok Simpanan"
+
+msgid "Please select customer"
+msgstr "Sila pilih pelanggan"
+
+msgid "Cannot get company signature"
+msgstr "Tidak boleh mendapatkan tandatangan syarikat"
+
+msgid "No company match with this Sales Order"
+msgstr "Tiada padanan syarikat dengan Pesanan Jualan ini"
+
+msgid "No company match with this Quotation"
+msgstr "Tiada padanan syarikat dengan Sebut Harga ini"
+
+msgid "Recurring Invoice"
+msgstr "Invois Berulang"
+
+#, php-format
+msgid ""
+"This action will permanently delete %d data and set your invoice to pending. "
+"Any data associated with it also will be deleted. Are you sure?"
+msgstr ""
+"Tindakan ini akan memadam %d data secara kekal dan menetapkan status invois "
+"kepada tergantung. Sebarang data yang berkaitan dengannya juga akan dipadam. "
+"Adakah anda pasti?"
+
+#, php-format
+msgid ""
+"This action will permanently delete %d data and will re-calculate your "
+"payments. Are you sure?"
+msgstr ""
+"Tindakan ini akan memadam %d data secara kekal dan akan mengira semula "
+"pembayaran yang telah dibuat. Adakah anda pasti?"
+
+msgid "All payments have been issued a receipt"
+msgstr "Semua bayaran telah dikeluarkan resit"
+
+msgid "Done"
+msgstr "Selesai"
+
+msgid "Prev"
+msgstr "Sebelum"
+
+msgid "Now"
+msgstr "Sekarang"
+
+msgid "AM"
+msgstr "AM"
+
+msgid "A"
+msgstr "A"
+
+msgid "PM"
+msgstr "PM"
+
+msgid "P"
+msgstr "P"
+
+msgid "Choose Time"
+msgstr "Pilih Masa"
+
+msgid "Time"
+msgstr "Masa"
+
+msgid "Hour"
+msgstr "Jam"
+
+msgid "Minute"
+msgstr "Minit"
+
+msgid "Second"
+msgstr "Saat"
+
+msgid "Millisecond"
+msgstr "Milisaat"
+
+msgid "Microsecond"
+msgstr "Mikrosaat"
+
+msgid "This action will replace current template code. Are you sure?"
+msgstr "Tindakan ini akan menukar kod templat terkini. Adakah anda pasti?"
+
+msgid "Access Blocked"
+msgstr "Akses Disekat"
+
+msgid "No user available"
+msgstr "Tiada pengguna tersedia"
+
+msgid "No user available for this company. Please assign at least one"
+msgstr ""
+"Tiada pengguna tersedia untuk syarikat ini. Sila menetapkan sekurang-"
+"kurangnya satu pengguna"
+
+msgid ""
+"No active employee available for this company. Please assign at least one"
+msgstr ""
+"Tiada pekerja aktif tersedia untuk syarikat ini. Sila menetapkan sekurang-"
+"kurangnya satu pekerja"
+
+msgid "Recurring Payslip"
+msgstr "Penyata Gaji Berulang"
+
+msgid ""
+"No Leave entitlement available for this employee. Please assign at least one"
+msgstr ""
+"Tiada hari cuti tersedia untuk pekerja ini. Sila menetapkan sekurang-"
+"kurangnya satu"
+
+msgid "Please select employee"
+msgstr "Sila pilih pekerja"
+
+msgid "One result is available, press enter to select it."
+msgstr "Satu keputusan ditemui, tekan enter untuk memilih."
+
+#, php-format
+msgid "Please enter %d or more character(s)"
+msgstr "Sila masukkan %d atau lebih aksara"
+
+#, php-format
+msgid "Please delete %d character(s)"
+msgstr "Sila padamkan %d aksara"
+
+#, php-format
+msgid "You can only select %d item(s)"
+msgstr "Anda hanya boleh memilih %d item"
+
+msgid "Loading more results…"
+msgstr "Memuatkan lebih banyak keputusan..."
+
+msgid "Searching…"
+msgstr "Mencari..."
+
+msgid "No item available for this company. Please assign at least one"
+msgstr ""
+"Tiada item tersedia untuk syarikat ini. Sila menetapkan sekurang-kurangnya "
+"satu"
+
+msgid "Item"
+msgstr "Item"
 
 msgid "No POS available. Please create it at POS Management"
 msgstr "Tiada POS yang tersedia. Sila cipta pada Pengurusan POS"
@@ -7463,6 +7757,9 @@ msgstr "Ditangguhkan"
 
 msgid "Enter Product Barcode / SKU / Name"
 msgstr "Masukkan Produk Barcode / SKU / Nama"
+
+msgid "Total Discount"
+msgstr "Jumlah Diskaun"
 
 msgid "Hold"
 msgstr "Tangguh"
@@ -7525,9 +7822,6 @@ msgstr ""
 msgid "Digital signature and text appended at the bottom of purchase document"
 msgstr ""
 "Tandatangan digital dan teks dilampirkan di bahagian bawah dokumen pembelian"
-
-msgid "This purchase order managed by Stock Management"
-msgstr "Pesanan belian ini dikendalikan oleh Pengurusan Stok"
 
 msgid "Payment List"
 msgstr "Senarai Pembayaran"
@@ -7603,9 +7897,6 @@ msgstr "Kuantiti Item (pilihan)"
 
 msgid "Purchase Order for Sales Order"
 msgstr "Pesanan Pembelian untuk Pesanan Jualan"
-
-msgid "Purchase Date"
-msgstr "Tarikh Pembelian"
 
 msgid "Total Unpaid"
 msgstr "Jumlah Belum Dibayar"
@@ -7737,7 +8028,7 @@ msgid "Default Mail From Email"
 msgstr "E-mel lalai Dari Mel"
 
 msgid "Assign mailer to your company's"
-msgstr "Letakkan pengirim e-mel pada syarikat anda"
+msgstr "Menetapkan pengirim e-mel pada syarikat anda"
 
 msgid "No employee data available"
 msgstr "Tiada data pekerja tersedia"
@@ -7772,7 +8063,7 @@ msgid "Payment Method %s"
 msgstr "Kaedah Pembayaran %s"
 
 msgid "No Point Of Sale assigned"
-msgstr "Tiada Point Of Sale diberikan"
+msgstr "Tiada Point Of Sale yang telah ditetapkan"
 
 msgid "Edit Payslip"
 msgstr "Sunting Penyata gaji"
@@ -7810,6 +8101,9 @@ msgstr ""
 
 msgid "Payslip status"
 msgstr "Status penyata gaji"
+
+msgid "Create payslip recurringly"
+msgstr "Buat penyata gaji berulang"
 
 msgid "Add New Delivery Order"
 msgstr "Tambah Pesanan Penghantaran Baru"
@@ -7944,7 +8238,7 @@ msgid "Don't show profile icon when no module icon is shown"
 msgstr "Jangan tunjukkan ikon profil apabila tiada ikon modul ditunjukkan"
 
 msgid "Add New Document Note"
-msgstr "Tambah Nota Douken Baru"
+msgstr "Tambah Nota Dokumen Baru"
 
 msgid "Document note for this company"
 msgstr "Nota Dokumen untuk syarikat ini"
@@ -7979,8 +8273,8 @@ msgstr ""
 "Tuan / Puan,<br><br>Sila lihat Resit yang dilampirkan. Terima kasih diatas "
 "peluang perniagaan.<br><br>Terima kasih,<br>--<br>%s"
 
-msgid "Receipt File"
-msgstr "Fail Resit"
+msgid "File Attachment"
+msgstr "Fail Lampiran"
 
 msgid "Version"
 msgstr "Versi"
@@ -8002,6 +8296,14 @@ msgstr "Penggunaan Storan"
 
 msgid "Limitation availability"
 msgstr "Had Ketersediaan"
+
+#, php-format
+msgid "Assigned to %s customers"
+msgstr "Ditetapkan dalam %s pelanggan"
+
+#, php-format
+msgid "Assigned to %s customer"
+msgstr "Ditetapkan dalam %s pelanggan"
 
 msgid "Add New Email Content"
 msgstr "Tambah Kandungan E-mel Baru"
@@ -8055,11 +8357,11 @@ msgstr ""
 msgid "Quotation status"
 msgstr "Status Sebut harga"
 
+msgid "Edit Credit Note"
+msgstr "Sunting Nota Kredit"
+
 msgid "Edit Mailer"
 msgstr "Sunting Pengirim E-mel"
-
-msgid "Product Group Members"
-msgstr "Ahli Grup Produk"
 
 msgid "Edit Tax Code"
 msgstr "Sunting Kod Cukai"
@@ -8072,9 +8374,6 @@ msgstr "Muat semula kod templat"
 
 msgid "Document Hide Company Address"
 msgstr "Dokumen Sembunyikan Alamat Syarikat"
-
-msgid "Show Code"
-msgstr "Papar kod"
 
 msgid "Add another new data"
 msgstr "Tambah satu lagi data baru"
@@ -8167,12 +8466,13 @@ msgstr "%s untuk memuat naik imej"
 
 #, php-format
 msgid ""
-"By clicking Subscribe you agree to the <u><a href='%s' target=_blank>Terms "
-"of Service</a></u> and <u><a href='%s' target=_blank>Privacy Policy</a></u>."
+"By clicking Subscribe you agree to the <u><a href='%s' target=_blank "
+"rel='noopener'>Terms of Service</a></u> and <u><a href='%s' target=_blank "
+"rel='noopener'>Privacy Policy</a></u>."
 msgstr ""
 "Dengan mengklik Langgan anda bersetuju dengan Syarat <u><a href='%s' "
-"target=_blank> Perkhidmatan </a> dan <a href='%s' target=_blank> Dasar "
-"Privasi </a></u>."
+"target=_blank rel='noopener'> Perkhidmatan </a> dan <a href='%s' "
+"target=_blank rel='noopener'> Dasar Privasi </a></u>."
 
 msgid "Subscribe"
 msgstr "Langgan"
@@ -8191,6 +8491,9 @@ msgstr "Sejarah Langganan"
 #, php-format
 msgid "Credit %s"
 msgstr "Kredit %s"
+
+msgid "Add New Debit Note"
+msgstr "Tambah Nota Debit Baru"
 
 msgid "Preset data"
 msgstr "Data Pratetap"
@@ -8211,7 +8514,7 @@ msgid "Set this leave type as Paid leave"
 msgstr "Tetapkan jenis cuti ini sebagai Cuti berbayar"
 
 msgid "Assign type of leave to your company's"
-msgstr "Letakkan jenis cuti pada syarikat anda"
+msgstr "Menetapkan jenis cuti pada syarikat anda"
 
 msgid "Daily"
 msgstr "Harian"
@@ -8293,12 +8596,13 @@ msgstr "Pelan langganan. Anda boleh mengubahnya kemudian"
 
 #, php-format
 msgid ""
-"By clicking Create Account you agree to the <a href='%s' target=_blank>Terms "
-"of Service</a> and <a href='%s' target=_blank>Privacy Policy</a>."
+"By clicking Create Account you agree to the <a href='%s' target=_blank "
+"rel='noopener'>Terms of Service</a> and <a href='%s' target=_blank "
+"rel='noopener'>Privacy Policy</a>."
 msgstr ""
 "Dengan mengklik Cipta Akaun anda bersetuju dengan Syarat <a href='%s' "
-"target=_blank> Perkhidmatan </a> dan <a href='%s' target=_blank> Dasar "
-"Privasi </a>."
+"target=_blank rel='noopener'> Perkhidmatan </a> dan <a href='%s' "
+"target=_blank rel='noopener'> Dasar Privasi </a>."
 
 msgid "Create Account"
 msgstr "Cipta Akaun"
@@ -8380,19 +8684,11 @@ msgid "%d record for %d company in %s"
 msgstr "%d rekod bagi %d syarikat dalam tempoh %s"
 
 #, php-format
-msgid "Welcome %s"
-msgstr "Selamat datang %s"
+msgid "Login as %s"
+msgstr "Log masuk sebagai %s"
 
 msgid "Edit Item"
 msgstr "Sunting Item"
-
-#, php-format
-msgid ""
-"You can have more than %d supplier. Only first %d will be activated and can "
-"be used."
-msgstr ""
-"Anda boleh mempunyai lebih daripada %d pembekal. Hanya %d pertama akan "
-"diaktifkan dan boleh digunakan."
 
 #, php-format
 msgid "From %s"
@@ -8449,6 +8745,9 @@ msgstr ""
 msgid "Report"
 msgstr "Laporan"
 
+msgid "No company assigned"
+msgstr "Tiada syarikat yang ditetapkan"
+
 msgid ""
 "Password recovery was disabled for this account. Please contact account "
 "owner."
@@ -8487,6 +8786,9 @@ msgstr "Salin ke Helaian Kerja"
 msgid "Copy to Delivery Order"
 msgstr "Salin ke Pesanan Penghantaran"
 
+msgid "Create Credit Note"
+msgstr "Cipta Nota Kredit"
+
 #, php-format
 msgid "Payment Voucher from %s"
 msgstr "Baucar bayaran dari %s"
@@ -8512,17 +8814,41 @@ msgstr "IP Disekat"
 msgid "[hidden]"
 msgstr "[sembunyi]"
 
-msgid "Update Stock"
-msgstr "Kemaskini Stok"
+msgid "Edit Stock Management"
+msgstr "Sunting Pengurusan Stok"
 
-msgid "Top Up stock amount"
-msgstr "Tambah Nilai jumlah stok"
+msgid "Stock Transaction"
+msgstr "Transaksi Stok"
 
-msgid "Enter top up stock amount"
-msgstr "Masukkan tambah nilai jumlah stok"
+msgid "Stock Transaction (optional)"
+msgstr "Transaksi Stok (pilihan)"
 
-msgid "Amount of top up stock"
-msgstr "Jumlah tambah nilai stok"
+msgid "Quantity of stock"
+msgstr "Kuantiti stok"
+
+msgid "Transaction Date/Time"
+msgstr "Tarikh/Masa Transaksi"
+
+msgid "Enter transaction date/time"
+msgstr "Masukkan tarikh/masa transaksi"
+
+msgid "Transaction Date/Time (optional)"
+msgstr "Tarikh/Masa transaksi (pilihan)"
+
+msgid "Transaction Note"
+msgstr "Nota Transaksi"
+
+msgid "Enter transaction note"
+msgstr "Masukkan nota transaksi"
+
+msgid "Transaction note (optional)"
+msgstr "Nota transaksi (pilihan)"
+
+msgid "Enter minimum stock amount"
+msgstr "Masukkan jumlah stok minimum"
+
+msgid "Give warning when stock below or equal than this amount"
+msgstr "Beri amaran apabila stok di bawah atau sama daripada jumlah ini"
 
 msgid "Add New Job Sheet"
 msgstr "Tambah Helaian Kerja Baharu"
@@ -8567,6 +8893,9 @@ msgstr "Nombor Resit Point Of Sale (pilihan)"
 msgid "Description about this Point Of Sale (optional)"
 msgstr "Penerangan mengenai Point Of Sale ini (pilihan)"
 
+msgid "Default Payment Method"
+msgstr "Kaedah Pembayaran Lalai"
+
 msgid "Receipt Template"
 msgstr "Templat Resit"
 
@@ -8597,6 +8926,21 @@ msgstr "Syarikat Penerima"
 
 msgid "Type List"
 msgstr "Senarai Jenis"
+
+msgid "Action for this company"
+msgstr "Tindakan untuk syarikat ini"
+
+msgid "Assign company to all customers"
+msgstr "Menetapkan syarikat dalam kesemua pelanggan"
+
+msgid "Assign company to all products"
+msgstr "Menetapkan syarikat dalam kesemua produk"
+
+msgid "Assign company to all suppliers"
+msgstr "Menetapkan syarikat dalam kesemua pembekal"
+
+msgid "Assign company to all users"
+msgstr "Menetapkan syarikat dalam kesemua pengguna"
 
 msgid "Edit Subscriber"
 msgstr "Sunting Pelanggan"
@@ -8631,23 +8975,20 @@ msgstr "Format masa lalai"
 msgid "Enable Activity Log"
 msgstr "Aktifkan Log Aktiviti"
 
-msgid "Purge Log on the day"
-msgstr "Bersihkan Log pada hari"
+msgid "Activity Log retention period"
+msgstr "Tempoh pengekalan Log Aktiviti"
 
-msgid "Remove old Activity Log"
-msgstr "Buang Log Aktiviti yang lama"
+msgid "Duration of retention in days. Older logs will be purged"
+msgstr "Tempoh pengekalan dalam hari. Log yang lebih lama akan dipadam"
 
 msgid "Enable Mailer Log"
 msgstr "Aktifkan Log Pengirim E-Mel"
 
-msgid "Purge Mailer Log on the day"
-msgstr "Bersihkan Log Pengirim E-Mel pada hari"
+msgid "Mailer Log retention period"
+msgstr "Tempoh pengekalan Log Mailer"
 
-msgid "Remove old Mailer Log"
-msgstr "Buang Log Pengirim E-Emel yang lama"
-
-msgid "Mobile Print"
-msgstr "Cetak mudah alih"
+msgid "Mobile Device Printing"
+msgstr "Percetakan Peranti Mudah Alih"
 
 msgid "Show notice when printing on mobile device"
 msgstr "Paparkan notis apabila mencetak di peranti mudah alih"
@@ -8655,23 +8996,22 @@ msgstr "Paparkan notis apabila mencetak di peranti mudah alih"
 msgid "Customer Code Format"
 msgstr "Format Kod Pelanggan"
 
-msgid "Format for Customer Code. By default defined as 'CR' (optional)"
+msgid "Format for Customer Code Number. By default set as 'CR'"
 msgstr ""
-"Format bagi Kod Pelanggan. Secara lalai ditakrifkan sebagai 'CR' (pilihan)"
+"Format untuk Nombor Kod Pelanggan. Secara lalai ditakrifkan sebagai 'CR'"
 
 msgid "Product Code Format"
 msgstr "Format Kod Produk"
 
-msgid "Format for Product Code. By default defined as 'PR' (optional)"
-msgstr ""
-"Format bagi Kod Produk. Secara lalai ditakrifkan sebagai 'PR' (pilihan)"
+msgid "Format for Product Code Number. By default set as 'PR'"
+msgstr "Format untuk Nombor Kod Produk. Secara lalai ditakrifkan sebagai 'PR'"
 
 msgid "Supplier Code Format"
 msgstr "Format Kod Pembekal"
 
-msgid "Format for Supplier Code. By default defined as 'SR' (optional)"
+msgid "Format for Supplier Code Number. By default set as 'SR'"
 msgstr ""
-"Format untuk Kod Pembekal. Secara lalai ditakrifkan sebagai 'SR' (pilihan)"
+"Format untuk Nombor Kod Pembekal. Secara lalai ditakrifkan sebagai 'SR'"
 
 msgid "Jan-Mar"
 msgstr "Jan-Mac"
@@ -8784,8 +9124,8 @@ msgstr ""
 "Pilihan pengiraan cukai lalai, apabila mencipta jualan dokumen baru atau "
 "pembelian (pilihan)"
 
-msgid "Assign company to these group"
-msgstr "Letakkan syarikat dalam kumpulan ini"
+msgid "Assign company to these group (optional)"
+msgstr "Menetapkan syarikat dalam kumpulan ini (pilihan)"
 
 msgid "Enter sales order number format"
 msgstr "Masukkan format nombor pesanan jualan"
@@ -8859,6 +9199,24 @@ msgstr "Masukkan format nombor perbelanjaan"
 msgid "Expenses No Format (optional)"
 msgstr "Format Nombor Perbelanjaan (pilihan)"
 
+msgid "Credit Note No Format"
+msgstr "Format Nombor Nota Kredit"
+
+msgid "Enter credit note number format"
+msgstr "Masukkan format nombor nota kredit"
+
+msgid "Credit Note No Format (optional)"
+msgstr "Format Nombor Nota Kredit (pilihan)"
+
+msgid "Debit Note No Format"
+msgstr "Format Nombor Nota Debit"
+
+msgid "Enter debit note number format"
+msgstr "Masukkan format nombor nota debit"
+
+msgid "Debit Note No Format (optional)"
+msgstr "Format Nombor Nota Debit (pilihan)"
+
 msgid "Add New Payslip"
 msgstr "Tambah Penyata gaji Baru"
 
@@ -8874,9 +9232,6 @@ msgstr ""
 "Teks untuk tandatangan digital diletakkan di bahagian bawah dokumen "
 "berkaitan (pilihan). Teks dengan kurungan [] akan digantikan dengan maklumat "
 "pengguna semasa. Sebagai contoh [pengguna-nama penuh] digantikan dengan %s"
-
-msgid "File"
-msgstr "Fail"
 
 msgid "Size"
 msgstr "Saiz"
@@ -8922,6 +9277,9 @@ msgstr "Kemaskini Perbelanjaan"
 msgid "From Payslips"
 msgstr "Daripada Penyata gaji"
 
+msgid "Claimed"
+msgstr "Dituntut"
+
 msgid "Promo Code List"
 msgstr "Senarai Kod Promo"
 
@@ -8950,18 +9308,40 @@ msgid "GD Express Postage Tracking"
 msgstr "Pengesanan Pengeposan GD Express"
 
 #, php-format
-msgid ""
-"You can have more than %d employee. Only first %d will be activated and can "
-"be used."
+msgid "This log only kept for %d days. Older than that will removed."
 msgstr ""
-"Anda boleh mempunyai lebih daripada %d pekerja. Hanya %d pertama akan "
-"diaktifkan dan boleh digunakan."
+"Log ini hanya disimpan selama %d hari. Lebih lama daripada itu akan dipadam."
 
 msgid "Is it a paid leave"
 msgstr "Adakah cuti ini berbayar?"
 
 msgid "Edit Delivery Order"
 msgstr "Sunting Pesanan Penghantaran"
+
+msgid "Get Share Link"
+msgstr "Dapatkan Kongsi Pautan"
+
+#, php-format
+msgid ""
+"Share Link not working on demo mode. Please register your own account here %s"
+msgstr ""
+"Kongsi pautan tidak berfungsi pada mod demo. Sila daftarkan akaun anda di "
+"sini %s"
+
+msgid "Document type"
+msgstr "Jenis dokumen"
+
+msgid "Link expire"
+msgstr "Pautan luput"
+
+msgid "This link will expire after the number of days"
+msgstr "Pautan ini akan luput selepas bilangan hari"
+
+msgid "Document Link"
+msgstr "Pautan Dokumen"
+
+msgid "Copy this link and share it"
+msgstr "Salin pautan ini dan kongsikannya"
 
 msgid "Paid leave"
 msgstr "Cuti Berbayar"
@@ -8984,9 +9364,6 @@ msgstr "Muat naik semula Imej Resit"
 msgid "Don't Send Notification to Subscriber"
 msgstr "Jangan Hantar Pemberitahuan kepada Pelanggan"
 
-msgid "Register new account?"
-msgstr "Daftar akaun baharu?"
-
 msgid "Edit Package"
 msgstr "Sunting Pakej"
 
@@ -9008,9 +9385,23 @@ msgstr ""
 msgid "Default Signature block"
 msgstr "Blok Tandatangan lalai"
 
+msgid ""
+"Tax information for your company. This tax information will be used in areas "
+"that need the tax rate. Leave registration number empty if not available yet "
+"(optional)."
+msgstr ""
+"Maklumat cukai untuk syarikat anda. Maklumat cukai ini akan digunakan pada "
+"bahagian yang memerlukan kadar cukai. Tinggalkan nombor pendaftaran kosong "
+"jika belum tersedia (pilihan)."
+
+msgid ""
+"No payslip available. You are not registered in the company as an employee."
+msgstr ""
+"Tiada penyata gaji tersedia. Anda tidak didaftarkan di syarikat sebagai "
+"pekerja."
+
 msgid "Add New Announcement"
 msgstr "Tambah Pengumuman Baru"
 
 msgid "Add New Sales Order"
 msgstr "Tambah Pesanan Jualan Baru"
-
