@@ -1,15 +1,15 @@
 @{* 
-    Name: default-purchaseorder
+    Name: default-creditnote
     Updated: 19052018
 *}
 
 @{* TEMPLATE SETTING *}
-@{$TITLE="Purchase Order"}
+@{$TITLE="Credit Note"}
 @{$SUBJECT=""}
 @{$SHOW_DISCOUNT_PERCENT=false}
 @{$SHOW_STATUS=true}
-@{$SHOW_SUPPLIER_CONTACT=true}
-@{$SHOW_SUPPLIER_NAME=true}
+@{$SHOW_CUSTOMER_CONTACT=true}
+@{$SHOW_CUSTOMER_NAME=true}
 @{$SHOW_COMPANY_CONTACT=true}
 @{$SHOW_COMPANY_ADDRESS=true}
 @{$SHOW_COMPANY_LOGO=true}
@@ -31,7 +31,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="google" content="notranslate">
 <meta name="format-detection" content="telephone=no">
-<title>@{$TITLE} @{$data->purchaseorder->code}</title>
+<title>@{$TITLE} @{$data->creditnote->code}</title>
 <style>
 html {
     font-family: @{$FONT};
@@ -44,10 +44,6 @@ body {
     margin: 0;
     background: #fff;
     line-height: 1.3;
-}
-
-@media print {
-    body {-webkit-print-color-adjust: exact;}
 }
 
 table {
@@ -144,7 +140,7 @@ img.company-logo {
 }
 
 .text-bold {
-    font-weight: bold !important;
+    font-weight: bold!important;
 }
 
 .text-normal {
@@ -240,10 +236,6 @@ table.info .box-doc .title {
 table.info .attn {
     padding-top:10px;
     vertical-align: bottom;
-}
-
-table.info .deliver {
-    padding-top:10px;
 }
 
 table.item {
@@ -400,64 +392,64 @@ table.table-payment-history td {
 <td class="width-percent-10">To:</td>
 <td>
 
-@{$has_supplier_company=false}
-@{if="!_null($data->supplier->companyname)"}
+@{$has_customer_company=false}
+@{if="!_null($data->customer->companyname)"}
     <span class="text-block text-bold">
-        @{$data->supplier->companyname}
-        @{!_null($data->supplier->regnumber) ? " (".$data->supplier->regnumber.")" : ""}
+        @{$data->customer->companyname}
+        @{!_null($data->customer->regnumber) ? " (".$data->customer->regnumber.")" : ""}
     </span>
-    @{$has_supplier_company=true}
+    @{$has_customer_company=true}
 @{else}
-    @{if="(bool)$SHOW_SUPPLIER_NAME"}
+    @{if="(bool)$SHOW_CUSTOMER_NAME"}
         <span class="text-block text-bold">
-            @{$data->supplier->name}
+            @{$data->customer->name}
         </span>
     @{/if}
 @{/if}
 
-@{if="!_null($data->supplier->address)"}
+@{if="!_null($data->customer->address)"}
     <span class="text-block">
-        @{$data->supplier->address}
+        @{$data->customer->address}
         <span class="text-block text-capitalize">
-            @{!_null($data->supplier->city) ? $data->supplier->city."," : ""}
-            @{!_null($data->supplier->postcode) ? $data->supplier->postcode."," : ""}
-            @{!_null($data->supplier->state) ? $data->supplier->state."," : ""}
-            @{!_null($data->supplier->country) ? $data->supplier->country : ""}
+            @{!_null($data->customer->city) ? $data->customer->city."," : ""}
+            @{!_null($data->customer->postcode) ? $data->customer->postcode."," : ""}
+            @{!_null($data->customer->state) ? $data->customer->state."," : ""}
+            @{!_null($data->customer->country) ? $data->customer->country : ""}
         </span>
     </span>
 @{/if}
 
-<!-- SHOW_SUPPLIER_CONTACT -->
-@{if="(bool)$SHOW_SUPPLIER_CONTACT"}
-    @{if="!_null($data->supplier->phone) || !_null($data->supplier->fax)"}
+<!-- SHOW_CUSTOMER_CONTACT -->
+@{if="(bool)$SHOW_CUSTOMER_CONTACT"}
+    @{if="!_null($data->customer->phone) || !_null($data->customer->fax)"}
         <span class="text-block">
-            @{if="!_null($data->supplier->phone)"}
-                <strong>Tel:</strong> @{$data->supplier->phone}
+            @{if="!_null($data->customer->phone)"}
+                <strong>Tel:</strong> @{$data->customer->phone}
             @{/if}
 
-            @{if="!_null($data->supplier->fax)"}
-                <strong>Fax:</strong> @{$data->supplier->fax}
+            @{if="!_null($data->customer->fax)"}
+                <strong>Fax:</strong> @{$data->customer->fax}
             @{/if}
         </span>
     @{/if}
 
-    @{if="!_null($data->supplier->email) || !_null($data->supplier->website)"}
+    @{if="!_null($data->customer->email) || !_null($data->customer->website)"}
         <span class="text-block">
-            @{if="!_null($data->supplier->email)"}
-                @{$data->supplier->email}
+            @{if="!_null($data->customer->email)"}
+                @{$data->customer->email}
             @{/if}
 
-            @{if="!_null($data->supplier->website)"}
-                @{$data->supplier->website}
+            @{if="!_null($data->customer->website)"}
+                @{$data->customer->website}
             @{/if}
         </span>
     @{/if}
 @{/if} 
-<!-- /SHOW_SUPPLIER_CONTACT -->
+<!-- /SHOW_CUSTOMER_CONTACT -->
 
 </td>
 
-<td rowspan="3" class="width-percent-35">
+<td rowspan="2" class="width-percent-35">
 
 <table class="box-doc">
 <tr>
@@ -466,14 +458,14 @@ table.table-payment-history td {
 <tr>
 <td class="cell text-right text-bold">Date</td>
 <td class="cell text-left">
-    @{$data->purchaseorder->date|_format_date}
+    @{$data->creditnote->date|_format_date}
 </td>
 </tr>
 
 <tr>
-<td class="cell text-right text-bold">Purchase No</td>
+<td class="cell text-right text-bold">Reference No</td>
 <td class="cell text-left">
-    @{$data->purchaseorder->code}
+    @{$data->creditnote->code}
 </td>
 </tr>
 
@@ -514,36 +506,12 @@ table.table-payment-history td {
 </td>
 </tr>
 
-
-@{if="$data->deliveryto->enable && !_null($data->deliveryto->address)"}
-    <tr>
-    <td class="deliver">Delivery to:</td>
-    <td class="deliver">
-
-        <span class="text-block">
-            @{$data->deliveryto->address}
-            <span class="text-block text-capitalize">
-                @{!_null($data->deliveryto->city) ? $data->deliveryto->city."," : ""}
-                @{!_null($data->deliveryto->postcode) ? $data->deliveryto->postcode."," : ""}
-                @{!_null($data->deliveryto->state) ? $data->deliveryto->state."," : ""}
-                @{!_null($data->deliveryto->country) ? $data->deliveryto->country : ""}
-            </span>
-        </span>
-
-    </td>
-    </tr>
-@{else}
-    <tr>
-    <td colspan="2">&nbsp;</td>
-    </tr>
-@{/if}
-
-<!-- SHOW_SUPPLIER_NAME -->
-@{if="(bool)$SHOW_SUPPLIER_NAME && (bool)$has_supplier_company && $data->supplier->companyname != $data->supplier->name"}
+<!-- SHOW_CUSTOMER_NAME -->
+@{if="(bool)$SHOW_CUSTOMER_NAME && (bool)$has_customer_company && $data->customer->companyname != $data->customer->name"}
     <tr>
     <td class="attn">Attention:</td>
     <td class="attn">
-        <strong>@{$data->supplier->name}</strong>
+        <strong>@{$data->customer->name}</strong>
     </td>
     </tr>
 @{else}
@@ -551,31 +519,33 @@ table.table-payment-history td {
     <td colspan="2">&nbsp;</td>
     </tr>
 @{/if}
-<!-- /SHOW_SUPPLIER_NAME -->
+<!-- /SHOW_CUSTOMER_NAME -->
 
 </table>
-
 <!-- /INFORMATION -->
 
 @{if="!_null($SUBJECT)"}
 <h4>@{$SUBJECT}</h4>
 @{/if}
 
+<!-- ITEMS -->
 <table class="item">
-<tr>
+
 <!-- ITEMS HEADER -->
+<tr>
 <th class="text-center width-px-10">No.</th>
 <th class="text-left">Item & Description</th>
 <th class="text-center width-px-60">Quantity</th>
 <th class="text-right width-px-60">Unit Price</th>
 <th class="text-right width-px-60">Amount</th>
-@{if="$data->list->has_discount && $data->purchaseorder->discount_option == 1"}
+@{if="$data->list->has_discount && $data->creditnote->discount_option == 1"}
     <th class="text-center width-px-60">Discount</th>
 @{/if}
-@{if="$data->list->has_tax && $data->purchaseorder->tax_option == 1"}
+@{if="$data->list->has_tax && $data->creditnote->tax_option == 1"}
     <th class="text-right width-px-60">Tax Rate</th>
 @{/if}
 </tr>
+<!-- /ITEMS HEADER -->
 
 <!-- ITEMS LIST -->
 @{$total=0}
@@ -605,7 +575,8 @@ table.table-payment-history td {
         @{$value.subtotal|_int_output_thousands_sep}
     </td>
 
-    @{if="$data->list->has_discount && $data->purchaseorder->discount_option == 1"}
+    <!-- DISCOUNT_OPTION == 1 -->
+    @{if="$data->list->has_discount && $data->creditnote->discount_option == 1"}
 
         @{$discount_rate=$value.discount_rate}
 
@@ -614,7 +585,7 @@ table.table-payment-history td {
             @{$discount_rate_rate=_calc_percent($value.subtotal, $discount_rate)}
         @{else}
             @{$discount_rate_rate=$discount_rate}
-        @{/if} <!-- / discount_percent -->
+        @{/if} <!-- /discount_percent -->
 
         <td class="cell text-right">
             @{$total_discount_rate=$total_discount_rate + $discount_rate_rate}
@@ -627,10 +598,12 @@ table.table-payment-history td {
 
         </td>
 
-    @{/if} <!--/ discount_option == 1 -->
+    @{/if}
+    <!--/ DISCOUNT_OPTION == 1 -->
 
-<!-- tax per item -->
-    @{if="$data->list->has_tax && $data->purchaseorder->tax_option == 1"}
+    <!-- TAX PER ITEM -->
+    <!-- TAX_OPTION == 1 -->
+    @{if="$data->list->has_tax && $data->creditnote->tax_option == 1"}
         @{$tax_rate_rate=0}
         @{$taxcode_name=""}
         @{if="!_null($value.tax_name)"}
@@ -645,6 +618,7 @@ table.table-payment-history td {
             @{$tax_name=$value.tax_name}
             @{$tax_rate=$value.tax_rate}
 
+            <!-- TAX_PERCENT -->
             @{if="$value.tax_percent == 1"}
                 @{$tax_rate=_int_output($tax_rate)}
 
@@ -660,7 +634,8 @@ table.table-payment-history td {
                 @{$tax_rate=_int_output($tax_rate,2)}
                 @{$tax_rate_rate=$tax_rate}
                 @{$tax_text="$tax_rate"}
-            @{/if} <!-- / tax_percent -->
+            @{/if}
+            <!-- /TAX_PERCENT -->
 
             @{if="$value.tax_operation == 0"}
                 @{$tax_exclusive[$tax_name]['rate']=$tax_text}
@@ -680,15 +655,17 @@ table.table-payment-history td {
         <td class="cell text-right">
             @{$tax_rate_rate|_int_output_thousands_sep} @{$taxcode_name}
         </td>
-    @{/if} <!--/ tax_option == 1 -->
-<!-- /tax per item -->
+    @{/if}
+    <!-- /TAX_OPTION == 1 -->
+    <!-- /TAX PER ITEM -->
 </tr>
 @{/loop}
+<!-- /ITEMS LIST -->
 </table>
-
-<table class="item">
+<!-- /ITEMS -->
 
 <!-- ITEMS FOOTER -->
+<table class="item">
 <tr>
 <td class="cell cell-empty text-uppercase text-bold" colspan="4">
     @{$data->currencycode->name}:
@@ -696,25 +673,27 @@ table.table-payment-history td {
 </tr>
 
 <tr>
-<td class="cell cell-empty">
-    @{$total|_int_output_thousands_sep|_currency_value_in_words}
-</td>
-<td class="cell width-px-100 text-nowrap text-right text-bold">Total</td>
-<td class="cell width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
-<td class="cell width-px-60 text-nowrap text-right">@{$total|_int_output_thousands_sep}</td>
+<td class="cell cell-empty">@{$total|_int_output_thousands_sep|_currency_value_in_words}</td>
+<td class="cell text-right text-bold">Total</td>
+<td class="cell width-px-10 text-right">@{$data->currencycode->symbol}</td>
+<td class="cell width-px-60 text-right">@{$total|_int_output_thousands_sep}</td>
 </tr>
 
-<!-- discount rate -->
+<!-- DISCOUNT RATE -->
 @{if="$data->list->has_discount"}
-    @{if="$data->purchaseorder->discount_option == 2"}
+    @{if="$data->creditnote->discount_option == 2"}
 
-        @{$discount_rate=$data->purchaseorder->discount_rate}
-        @{if="$data->purchaseorder->discount_percent == 1"}
+        @{$discount_rate=$data->creditnote->discount_rate}
+
+        <!-- DISCOUNT_PERCENT -->
+        @{if="$data->creditnote->discount_percent == 1"}
             @{$discount_rate=_int_output($discount_rate)}
             @{$discount_rate_rate=_calc_percent($total, $discount_rate)}
         @{else}
             @{$discount_rate_rate=$discount_rate}
-        @{/if} <!-- / discount_percent -->
+        @{/if}
+        <!-- /DISCOUNT_PERCENT -->
+
         @{$total_discount_rate=$discount_rate_rate}
 
     @{/if}
@@ -722,7 +701,9 @@ table.table-payment-history td {
     @{if="$total_discount_rate != 0"}
 
         <tr>
-        <td class="cell cell-empty">@{$total_discount_rate|_int_output_thousands_sep|_currency_value_in_words}</td>
+        <td class="cell cell-empty">
+            @{$total_discount_rate|_int_output_thousands_sep|_currency_value_in_words}
+        </td>
         <td class="cell width-px-100 text-nowrap text-right text-bold">Discount</td>
         <td class="cell width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
         <td class="cell width-px-60 text-nowrap text-right">
@@ -740,11 +721,12 @@ table.table-payment-history td {
         @{$total=$total-$total_discount_rate}
     @{/if}
 @{/if}
+<!-- /DISCOUNT RATE -->
 
-<!-- tax per item -->
+<!-- TAX -->
 @{if="$data->list->has_tax"}
-    @{if="$data->purchaseorder->tax_option == 1"}
-
+    @{if="$data->creditnote->tax_option == 1"}
+    <!-- TAX PER ITEM -->
         @{if="_array($tax_exclusive)"}
             @{loop="$tax_exclusive"}
             @{if="_null($key)"}@{continue}@{/if}
@@ -789,16 +771,17 @@ table.table-payment-history td {
         @{/if}
 
         @{$total=$total+$total_tax_rate}
-    <!-- /tax per item -->
-    <!-- tax total amount -->
-    @{elseif="$data->purchaseorder->tax_option == 2"}
+    <!-- /TAX PER ITEM -->
+
+    <!-- TAX TOTAL AMOUNT -->
+    @{elseif="$data->creditnote->tax_option == 2"}
 
         @{if="_array($data->list->taxs)"}
             @{loop="$data->list->taxs"}
 
                 @{if="$value.taxcode_id > 0"}
                     @{$value.tax_percent=$value.taxcode_percent} 
-                    @{$value.tax_rate=$value.taxcode_rate}
+                    @{$value.tax_rate=$value.taxcode_rate} 
                 @{/if}
 
                 @{$tax_rate=_int_output($value.tax_rate)}
@@ -840,24 +823,26 @@ table.table-payment-history td {
             @{/loop}
 
             @{$total=$total+$total_tax_rate}
+
         @{/if}
     @{/if}
+    <!-- /TAX TOTAL AMOUNT -->
 @{/if}
-<!-- /tax total amount -->
 
 <tr>
 <td class="cell cell-empty">@{$total|_int_output_thousands_sep|_currency_value_in_words}</td>
-<td class="cell text-right text-bold bg-highlight">Total Price</td>
+<td class="cell text-right text-bold bg-highlight">Grand Total</td>
 <td class="cell width-px-10 text-right bg-highlight">@{$data->currencycode->symbol}</td>
 <td class="cell width-px-60 text-right bg-highlight">@{$total|_int_output_thousands_sep}</td>
 </tr>
 
 </table>
+<!-- /ITEMS FOOTER -->
 
 </td>
 </tr>
 
-<!-- purchaseorder note -->
+<!-- NOTE -->
 @{if="!_null($data->text->note)"}
     <tr>
     <td>
@@ -865,7 +850,9 @@ table.table-payment-history td {
     </td>
     </tr>
 @{/if}
+<!-- /NOTE -->
 
+<!-- SIGNATURE -->
 <tr>
 <td>
 
@@ -874,9 +861,9 @@ table.table-payment-history td {
 <tr>
 <td class="signature-company">
 
-@{if="$data->purchaseorder->signature_option == 1"}
+@{if="$data->creditnote->signature_option == 1"}
     Computer Generated. No signature required
-@{elseif="$data->purchaseorder->signature_option > 1"}
+@{elseif="$data->creditnote->signature_option > 1"}
     <span class="text-block">Prepared By:</span>
     @{if="!_null($data->image->signature)"}
         <img src="@{$data->image->signature}" height=74 width=199>
@@ -894,13 +881,13 @@ table.table-payment-history td {
 
 </td>
 <td class="signature-recipient">
-@{if="$data->signature_supplier_option == 1 && $data->purchaseorder->signature_option > 1"}
-    <span class="text-block">Received By:</span>
-    <img src="@{$data->image->signature_supplier}" height=74 width=199>
+@{if="$data->signature_customer_option == 1 && $data->creditnote->signature_option > 1"}
+<span class="text-block">Received By:</span>
+    <img src="@{$data->image->signature_customer}" height=74 width=199>
 
     <span class="text-block signature-line">
-    @{if="!_null($data->text->signature_supplier)"}
-        <span class="text-block">@{$data->text->signature_supplier}</span>
+    @{if="!_null($data->text->signature_customer)"}
+        <span class="text-block">@{$data->text->signature_customer}</span>
     @{/if}
     </span>
 
@@ -911,6 +898,7 @@ table.table-payment-history td {
 
 </td>
 </tr>
+<!-- /SIGNATURE -->
 
 </table>
 

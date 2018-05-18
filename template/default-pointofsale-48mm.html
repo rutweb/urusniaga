@@ -1,11 +1,12 @@
 @{* 
-    Name: default-pointofsale
+    Name: default-pointofsale-48mm
     Updated: 07052018
+    48mm x height
 *}
 
 @{* TEMPLATE SETTING *}
 @{$TITLE="Sales Receipt"}
-@{$FONT="arial, sans-serif"}
+@{$FONT="sans-serif"}
 @{$SHOW_DISCOUNT_PERCENT=false}
 @{$SHOW_COMPANY_CONTACT=true}
 @{$SHOW_COMPANY_ADDRESS=true}
@@ -28,7 +29,7 @@ html {
 }
 
 body {
-    font-size: 12px;
+    font-size: 10px;
     margin: 0;
     background: #fff;
 }
@@ -51,7 +52,7 @@ th {
 }
 
 td {
-    font-size: 12px;
+    font-size: 10px;
     text-align: left;
 }
 
@@ -76,7 +77,7 @@ td {
 }
 
 .posname {
-    font-size: 14px;
+    font-size: 10px;
     text-transform: uppercase;
     margin:0px;
     padding:0px;
@@ -110,10 +111,6 @@ td {
     text-transform: none;
 }
 
-.text-bold {
-    font-weight: bold;
-}
-
 .text-nowrap {
     white-space: nowrap;
 }
@@ -121,7 +118,7 @@ td {
 td.cell {
     vertical-align:top;
     padding:4px;
-    border: 1px solid #bbbbbb;
+    border: 1px dotted #000000;
 }
 
 td.cell-empty {
@@ -129,7 +126,7 @@ td.cell-empty {
 }
 
 table.main {
-    width: 420px;
+    width: 181.417323px;
     border: none;
     padding: 0;
     margin: 0;
@@ -172,7 +169,7 @@ table.item th {
     background:#ffffff;
     color:#000000;
     padding:4px;
-    border-top: 1px solid #bbbbbb;
+    border-top: 1px dotted #000000;
 }
 
 table.item td {
@@ -182,16 +179,17 @@ table.item td {
 
 h4.title {
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 10px;
 }
 
 /* printer */
+@page {
+    margin: 0;
+}
+
 @media print {
     table.main {
-        width: 111.125mm;
-    }
-    body {
-        -webkit-print-color-adjust: exact;
+        width: 48mm;
     }
 }
 
@@ -317,30 +315,8 @@ h4.title {
 <tr>
 <th class="text-right width-px-10">No.</th>
 <th class="text-left">Item</th>
-@{if="$data->list->has_discount"}
-    @{if="$data->pointofsale->discount_option != 1"}
-    <th class="text-center width-px-40">Qty</th>
-    @{/if}
-
-    <th class="text-right width-px-60">Price</th>
-    @{if="$data->pointofsale->discount_option == 1"}
-        <th class="text-right width-px-60">Disc</th>
-        <th class="text-center width-px-40">Qty</th>
-        <th class="text-right width-px-60">Amt</th>
-    @{else}
-    <th class="text-right width-px-60">Amount</th>
-    @{/if}
-
-@{else}
-
-    <th class="text-center width-px-40">Qty</th>
-    <th class="text-right width-px-60">Price</th>
-    <th class="text-right width-px-60">Amount</th>
-@{/if}
-
-@{if="$data->list->has_tax && $data->pointofsale->tax_option == 1"}
-    <th class="text-right width-px-60">Tax</th>
-@{/if}
+<th class="text-center width-px-40">Qty</th>
+<th class="text-right width-px-60">Amount</th>
 </tr>
 
 @{$total=0}
@@ -359,20 +335,8 @@ h4.title {
         @{$value.name|nl2br}
     </td>
 
-    @{if="$data->list->has_discount"}
-        @{if="$data->pointofsale->discount_option != 1"}
-            <td class="cell text-center">
-                @{$value.quantity}
-            </td>
-        @{/if}
-    @{else}
-        <td class="cell text-center">
-            @{$value.quantity}
-        </td>
-    @{/if}
-
-    <td class="cell text-right">
-        @{$value.price|_int_output_thousands_sep}
+    <td class="cell text-center">
+        @{$value.quantity}
     </td>
 
     @{if="$data->list->has_discount && $data->pointofsale->discount_option == 1"}
@@ -387,21 +351,9 @@ h4.title {
         @{/if} <!-- / discount_percent -->
 
         @{$value.price=$value.price - $discount_rate_rate}
-
-        <td class="cell text-right">
-            @{$discount_rate_rate|_int_output_thousands_sep}
-
-            @{if="isset($SHOW_DISCOUNT_PERCENT) && (bool)$SHOW_DISCOUNT_PERCENT"}
-                <span class="text-block">@{$discount_rate}%</span>
-            @{/if}
-
-            @{$discount_rate_rate=$discount_rate_rate * $value.quantity}
-            @{$total_discount_rate=$total_discount_rate + $discount_rate_rate}
-        </td>
-
-        <td class="cell text-center">
-            @{$value.quantity}
-        </td>
+        @{$discount_rate_rate|_int_output_thousands_sep}
+        @{$discount_rate_rate=$discount_rate_rate * $value.quantity}
+        @{$total_discount_rate=$total_discount_rate + $discount_rate_rate}
 
     @{/if} <!--/ discount_option == 1 -->
 
@@ -414,6 +366,7 @@ h4.title {
     <td class="cell text-right">
         @{$value.subtotal|_int_output_thousands_sep}
     </td>
+
 <!-- tax per item -->
     @{if="$data->list->has_tax && $data->pointofsale->tax_option == 1"}
         @{$tax_rate_rate=0}
@@ -462,9 +415,6 @@ h4.title {
                 @{$tax_inclusive[$tax_name]['total']=$tax_inclusive[$tax_name]['total'] + $tax_rate_rate}
             @{/if}
         @{/if}
-        <td class="cell text-right">
-            @{$tax_rate_rate|_int_output_thousands_sep} @{$taxcode_name}
-        </td>
     @{/if} <!--/ tax_option == 1 -->
 <!-- /tax per item -->
 </tr>
@@ -476,7 +426,7 @@ h4.title {
 <table class="item">
 <tr>
 <td class="cell cell-empty">&nbsp;</td>
-<td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">Total</td>
+<td class="cell cell-empty width-px-100 text-nowrap text-right">Total</td>
 <td class="cell cell-empty width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
 <td class="cell cell-empty width-px-60 text-nowrap text-right">@{$total|_int_output_thousands_sep}</td>
 </tr>
@@ -491,7 +441,7 @@ h4.title {
         @{if="$data->pointofsale->discount_option == 2"}
             <tr>
             <td class="cell cell-empty">&nbsp;</td>
-            <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">Discount</td>
+            <td class="cell cell-empty width-px-100 text-nowrap text-right">Discount</td>
             <td class="cell cell-empty width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
             <td class="cell cell-empty width-px-60 text-nowrap text-right">
 
@@ -520,7 +470,7 @@ h4.title {
             @{if="$value['rate'] == 0"}@{continue}@{/if}
                 <tr>
                 <td class="cell cell-empty">&nbsp;</td>
-                <td class="cell cell-empty width-px-100 text-nowrap text-bold  text-right">
+                <td class="cell cell-empty width-px-100 text-nowrap text-right">
                     @{$key} @{$value['rate']}
                 </td>
                 <td class="cell cell-empty width-px-10 text-nowrap text-right">
@@ -540,7 +490,7 @@ h4.title {
             @{if="$value['rate'] == 0"}@{continue}@{/if}
                 <tr>
                 <td class="cell cell-empty">&nbsp;</td>
-                <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+                <td class="cell cell-empty width-px-100 text-nowrap text-right">
                     Inclusive @{$key} @{$value['rate']}
                 </td>
                 <td class="cell cell-empty width-px-10 text-nowrap text-right">
@@ -584,7 +534,7 @@ h4.title {
                 <td class="cell cell-empty">
 
                 </td>
-                <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+                <td class="cell cell-empty width-px-100 text-nowrap text-right">
                     @{if="$value.tax_operation == 1"}
                         Inclusive&nbsp;
                     @{/if}
@@ -614,7 +564,7 @@ h4.title {
 @{if="!_null($data->pointofsale->rounding_amount) && $data->pointofsale->rounding_amount != 0"}
     <tr>
     <td class="cell cell-empty">&nbsp;</td>
-    <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+    <td class="cell cell-empty width-px-100 text-nowrap text-right">
         Rounding
     </td>
     <td class="cell cell-empty width-px-10 text-nowrap text-right">
@@ -630,7 +580,7 @@ h4.title {
 
 <tr>
 <td class="cell cell-empty">&nbsp;</td>
-<td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">Grand Total</td>
+<td class="cell cell-empty width-px-100 text-nowrap text-right">Grand Total</td>
 <td class="cell cell-empty width-px-10 text-nowrap text-right">
     @{$data->currencycode->symbol}
 </td>
@@ -643,7 +593,7 @@ h4.title {
 @{if="!_null($data->pointofsale->payment)"}
     <tr>
     <td class="cell cell-empty">&nbsp;</td>
-    <td class="cell width-px-100 text-nowrap text-bold text-right">
+    <td class="cell width-px-100 text-nowrap text-right">
         Paid
     </td>
     <td class="cell width-px-10 text-nowrap text-right">
@@ -658,7 +608,7 @@ h4.title {
 @{if="!_null($data->pointofsale->payment_change)"}
     <tr>
     <td class="cell cell-empty">&nbsp;</td>
-    <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+    <td class="cell cell-empty width-px-100 text-nowrap text-right">
         Change
     </td>
     <td class="cell cell-empty width-px-10 text-nowrap text-right">

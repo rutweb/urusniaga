@@ -1,40 +1,39 @@
 @{* 
     Name: default-leave
-    Update: 31102017
-
-    Variables setting, will overwritten by template setting. 
+    Updated: 12052018
 *}
 
-@{* start variables setting *}
+@{* TEMPLATE SETTING *}
 @{$TITLE="Leave Application"}
 @{$SUBJECT=""}
+@{$SHOW_STATUS=true}
+@{$SHOW_COMPANY_CONTACT=true}
+@{$SHOW_COMPANY_ADDRESS=true}
+@{$SHOW_COMPANY_LOGO=true}
+@{* /TEMPLATE SETTING *}
+
+@{* VARIABLES *}
 @{$FONT="arial, sans-serif"}
 @{$CELL_BORDER="1px solid #dddddd"}
 @{$CELL_HIGHLIGHT_COLOR="#d0d0d0"}
 @{$HEADER_BACKGROUND_COLOR="#000000"}
 @{$HEADER_TEXT_COLOR="#ffffff"}
 @{$SIGNATURE_LINE_BORDER="1px dotted #bbbbbb"}
-@{$SHOW_STATUS=true}
-@{$SHOW_COMPANY_CONTACT=true}
-@{$SHOW_COMPANY_ADDRESS=true}
-@{$SHOW_COMPANY_LOGO=true}
-@{* /end variables setting *}
+@{* /VARIABLES *}
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="google" content="notranslate">
 <meta name="format-detection" content="telephone=no">
 <title>@{$TITLE} @{$data->leave->code}</title>
-
-<style type="text/css">
-/* start reset */
+<style>
 html {
-  font-family: @{$FONT};
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+    font-family: @{$FONT};
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -42,10 +41,6 @@ body {
     margin: 0;
     background: #fff;
     line-height: 1.3;
-}
-
-@media print {
-    body {-webkit-print-color-adjust: exact;}
 }
 
 table {
@@ -73,8 +68,6 @@ img {
     border: 0;
     padding: 0;
 }
-
-/* end reset */
 
 img.company-logo {
     height: 80px;
@@ -105,7 +98,6 @@ img.company-logo {
 .width-percent-15 {
     width: 15%;
 }
-
 
 .width-percent-40 {
     width: 40%;
@@ -148,9 +140,12 @@ img.company-logo {
     text-transform: capitalize;
 }
 
-b,
 .text-bold {
     font-weight: bold !important;
+}
+
+.text-normal {
+    text-transform: none;
 }
 
 .text-nowrap {
@@ -175,6 +170,7 @@ table.main {
     margin-left:auto;
     margin-right:auto;
     border-spacing: 0;
+    page-break-after: always;
 }
 
 table.header {
@@ -271,8 +267,17 @@ table.item th {
 .bg-highlight {
     background:@{$CELL_HIGHLIGHT_COLOR};
 }
-</style>
 
+/* printer */
+@page {
+    size: A4;
+}
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+}
+</style>
 </head>
 <body scroll="auto">
 
@@ -280,74 +285,86 @@ table.item th {
 <tr>
 <td>
 
-<!--## HEADER START ##-->
+<!-- HEADER -->
 <table class="header">
 <tr>
 
-<!--## COMPANY LOGO ##-->
+<!-- COMPANY LOGO -->
+@{if="(bool)$SHOW_COMPANY_LOGO"}
 <td class="col-left">
-    @{if="(bool)$SHOW_COMPANY_LOGO"}
-        <img src="@{$data->image->logo}" class="company-logo">
-    @{/if}
+    <img src="@{$data->image->logo}" class="company-logo">
 </td>
+@{/if}
+<!-- /COMPANY LOGO -->
 
-<!--## COMPANY INFORMATION ##-->
+<!-- COMPANY INFORMATION -->
 <td class="col-right">
+
 <span class="text-block company-title">
     @{$data->company->name}
     @{!_null($data->company->regnumber)?" (".$data->company->regnumber.")":""}
 </span>
 
-@{if="!_null($data->company->address) && (bool)$SHOW_COMPANY_ADDRESS"}
-    <span class="text-block">@{$data->company->address}</span>
+<!-- SHOW_COMPANY_ADDRESS -->
+@{if="(bool)$SHOW_COMPANY_ADDRESS && !_null($data->company->address)"}
+    <span class="text-block text-normal">
+        @{$data->company->address}
 
-    <span class="text-block text-capitalize">
-        <!--## COMPANY CITY ##-->
-        @{!_null($data->company->city) ? $data->company->city.",&nbsp;" : ""}
+        <span class="text-capitalize">
+            <!-- COMPANY CITY -->
+            @{!_null($data->company->city) ? $data->company->city."," : ""}
 
-        <!--## COMPANY POSTCODE ##-->
-        @{!_null($data->company->postcode) ? $data->company->postcode.",&nbsp;" : ""}
+            <!-- COMPANY POSTCODE -->
+            @{!_null($data->company->postcode) ? $data->company->postcode."," : ""}
 
-        <!--## COMPANY STATE ##-->
-        @{!_null($data->company->state) ? $data->company->state.",&nbsp;" : ""}
+            <!-- COMPANY STATE -->
+            @{!_null($data->company->state) ? $data->company->state."," : ""}
 
-        <!--## COMPANY COUNTRY ##-->
-        @{!_null($data->company->country) ? $data->company->country : ""}
+            <!-- COMPANY COUNTRY -->
+            @{!_null($data->company->country) ? $data->company->country : ""}
+        </span>
     </span>
 @{/if}
+<!-- /SHOW_COMPANY_ADDRESS -->
 
+<!-- SHOW_COMPANY_CONTACT -->
 @{if="(bool)$SHOW_COMPANY_CONTACT"}
-    <span class="text-block">
+    @{if="!_null($data->company->phone) || !_null($data->company->fax)"}
+        <span class="text-block text-normal">
+            <!-- COMPANY PHONE -->
+            @{if="!_null($data->company->phone)"}
+                <strong>Tel:</strong> @{$data->company->phone}
+            @{/if}
 
-    <!--## COMPANY PHONE ##-->
-    @{if="!_null($data->company->phone)"}
-        <b>Phone:</b> @{$data->company->phone}&nbsp;
+            <!-- COMPANY FAX -->
+            @{if="!_null($data->company->fax)"}
+                <strong>Fax:</strong> @{$data->company->fax}
+            @{/if}
+        </span>
     @{/if}
 
-    <!--## COMPANY FAX ##-->
-    @{if="!_null($data->company->fax)"}
-        <b>Fax:</b> @{$data->company->fax}
-    @{/if}
+    @{if="!_null($data->company->email) || !_null($data->company->website)"}
+        <span class="text-block text-normal">
+            <!-- COMPANY EMAIL -->
+            @{if="!_null($data->company->email)"}
+                @{$data->company->email}
+            @{/if}
 
-    </span>
-
-    <!--## COMPANY EMAIL ##-->
-    @{if="!_null($data->company->email)"}
-        <span class="text-block"><b>Email:</b> @{$data->company->email}</span>
-    @{/if}
-
-    <!--## COMPANY WEBSITE ##-->
-    @{if="!_null($data->company->website)"}
-        <span class="text-block"><b>Website:</b> @{$data->company->website}</span>
+            <!-- COMPANY WEBSITE -->
+            @{if="!_null($data->company->website)"}
+                @{$data->company->website}
+            @{/if}
+        </span>
     @{/if}
 @{/if}
+<!-- /SHOW_COMPANY_CONTACT -->
 
 </td>
-<!--## END COMPANY INFORMATION ##-->
+<!-- /COMPANY INFORMATION -->
 
 </tr>
 </table>
-<!--## HEADER END ##-->
+<!-- /HEADER -->
 
 <table class="box-doc">
 <tr>
@@ -356,22 +373,22 @@ table.item th {
 
 @{$list_field=array()}
 @{$list_field["Start Date"]=_format_date($data->leave->date)}
-@{$list_field["End Date"]=_format_date($data->leave->date)}
+@{$list_field["End Date"]=_format_date($data->leave->date_end)}
 @{$list_field["Leave No"]=$data->leave->code}
 @{$list_field["Leave Type"]=$data->leave->leave_type_name}
 @{$list_field["Employee Name"]=$data->leave->user_fullname}
 @{$list_field["Employee No"]=$data->employee->code}
 @{$list_field["Designation"]=$data->employee->designation}
 
-<!--## CUSTOM FIELDS ##-->
+<!-- CUSTOM FIELDS -->
 @{if="_array($data->list->fields)"}
     @{loop="$data->list->fields"}
         @{$list_field[$value.key]=$value.value}
     @{/loop}
 @{/if}
-<!--## /CUSTOM FIELDS ##-->
+<!-- /CUSTOM FIELDS -->
 
-@{if="$SHOW_STATUS"}
+@{if="(bool)$SHOW_STATUS"}
     @{$list_field["Status"]=$data->list->status[$data->leave->status]}
 @{/if}
 
@@ -403,12 +420,12 @@ table.item th {
 
 <table class="item">
 <tr>
-<!--## ITEMS HEADER ##-->
+<!-- ITEMS HEADER -->
 <th class="text-left">Leave Reason</th>
 <th class="text-right width-px-60">Days</th>
 </tr>
 
-<!--## ITEMS LIST ##-->
+<!-- ITEMS LIST -->
 <tr>
 <td class="cell">@{$data->text->description}</td>
 <td class="cell text-right width-px-60">@{$data->leave->quantity|_int_output:0}</td>
@@ -421,13 +438,13 @@ table.item th {
 
 <tr>
 <td>
-    <b>Administration Note:</b>
     @{if="!_null($data->text->note)"}
+        <strong>Administration Note:</strong>
         <p>@{$data->text->note}</p>
     @{/if}
 
     @{if="_array($data->list->balance)"}
-        <p><b>Summary of Approved Leave:</b></p>
+        <p><strong>Summary of Approved Leave:</strong></p>
         <table class="item">
         <tr>
         <th>Leave Type</th>
@@ -459,13 +476,13 @@ table.item th {
 @{if="$data->leave->signature_option == 1"}
     Computer Generated. No signature required
 @{elseif="$data->leave->signature_option > 1"}
-<span class="text-block">
-@{if="$data->leave->status!=2"}
-Approved By:
-@{else}
-Rejected By:
-@{/if}
-</span>
+    <span class="text-block">
+        @{if="$data->leave->status!=2"}
+            Approved By:
+        @{else}
+            Rejected By:
+        @{/if}
+    </span>
 
     @{if="!_null($data->image->signature)"}
         <img src="@{$data->image->signature}" height=74 width=199>
@@ -484,7 +501,7 @@ Rejected By:
 </td>
 <td class="signature-recipient">
 @{if="$data->signature_employee_option == 1 && $data->leave->signature_option > 1"}
-<span class="text-block">Request By:</span>
+    <span class="text-block">Request By:</span>
     <img src="@{$data->image->signature_employee}" height=74 width=199>
 
     <span class="text-block signature-line">

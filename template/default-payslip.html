@@ -1,40 +1,39 @@
 @{* 
     Name: default-payslip
-    Update: 25022017
-
-    Variables setting, will overwritten by template setting. 
+    Updated: 12052018
 *}
 
-@{* start variables setting *}
+@{* TEMPLATE SETTING *}
 @{$TITLE="Payslip"}
 @{$SUBJECT=""}
+@{$SHOW_STATUS=true}
+@{$SHOW_COMPANY_CONTACT=true}
+@{$SHOW_COMPANY_ADDRESS=true}
+@{$SHOW_COMPANY_LOGO=true}
+@{* /TEMPLATE SETTING *}
+
+@{* VARIABLES *}
 @{$FONT="arial, sans-serif"}
 @{$CELL_BORDER="1px solid #dddddd"}
 @{$CELL_HIGHLIGHT_COLOR="#d0d0d0"}
 @{$HEADER_BACKGROUND_COLOR="#000000"}
 @{$HEADER_TEXT_COLOR="#ffffff"}
 @{$SIGNATURE_LINE_BORDER="1px dotted #bbbbbb"}
-@{$SHOW_STATUS=true}
-@{$SHOW_COMPANY_CONTACT=true}
-@{$SHOW_COMPANY_ADDRESS=true}
-@{$SHOW_COMPANY_LOGO=true}
-@{* /end variables setting *}
+@{* /VARIABLES *}
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="google" content="notranslate">
 <meta name="format-detection" content="telephone=no">
 <title>@{$TITLE} @{$data->payslip->code}</title>
-
-<style type="text/css">
-/* start reset */
+<style>
 html {
-  font-family: @{$FONT};
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+    font-family: @{$FONT};
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -42,10 +41,6 @@ body {
     margin: 0;
     background: #fff;
     line-height: 1.3;
-}
-
-@media print {
-    body {-webkit-print-color-adjust: exact;}
 }
 
 table {
@@ -73,8 +68,6 @@ img {
     border: 0;
     padding: 0;
 }
-
-/* end reset */
 
 img.company-logo {
     height: 80px;
@@ -105,7 +98,6 @@ img.company-logo {
 .width-percent-15 {
     width: 15%;
 }
-
 
 .width-percent-40 {
     width: 40%;
@@ -148,9 +140,12 @@ img.company-logo {
     text-transform: capitalize;
 }
 
-b,
 .text-bold {
     font-weight: bold !important;
+}
+
+.text-normal {
+    text-transform: none;
 }
 
 .text-nowrap {
@@ -175,6 +170,7 @@ table.main {
     margin-left:auto;
     margin-right:auto;
     border-spacing: 0;
+    page-break-after: always;
 }
 
 table.header {
@@ -271,8 +267,17 @@ table.item th {
 .bg-highlight {
     background:@{$CELL_HIGHLIGHT_COLOR};
 }
-</style>
 
+/* printer */
+@page {
+    size: A4;
+}
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+}
+</style>
 </head>
 <body scroll="auto">
 
@@ -280,74 +285,86 @@ table.item th {
 <tr>
 <td>
 
-<!--## HEADER START ##-->
+<!-- HEADER -->
 <table class="header">
 <tr>
 
-<!--## COMPANY LOGO ##-->
+<!-- COMPANY LOGO -->
+@{if="(bool)$SHOW_COMPANY_LOGO"}
 <td class="col-left">
-    @{if="(bool)$SHOW_COMPANY_LOGO"}
-        <img src="@{$data->image->logo}" class="company-logo">
-    @{/if}
+    <img src="@{$data->image->logo}" class="company-logo">
 </td>
+@{/if}
+<!-- /COMPANY LOGO -->
 
-<!--## COMPANY INFORMATION ##-->
+<!-- COMPANY INFORMATION -->
 <td class="col-right">
+
 <span class="text-block company-title">
     @{$data->company->name}
     @{!_null($data->company->regnumber)?" (".$data->company->regnumber.")":""}
 </span>
 
-@{if="!_null($data->company->address) && (bool)$SHOW_COMPANY_ADDRESS"}
-    <span class="text-block">@{$data->company->address}</span>
+<!-- SHOW_COMPANY_ADDRESS -->
+@{if="(bool)$SHOW_COMPANY_ADDRESS && !_null($data->company->address)"}
+    <span class="text-block text-normal">
+        @{$data->company->address}
 
-    <span class="text-block text-capitalize">
-        <!--## COMPANY CITY ##-->
-        @{!_null($data->company->city) ? $data->company->city.",&nbsp;" : ""}
+        <span class="text-capitalize">
+            <!-- COMPANY CITY -->
+            @{!_null($data->company->city) ? $data->company->city."," : ""}
 
-        <!--## COMPANY POSTCODE ##-->
-        @{!_null($data->company->postcode) ? $data->company->postcode.",&nbsp;" : ""}
+            <!-- COMPANY POSTCODE -->
+            @{!_null($data->company->postcode) ? $data->company->postcode."," : ""}
 
-        <!--## COMPANY STATE ##-->
-        @{!_null($data->company->state) ? $data->company->state.",&nbsp;" : ""}
+            <!-- COMPANY STATE -->
+            @{!_null($data->company->state) ? $data->company->state."," : ""}
 
-        <!--## COMPANY COUNTRY ##-->
-        @{!_null($data->company->country) ? $data->company->country : ""}
+            <!-- COMPANY COUNTRY -->
+            @{!_null($data->company->country) ? $data->company->country : ""}
+        </span>
     </span>
 @{/if}
+<!-- /SHOW_COMPANY_ADDRESS -->
 
+<!-- SHOW_COMPANY_CONTACT -->
 @{if="(bool)$SHOW_COMPANY_CONTACT"}
-    <span class="text-block">
+    @{if="!_null($data->company->phone) || !_null($data->company->fax)"}
+        <span class="text-block text-normal">
+            <!-- COMPANY PHONE -->
+            @{if="!_null($data->company->phone)"}
+                <strong>Tel:</strong> @{$data->company->phone}
+            @{/if}
 
-    <!--## COMPANY PHONE ##-->
-    @{if="!_null($data->company->phone)"}
-        <b>Phone:</b> @{$data->company->phone}&nbsp;
+            <!-- COMPANY FAX -->
+            @{if="!_null($data->company->fax)"}
+                <strong>Fax:</strong> @{$data->company->fax}
+            @{/if}
+        </span>
     @{/if}
 
-    <!--## COMPANY FAX ##-->
-    @{if="!_null($data->company->fax)"}
-        <b>Fax:</b> @{$data->company->fax}
-    @{/if}
+    @{if="!_null($data->company->email) || !_null($data->company->website)"}
+        <span class="text-block text-normal">
+            <!-- COMPANY EMAIL -->
+            @{if="!_null($data->company->email)"}
+                @{$data->company->email}
+            @{/if}
 
-    </span>
-
-    <!--## COMPANY EMAIL ##-->
-    @{if="!_null($data->company->email)"}
-        <span class="text-block"><b>Email:</b> @{$data->company->email}</span>
-    @{/if}
-
-    <!--## COMPANY WEBSITE ##-->
-    @{if="!_null($data->company->website)"}
-        <span class="text-block"><b>Website:</b> @{$data->company->website}</span>
+            <!-- COMPANY WEBSITE -->
+            @{if="!_null($data->company->website)"}
+                @{$data->company->website}
+            @{/if}
+        </span>
     @{/if}
 @{/if}
+<!-- /SHOW_COMPANY_CONTACT -->
 
 </td>
-<!--## END COMPANY INFORMATION ##-->
+<!-- /COMPANY INFORMATION -->
 
 </tr>
 </table>
-<!--## HEADER END ##-->
+<!-- /HEADER -->
 
 <table class="box-doc">
 <tr>
@@ -361,15 +378,15 @@ table.item th {
 @{$list_field["Employee No"]=$data->employee->code}
 @{$list_field["Designation"]=$data->employee->designation}
 
-<!--## CUSTOM FIELDS ##-->
+<!-- CUSTOM FIELDS -->
 @{if="_array($data->list->fields)"}
     @{loop="$data->list->fields"}
         @{$list_field[$value.key]=$value.value}
     @{/loop}
 @{/if}
-<!--## /CUSTOM FIELDS ##-->
+<!-- /CUSTOM FIELDS -->
 
-@{if="$SHOW_STATUS"}
+@{if="(bool)$SHOW_STATUS"}
     @{$list_field["Status"]=$data->list->status[$data->payslip->status]}
 @{/if}
 
@@ -401,12 +418,12 @@ table.item th {
 
 <table class="item">
 <tr>
-<!--## ITEMS HEADER ##-->
+<!-- ITEMS HEADER -->
 <th class="text-left">Description</th>
 <th class="text-right width-px-60">Total</th>
 </tr>
 
-<!--## ITEMS LIST ##-->
+<!-- ITEMS LIST -->
 @{$gross_pay=0}
 @{$subtotal=0}
 @{$hasless=false}
@@ -435,7 +452,7 @@ table.item th {
 @{if="$hasless==true"}
 <tr>
 <td colspan='2' class="cell">
-<b>Deduction:</b>
+<strong>Deduction:</strong>
 </td>
 </tr>
 @{loop="$data->list->items"}
@@ -472,7 +489,7 @@ table.item th {
 @{if="$hascontrib==true"}
 <tr>
 <td colspan='2' class="cell">
-<b>Employer Contribution:</b>
+<strong>Employer Contribution:</strong>
 </td>
 </tr>
 @{loop="$data->list->items"}
@@ -518,7 +535,7 @@ table.item th {
 
 <table class="item">
 
-<!--## ITEMS FOOTER ##-->
+<!-- ITEMS FOOTER -->
 <tr>
 <td class="cell cell-empty text-uppercase text-bold" colspan="4">
     @{$data->currencycode->name}:

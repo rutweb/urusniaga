@@ -1,6 +1,7 @@
 @{* 
-    Name: default-pointofsale-order
+    Name: default-pointofsale-order-48mm
     Updated: 07052018
+    48mm x height
 *}
 
 @{* TEMPLATE SETTING *}
@@ -28,7 +29,7 @@ html {
 }
 
 body {
-    font-size: 12px;
+    font-size: 10px;
     margin: 0;
     background: #fff;
 }
@@ -51,7 +52,7 @@ th {
 }
 
 td {
-    font-size: 12px;
+    font-size: 10px;
     text-align: left;
 }
 
@@ -76,7 +77,7 @@ td {
 }
 
 .posname {
-    font-size: 14px;
+    font-size: 10px;
     text-transform: uppercase;
     margin:0px;
     padding:0px;
@@ -117,14 +118,14 @@ td {
 td.cell {
     vertical-align:top;
     padding:4px;
-    border: 1px solid #bbbbbb;
+    border: 1px dotted #000000;
 }
 
 td.cell-bottom {
     vertical-align:top;
     padding:4px;
     border: none;
-    border-bottom: 1px solid #bbbbbb;
+    border-bottom: 1px dotted #000000;
 }
 
 td.cell-empty {
@@ -132,7 +133,7 @@ td.cell-empty {
 }
 
 table.main {
-    width: 420px;
+    width: 181.417323px;
     border: none;
     padding: 0;
     margin: 0;
@@ -175,7 +176,7 @@ table.item th {
     background:#ffffff;
     color:#000000;
     padding:4px;
-    border-top: 1px solid #bbbbbb;
+    border-top: 1px dotted #000000;
 }
 
 table.item td {
@@ -185,16 +186,17 @@ table.item td {
 
 h4.title {
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 10px;
 }
 
 /* printer */
+@page {
+    margin: 0;
+}
+
 @media print {
     table.main {
-        width: 111.125mm;
-    }
-    body {
-        -webkit-print-color-adjust: exact;
+        width: 48mm;
     }
 }
 

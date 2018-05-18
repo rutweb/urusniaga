@@ -1,11 +1,12 @@
 @{* 
-    Name: default-pointofsale
+    Name: default-pointofsale-80mm
     Updated: 07052018
+    80mm x height
 *}
 
 @{* TEMPLATE SETTING *}
 @{$TITLE="Sales Receipt"}
-@{$FONT="arial, sans-serif"}
+@{$FONT="sans-serif"}
 @{$SHOW_DISCOUNT_PERCENT=false}
 @{$SHOW_COMPANY_CONTACT=true}
 @{$SHOW_COMPANY_ADDRESS=true}
@@ -110,10 +111,6 @@ td {
     text-transform: none;
 }
 
-.text-bold {
-    font-weight: bold;
-}
-
 .text-nowrap {
     white-space: nowrap;
 }
@@ -121,7 +118,7 @@ td {
 td.cell {
     vertical-align:top;
     padding:4px;
-    border: 1px solid #bbbbbb;
+    border: 1px dotted #000000;
 }
 
 td.cell-empty {
@@ -129,7 +126,7 @@ td.cell-empty {
 }
 
 table.main {
-    width: 420px;
+    width: 302.362205px;
     border: none;
     padding: 0;
     margin: 0;
@@ -172,7 +169,7 @@ table.item th {
     background:#ffffff;
     color:#000000;
     padding:4px;
-    border-top: 1px solid #bbbbbb;
+    border-top: 1px dotted #000000;
 }
 
 table.item td {
@@ -186,12 +183,13 @@ h4.title {
 }
 
 /* printer */
+@page {
+    margin: 0;
+}
+
 @media print {
     table.main {
-        width: 111.125mm;
-    }
-    body {
-        -webkit-print-color-adjust: exact;
+        width: 80mm;
     }
 }
 
@@ -476,7 +474,7 @@ h4.title {
 <table class="item">
 <tr>
 <td class="cell cell-empty">&nbsp;</td>
-<td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">Total</td>
+<td class="cell cell-empty width-px-100 text-nowrap text-right">Total</td>
 <td class="cell cell-empty width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
 <td class="cell cell-empty width-px-60 text-nowrap text-right">@{$total|_int_output_thousands_sep}</td>
 </tr>
@@ -491,7 +489,7 @@ h4.title {
         @{if="$data->pointofsale->discount_option == 2"}
             <tr>
             <td class="cell cell-empty">&nbsp;</td>
-            <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">Discount</td>
+            <td class="cell cell-empty width-px-100 text-nowrap text-right">Discount</td>
             <td class="cell cell-empty width-px-10 text-nowrap text-right">@{$data->currencycode->symbol}</td>
             <td class="cell cell-empty width-px-60 text-nowrap text-right">
 
@@ -520,7 +518,7 @@ h4.title {
             @{if="$value['rate'] == 0"}@{continue}@{/if}
                 <tr>
                 <td class="cell cell-empty">&nbsp;</td>
-                <td class="cell cell-empty width-px-100 text-nowrap text-bold  text-right">
+                <td class="cell cell-empty width-px-100 text-nowrap text-right">
                     @{$key} @{$value['rate']}
                 </td>
                 <td class="cell cell-empty width-px-10 text-nowrap text-right">
@@ -540,7 +538,7 @@ h4.title {
             @{if="$value['rate'] == 0"}@{continue}@{/if}
                 <tr>
                 <td class="cell cell-empty">&nbsp;</td>
-                <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+                <td class="cell cell-empty width-px-100 text-nowrap text-right">
                     Inclusive @{$key} @{$value['rate']}
                 </td>
                 <td class="cell cell-empty width-px-10 text-nowrap text-right">
@@ -584,7 +582,7 @@ h4.title {
                 <td class="cell cell-empty">
 
                 </td>
-                <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+                <td class="cell cell-empty width-px-100 text-nowrap text-right">
                     @{if="$value.tax_operation == 1"}
                         Inclusive&nbsp;
                     @{/if}
@@ -614,7 +612,7 @@ h4.title {
 @{if="!_null($data->pointofsale->rounding_amount) && $data->pointofsale->rounding_amount != 0"}
     <tr>
     <td class="cell cell-empty">&nbsp;</td>
-    <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+    <td class="cell cell-empty width-px-100 text-nowrap text-right">
         Rounding
     </td>
     <td class="cell cell-empty width-px-10 text-nowrap text-right">
@@ -630,7 +628,7 @@ h4.title {
 
 <tr>
 <td class="cell cell-empty">&nbsp;</td>
-<td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">Grand Total</td>
+<td class="cell cell-empty width-px-100 text-nowrap text-right">Grand Total</td>
 <td class="cell cell-empty width-px-10 text-nowrap text-right">
     @{$data->currencycode->symbol}
 </td>
@@ -643,7 +641,7 @@ h4.title {
 @{if="!_null($data->pointofsale->payment)"}
     <tr>
     <td class="cell cell-empty">&nbsp;</td>
-    <td class="cell width-px-100 text-nowrap text-bold text-right">
+    <td class="cell width-px-100 text-nowrap text-right">
         Paid
     </td>
     <td class="cell width-px-10 text-nowrap text-right">
@@ -658,7 +656,7 @@ h4.title {
 @{if="!_null($data->pointofsale->payment_change)"}
     <tr>
     <td class="cell cell-empty">&nbsp;</td>
-    <td class="cell cell-empty width-px-100 text-nowrap text-bold text-right">
+    <td class="cell cell-empty width-px-100 text-nowrap text-right">
         Change
     </td>
     <td class="cell cell-empty width-px-10 text-nowrap text-right">

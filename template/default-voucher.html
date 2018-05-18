@@ -1,39 +1,38 @@
 @{* 
     Name: default-voucher
-    Update: 25022017
-
-    Variables setting, will overwritten by template setting. 
+    Updated: 12052018
 *}
 
-@{* start variables setting *}
+@{* TEMPLATE SETTING *}
 @{$TITLE="Payment Voucher"}
 @{$SUBJECT=""}
+@{$SHOW_COMPANY_CONTACT=true}
+@{$SHOW_COMPANY_ADDRESS=true}
+@{$SHOW_COMPANY_LOGO=true}
+@{* /TEMPLATE SETTING *}
+
+@{* VARIABLES *}
 @{$FONT="arial, sans-serif"}
 @{$CELL_BORDER="1px solid #dddddd"}
 @{$CELL_HIGHLIGHT_COLOR="#d0d0d0"}
 @{$HEADER_BACKGROUND_COLOR="#000000"}
 @{$HEADER_TEXT_COLOR="#ffffff"}
 @{$SIGNATURE_LINE_BORDER="1px dotted #bbbbbb"}
-@{$SHOW_COMPANY_CONTACT=true}
-@{$SHOW_COMPANY_ADDRESS=true}
-@{$SHOW_COMPANY_LOGO=true}
-@{* /end variables setting *}
+@{* /VARIABLES *}
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="google" content="notranslate">
 <meta name="format-detection" content="telephone=no">
 <title>@{$TITLE} @{$data->voucher->code}</title>
-
-<style type="text/css">
-/* start reset */
+<style>
 html {
-  font-family: @{$FONT};
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+    font-family: @{$FONT};
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -73,8 +72,6 @@ img {
     padding: 0;
 }
 
-/* end reset */
-
 img.company-logo {
     height: 80px;
     max-width:300px;
@@ -104,7 +101,6 @@ img.company-logo {
 .width-percent-15 {
     width: 15%;
 }
-
 
 .width-percent-40 {
     width: 40%;
@@ -147,9 +143,12 @@ img.company-logo {
     text-transform: capitalize;
 }
 
-b,
 .text-bold {
     font-weight: bold !important;
+}
+
+.text-normal {
+    text-transform: none;
 }
 
 .text-nowrap {
@@ -174,6 +173,7 @@ table.main {
     margin-left:auto;
     margin-right:auto;
     border-spacing: 0;
+    page-break-after: always;
 }
 
 table.header {
@@ -226,7 +226,6 @@ table.box-doc .title {
     background:#fff;
 }
 
-
 table.item {
     clear: both;
     width: 100%;
@@ -267,6 +266,16 @@ table.item th {
     width:50%;
 }
 
+/* printer */
+@page {
+    size: A4;
+}
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+}
+
 </style>
 
 </head>
@@ -276,74 +285,86 @@ table.item th {
 <tr>
 <td>
 
-<!--## HEADER START ##-->
+<!-- HEADER -->
 <table class="header">
 <tr>
 
-<!--## COMPANY LOGO ##-->
+<!-- COMPANY LOGO -->
+@{if="(bool)$SHOW_COMPANY_LOGO"}
 <td class="col-left">
-    @{if="(bool)$SHOW_COMPANY_LOGO"}
-        <img src="@{$data->image->logo}" class="company-logo">
-    @{/if}
+    <img src="@{$data->image->logo}" class="company-logo">
 </td>
+@{/if}
+<!-- /COMPANY LOGO -->
 
-<!--## COMPANY INFORMATION ##-->
+<!-- COMPANY INFORMATION -->
 <td class="col-right">
+
 <span class="text-block company-title">
     @{$data->company->name}
     @{!_null($data->company->regnumber)?" (".$data->company->regnumber.")":""}
 </span>
 
-@{if="!_null($data->company->address) && (bool)$SHOW_COMPANY_ADDRESS"}
-    <span class="text-block">@{$data->company->address}</span>
+<!-- SHOW_COMPANY_ADDRESS -->
+@{if="(bool)$SHOW_COMPANY_ADDRESS && !_null($data->company->address)"}
+    <span class="text-block text-normal">
+        @{$data->company->address}
 
-    <span class="text-block text-capitalize">
-        <!--## COMPANY CITY ##-->
-        @{!_null($data->company->city) ? $data->company->city.",&nbsp;" : ""}
+        <span class="text-capitalize">
+            <!-- COMPANY CITY -->
+            @{!_null($data->company->city) ? $data->company->city."," : ""}
 
-        <!--## COMPANY POSTCODE ##-->
-        @{!_null($data->company->postcode) ? $data->company->postcode.",&nbsp;" : ""}
+            <!-- COMPANY POSTCODE -->
+            @{!_null($data->company->postcode) ? $data->company->postcode."," : ""}
 
-        <!--## COMPANY STATE ##-->
-        @{!_null($data->company->state) ? $data->company->state.",&nbsp;" : ""}
+            <!-- COMPANY STATE -->
+            @{!_null($data->company->state) ? $data->company->state."," : ""}
 
-        <!--## COMPANY COUNTRY ##-->
-        @{!_null($data->company->country) ? $data->company->country : ""}
+            <!-- COMPANY COUNTRY -->
+            @{!_null($data->company->country) ? $data->company->country : ""}
+        </span>
     </span>
 @{/if}
+<!-- /SHOW_COMPANY_ADDRESS -->
 
+<!-- SHOW_COMPANY_CONTACT -->
 @{if="(bool)$SHOW_COMPANY_CONTACT"}
-    <span class="text-block">
+    @{if="!_null($data->company->phone) || !_null($data->company->fax)"}
+        <span class="text-block text-normal">
+            <!-- COMPANY PHONE -->
+            @{if="!_null($data->company->phone)"}
+                <strong>Tel:</strong> @{$data->company->phone}
+            @{/if}
 
-    <!--## COMPANY PHONE ##-->
-    @{if="!_null($data->company->phone)"}
-        <b>Phone:</b> @{$data->company->phone}&nbsp;
+            <!-- COMPANY FAX -->
+            @{if="!_null($data->company->fax)"}
+                <strong>Fax:</strong> @{$data->company->fax}
+            @{/if}
+        </span>
     @{/if}
 
-    <!--## COMPANY FAX ##-->
-    @{if="!_null($data->company->fax)"}
-        <b>Fax:</b> @{$data->company->fax}
-    @{/if}
+    @{if="!_null($data->company->email) || !_null($data->company->website)"}
+        <span class="text-block text-normal">
+            <!-- COMPANY EMAIL -->
+            @{if="!_null($data->company->email)"}
+                @{$data->company->email}
+            @{/if}
 
-    </span>
-
-    <!--## COMPANY EMAIL ##-->
-    @{if="!_null($data->company->email)"}
-        <span class="text-block"><b>Email:</b> @{$data->company->email}</span>
-    @{/if}
-
-    <!--## COMPANY WEBSITE ##-->
-    @{if="!_null($data->company->website)"}
-        <span class="text-block"><b>Website:</b> @{$data->company->website}</span>
+            <!-- COMPANY WEBSITE -->
+            @{if="!_null($data->company->website)"}
+                @{$data->company->website}
+            @{/if}
+        </span>
     @{/if}
 @{/if}
+<!-- /SHOW_COMPANY_CONTACT -->
 
 </td>
-<!--## END COMPANY INFORMATION ##-->
+<!-- /COMPANY INFORMATION -->
 
 </tr>
 </table>
-<!--## HEADER END ##-->
+<!-- /HEADER -->
 
 <table class="box-doc">
 <tr>
@@ -357,13 +378,14 @@ table.item th {
 @{if="!_null($data->voucher->method_reference)"}
     @{$list_field["Reference"]=$data->voucher->method_reference}
 @{/if}
-<!--## CUSTOM FIELDS ##-->
+
+<!-- CUSTOM FIELDS -->
 @{if="_array($data->list->fields)"}
     @{loop="$data->list->fields"}
         @{$list_field[$value.key]=$value.value}
     @{/loop}
 @{/if}
-<!--## /CUSTOM FIELDS ##-->
+<!-- /CUSTOM FIELDS -->
 
 @{$list_field["Pay To"]=$data->voucher->recipient_name}
 
@@ -395,7 +417,7 @@ table.item th {
 
 <table class="item">
 <tr>
-<!--## ITEMS HEADER ##-->
+<!-- ITEMS HEADER -->
 <th class="text-left">Description</th>
 <th class="text-right width-px-60">Amount</th>
 </tr>
@@ -407,12 +429,14 @@ table.item th {
     @{$data->currencycode->symbol} @{$data->voucher->amount|_int_output_thousands_sep}
 </td>
 </tr>
-<tr>
-<td colspan="2" class="cell cell-empty">
-    <span class="text-uppercase text-bold">@{$data->currencycode->name}:</span> @{$data->voucher->amount|_int_output_thousands_sep|_currency_value_in_words}
-</td>
-</tr>
 </table>
+
+<span class="text-block text-uppercase">
+    <strong>@{$data->currencycode->name}:</strong>
+    <span class="text-block">
+        @{$data->voucher->amount|_int_output_thousands_sep|_currency_value_in_words}
+    </span>
+</span>
 
 </td>
 </tr>
@@ -428,7 +452,7 @@ table.item th {
 @{if="$data->voucher->signature_option == 1"}
     Computer Generated. No signature required
 @{elseif="$data->voucher->signature_option > 1"}
-<span class="text-block">Approved By:</span>
+    <span class="text-block">Approved By:</span>
 
     @{if="!_null($data->image->signature)"}
         <img src="@{$data->image->signature}" height=74 width=199>
@@ -447,7 +471,7 @@ table.item th {
 </td>
 <td class="signature-recipient">
 @{if="$data->signature_recipient_option == 1 && $data->voucher->signature_option > 1"}
-<span class="text-block">Received By:</span>
+    <span class="text-block">Received By:</span>
     <img src="@{$data->image->signature_recipient}" height=74 width=199>
 
     <span class="text-block signature-line">
